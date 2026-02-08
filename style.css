@@ -296,7 +296,7 @@ body {
 
 @media (max-width: 900px) {
   .hero{
-    height: 200;
+   height: 65vh;
   }
   .header-buttons {
     display: none;
