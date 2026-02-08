@@ -1,81 +1,184 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrei Vlădulescu</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
   <!-- ================= HEADER ================= -->
   <header class="header">
 
+    <!-- BRAND -->
     <div class="brand">
-      <img src="Vladulescuandrei.svg" class="logo" alt="Andrei Vladulescu">
+      <img src="Vladulescuandrei.svg" alt="Logo" class="logo">
+
       <div class="brand-text">
         <span class="first-name">Andrei</span>
-        <span class="last-name">Vladulescu</span>
+        <span class="last-name">Vlădulescu</span>
       </div>
-      <link rel="stylesheet" href="style.css">
     </div>
 
+    <!-- BUTOANE DESKTOP (doar PC) -->
     <nav class="header-buttons">
-      <a href="#nunta">Nuntă</a>
-      <a href="#botez">Botez</a>
-      <a href="#majorat">Majorat</a>
+      <a href="nunta.html">Nuntă</a>
+      <a href="botez.html">Botez</a>
+      <a href="majorat.html">Majorat</a>
     </nav>
 
-    <!-- BUTON MENIU -->
-    <button class="menu-toggle" aria-label="Meniu">
-      ☰
-    </button>
+    <!-- MENU ICON (PC + MOBILE) -->
+    <button class="menu-toggle" aria-label="Deschide meniul">☰</button>
 
   </header>
+  <!-- =============== END HEADER =============== -->
 
-  <!-- ================= MENIU MOBILE ================= -->
+
+  <!-- ================= MOBILE / FULLSCREEN MENU ================= -->
   <nav class="mobile-menu">
-    <button class="menu-close">✕</button>
+    <button class="menu-close" aria-label="Închide meniul">✕</button>
+
     <ul>
-      <li><a href="#hero">Acasă</a></li>
-      <li><a href="#portfolio">Portofoliu</a></li>
-      <li><a href="#nunta">Nuntă</a></li>
-      <li><a href="#botez">Botez</a></li>
-      <li><a href="#majorat">Majorat</a></li>
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="nunta.html">Nuntă</a></li>
+      <li><a href="botez.html">Botez</a></li>
+      <li><a href="majorat.html">Majorat</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+  <!-- =============== END MOBILE MENU =============== -->
+
 
   <!-- ================= HERO ================= -->
-  <section class="hero" id="hero">
-   
-    
-    <div class="cosmos">
-       
-      <div class="planet planet-1"></div>
-      <div class="planet planet-2"></div>
-      <div class="planet planet-3"></div>
-   
+  <section class="hero">
+
+    <!-- Video / imagine hero -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="src/hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay text -->
+    <div class="hero-content">
+      <h1>Momente care rămân</h1>
+      <p>Cinematic storytelling</p>
     </div>
-    <div class="hero-text">
-      <h1>Bine ai venit!</h1>
-      <p>
-        Eu sunt Andrei. Sper că nu ai ajuns aici întâmplător...
-      </p>
-    </div>
+
   </section>
+  <!-- =============== END HERO =============== -->
 
-  <!-- ================= PORTFOLIO ================= -->
- <section style="padding:50px; background:#111;">
+
+  <!-- ================= PORTOFOLIU / SLIDER ================= -->
+  <section class="portfolio">
+
+    <!-- TRACK (container orizontal) -->
+    <div class="portfolio-track">
+
+      <!-- ITEM -->
+     <div class="portfolio-item">
+  <div class="video-wrapper">
+    <iframe
+      src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+
+
+   <div class="video-wrapper">
+  <img src="vlcsnap-2026-02-02-22h44m09s478.png" class="video-poster" alt="">
   <iframe
-    width="560"
-    height="315"
-  src="https://player.vimeo.com/video/1043465957"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-   <iframe
-    width="560"
-    height="315"
-   src="https://www.youtube.com/embed/Xb0ZKUPLICE"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</section>
+    src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+    loading="lazy"
+    allow="fullscreen; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
 
 
+   <div class="video-wrapper">
+    <iframe
+      src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+   <div class="video-wrapper">
+    <iframe
+      src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+   <div class="video-wrapper">
+    <iframe
+      src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+   <div class="video-wrapper">
+    <iframe
+      src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+   <div class="video-wrapper">
+    <iframe
+      src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+
+  
+
+      <!-- mai adaugi câte vrei -->
+    </div>
+
+    <!-- SĂGEȚI (doar MOBILE – controlate din CSS/JS) -->
+    <button class="slider-arrow left">‹</button>
+    <button class="slider-arrow right">›</button>
+
+  </section>
+  <!-- =============== END PORTOFOLIU =============== -->
+
+
+  <!-- ================= FULLSCREEN VIDEO OVERLAY ================= -->
+  <div class="video-overlay">
+
+  
+ 
+    <!-- VIDEO CONTAINER -->
+    <div class="overlay-video-wrapper">
+      <!-- iframe sau video va fi injectat din JS -->
+    </div>
+
+  </div>
+  <!-- =============== END VIDEO OVERLAY =============== -->
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <p>© Andrei Vlădulescu</p>
+  </footer>
+  <!-- =============== END FOOTER =============== -->
+
+
+  <!-- JS -->
   <script src="index.js"></script>
 </body>
+</html>
