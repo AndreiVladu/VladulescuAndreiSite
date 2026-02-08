@@ -316,22 +316,63 @@ html, body {
 }
 
 /* ICONIȚĂ MENIU – DREAPTA */
-.menu-toggle {
-  position: absolute;
-  right: 40px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1200;
-   /* OBLIGATORIU pe desktop */
-   
-    right: 25px;
-    font-size: 28px;
-  
-}
+/* ===========================
+   MOBILE DESIGN – HEADER
+   =========================== */
 
+@media (max-width: 900px) {
+
+  /* ASCUNDE butoanele Nuntă / Botez / Majorat */
+  .header-buttons {
+    display: none !important;
+  }
+
+  /* HEADER layout */
+  .header {
+    height: 70px;
+    padding: 0 18px;
+  }
+
+  /* LOGO + NUME (STÂNGA) */
+  .brand {
+    position: relative;
+    left: 0;
+    gap: 12px;
+  }
+
+  .logo {
+    height: 44px; /* mai mare, mai profi */
+  }
+
+  .brand-text {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.1;
+    opacity: 0.95;
+  }
+
+  /* ICONIȚĂ MENIU (DREAPTA) */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1500;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .menu-toggle:hover {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 0.85;
+  }
+}
 /* ================= RESPONSIVE ================= */
 
 @media (min-width: 901px) {
