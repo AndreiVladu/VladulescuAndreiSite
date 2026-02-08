@@ -282,21 +282,24 @@ body {
    ASCUNDE SĂGEȚILE PE DESKTOP
 ====================================================== */
 
-@media (min-width: 900px) {
-  .slider-arrow {
-    display: none;
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;          /* cheia */
+    min-height: 380px;
+    padding-top: 90px;     /* loc pt header */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
   }
 }
-
-
-
 /* ======================================================
    MOBILE ADJUSTMENTS
 ====================================================== */
 
 @media (max-width: 900px) {
-  .hero{
-   height: 55vh;
+  .hero-content{
+    margin-top: 20px;   /* MUTĂ TEXTUL SUS */
+    text-align: center;
   }
   .header-buttons {
     display: none;
