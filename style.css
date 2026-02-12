@@ -330,20 +330,26 @@ body {
 }
 
 .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: rgba(0,0,0,0.5);
-    border: none;
-    color: white;
-    font-size: 28px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 60px;
+  height: 60px;
+
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
 .arrow.left {
     left: 10px;
 }
