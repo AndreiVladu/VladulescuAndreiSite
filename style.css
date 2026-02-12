@@ -1,8 +1,4 @@
-/* ======================================================
-   RESET GLOBAL
-   - elimină marginile implicite
-   - box-sizing corect pentru layout stabil
-====================================================== */
+/* RESET */
 
 * {
   margin: 0;
@@ -10,322 +6,322 @@
   box-sizing: border-box;
 }
 
-
-/* ======================================================
-   BODY
-   - font de bază
-   - fundal dark cinematic
-====================================================== */
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #0b0b0b;
-  color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 60%);
   overflow-x: hidden;
 }
 
-
-/* ======================================================
-   HEADER
-   - bară fixă sus
-   - conține logo, butoane desktop, icon meniu
-====================================================== */
+/* HEADER */
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
-  padding: 0 32px;
+  height: 80px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  background: rgba(10,10,10,0.9);
+  padding: 0 40px;
+
+  background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
+
   z-index: 1000;
 }
-
-
-/* ======================================================
-   BRAND (LOGO + NUME)
-====================================================== */
+/* Brand */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .logo {
-  height: 38px;
-  width: auto;
+  height: 40px;
 }
 
 .brand-text {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
-}
-
-.first-name {
   font-size: 14px;
-  font-weight: 600;
 }
 
-.last-name {
-  font-size: 12px;
-  opacity: 0.8;
-}
+/* Center nav */
 
-
-/* ======================================================
-   BUTOANE CENTRU (DESKTOP)
-   - Nuntă / Botez / Majorat
-====================================================== */
-
-.header-buttons {
+.center-nav {
   display: flex;
-  gap: 28px;
+  justify-content: center;
+  gap: 40px;
 }
 
-.header-buttons a {
-  color: #ffffff;
+.center-nav a {
   text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.75;
+  color: white;
+  position: relative;
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
+.center-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: white;
+  transition: 0.3s ease;
+}
 
-/* ======================================================
-   ICONIȚĂ MENIU ☰
-   - vizibilă pe desktop și mobile
-====================================================== */
+.center-nav a:hover::after {
+  width: 100%;
+}
+
+/* Menu toggle */
 
 .menu-toggle {
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-
-/* ======================================================
-   MENIU FULLSCREEN (MOBILE + DESKTOP)
-   - overlay cinematic
-====================================================== */
-
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(20px);
-  z-index: 2000;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  pointer-events: none;
-}
-
-.mobile-menu.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-/* ======================================================
-   BUTON ÎNCHIDERE MENIU (X)
-====================================================== */
-
-.menu-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 32px;
-  cursor: pointer;
-}
-
-
-/* ======================================================
-   LINKURI MENIU FULLSCREEN
-====================================================== */
-
-.mobile-menu ul {
-  list-style: none;
-  text-align: center;
-}
-
-.mobile-menu li {
-  margin: 18px 0;
-}
-
-.mobile-menu a {
-  color: #ffffff;
   font-size: 26px;
-  text-decoration: none;
-  letter-spacing: 2px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
+/* MENU OVERLAY */
 
-/* ======================================================
-   HERO SECTION
-   - video sau imagine mare sus
-====================================================== */
+.menu-toggle {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: all 0.4s ease;
+}
+
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 10px; }
+.menu-toggle span:nth-child(3) { top: 20px; }
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.menu-panel {
+    width: 320px;
+    height: 100%;
+    background: #111;
+    padding: 100px 40px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.menu-overlay.active .menu-panel {
+    transform: translateX(0);
+}
+.menu-panel a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.menu-overlay.active .menu-panel a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-overlay.active .menu-panel a:nth-child(1) { transition-delay: 0.1s; }
+.menu-overlay.active .menu-panel a:nth-child(2) { transition-delay: 0.2s; }
+.menu-overlay.active .menu-panel a:nth-child(3) { transition-delay: 0.3s; }
+.menu-overlay.active .menu-panel a:nth-child(4) { transition-delay: 0.4s; }
+.menu-overlay.active .menu-panel a:nth-child(5) { transition-delay: 0.5s; }
+.menu-overlay.active .menu-panel a:nth-child(6) { transition-delay: 0.6s; }
+
+.menu-panel a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.menu-panel a:hover::after {
+    width: 100%;
+}
+/* HERO */
 
 .hero {
-  position: relative;
-  height: 70vh;
-  overflow: hidden;
-  margin-top: 70px; /* spațiu pentru header */
-}
-
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-
-  height: 100%;
+  min-height: 60vh; /* nu full screen */
   display: flex;
   flex-direction: column;
+  justify-content: flex-start; /* urcă textul */
   align-items: center;
-  justify-content: center;
-
+  padding-top: 200px; /* spațiu sub header */
+  padding-bottom: 40px;
   text-align: center;
 }
-.video-wrapper {
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.6),
-    0 0 0 1px rgba(255,255,255,0.05);
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
 }
 
-/* ======================================================
-   PORTOFOLIU
-   - containerul general al sliderului
-====================================================== */
+.hero p {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 0; /* IMPORTANT */
+}
+/* PORTFOLIO */
 
 .portfolio {
+  padding: 40px 60px 80px;
   position: relative;
-  width: 100%;
-  padding: 80px 0;
-  background-color: #0e0e0e;
-  overflow: hidden;
 }
-
-
-/* ======================================================
-   TRACK ORIZONTAL
-   - pe aici se mișcă clipurile
-====================================================== */
 
 .portfolio-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 0 80px;
-  will-change: transform;
 }
 
-
-
-
-
-
-
-/* ======================================================
-   SĂGEȚI SLIDER (DOAR MOBILE)
-====================================================== */
-
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
+.portfolio-item iframe {
+  width: 100%;
+  height: 260px;
   border: none;
-  color: #ffffff;
-  font-size: 32px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-.slider-arrow.left {
-  left: 16px;
+/* MOBILE */
+
+.arrow {
+  display: none;
 }
-
-.slider-arrow.right {
-  right: 16px;
-}
-
-
-/* ======================================================
-   ASCUNDE SĂGEȚILE PE DESKTOP
-====================================================== */
 
 @media (max-width: 768px) {
-  .hero {
-    height: 60vh;          /* cheia */
-    min-height: 380px;
-    padding-top: 90px;     /* loc pt header */
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  }
-}
-/* ======================================================
-   MOBILE ADJUSTMENTS
-====================================================== */
 
-@media (max-width: 900px) {
-  .hero-content{
-    margin-top: 20px;   /* MUTĂ TEXTUL SUS */
-    text-align: center;
-  }
-  .header-buttons {
+  .center-nav {
     display: none;
   }
 
-  .logo {
-    height: 44px;
-  }
-
-  .first-name {
-    font-size: 15px;
-  }
-
-  .last-name {
-    font-size: 13px;
-  }
-
   .portfolio-track {
-    padding: 0 20px;
+    display: flex;
+    transition: transform 0.4s ease;
   }
 
-  .video-item {
-    width: 90%;
+  .portfolio-item {
+    min-width: 100%;
   }
 
-  .overlay-video-wrapper {
-    width: 95%;
+  .portfolio-item iframe {
+    height: 250px;
   }
+
+  .arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 26px;
+    padding: 10px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .arrow.left { left: 10px; }
+  .arrow.right { right: 10px; }
+
+}
+@media (max-width: 768px) {
+
+.portfolio {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item {
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
 }
