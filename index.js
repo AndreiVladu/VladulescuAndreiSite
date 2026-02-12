@@ -1,101 +1,101 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       MENIU LATERAL ANIMAT
-    ========================== */
+  // ======================
+  // MENU
+  // ======================
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const menuOverlay = document.querySelector(".menu-overlay");
+  const menuBtn = document.querySelector(".menu-toggle");
+  const overlay = document.querySelector(".menu-overlay");
+  const closeBtn = document.querySelector(".close-menu");
+  const menuPanel = document.querySelector(".menu-panel");
 
-    if (menuToggle && menuOverlay) {
+  if (menuBtn && overlay) {
+    menuBtn.addEventListener("click", () => {
+      overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  }
 
-        menuToggle.addEventListener("click", () => {
-            menuToggle.classList.toggle("active");
-            menuOverlay.classList.toggle("active");
+  function closeMenu() {
+    overlay.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
 
-            // blocăm scroll doar când meniul e deschis
-            if (menuOverlay.classList.contains("active")) {
-                document.body.style.overflow = "hidden";
-            } else {
-                document.body.style.overflow = "auto";
-            }
-        });
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
-        // închidere la click în afara panoului
-        menuOverlay.addEventListener("click", (e) => {
-            if (e.target === menuOverlay) {
-                closeMenu();
-            }
-        });
+  if (overlay && menuPanel) {
+    overlay.addEventListener("click", (e) => {
+      if (!menuPanel.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  }
 
-        function closeMenu() {
-            menuToggle.classList.remove("active");
-            menuOverlay.classList.remove("active");
-            document.body.style.overflow = "auto";
-        }
+
+  // ======================
+  // SLIDER
+  // ======================
+
+  const track = document.querySelector(".portfolio-track");
+  const slides = document.querySelectorAll(".portfolio-item");
+  const nextBtn = document.querySelector(".arrow.right");
+  const prevBtn = document.querySelector(".arrow.left");
+
+  if (!track || slides.length === 0) return;
+
+  let currentIndex = 0;
+
+  function getSlideWidth() {
+    return slides[0].getBoundingClientRect().width;
+  }
+
+  function updateSlider() {
+    const slideWidth = getSlideWidth();
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  function goNext() {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  }
+
+  function goPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  }
+
+  if (nextBtn) nextBtn.addEventListener("click", goNext);
+  if (prevBtn) prevBtn.addEventListener("click", goPrev);
+
+  // Swipe mobile
+  let startX = 0;
+  let endX = 0;
+
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchend", e => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const threshold = 50;
+
+    if (startX - endX > threshold) {
+      goNext();
     }
 
-    /* =========================
-       SLIDER MOBILE (manual)
-       FĂRĂ autoplay
-    ========================== */
-
-    const track = document.querySelector(".portfolio-track");
-    const items = document.querySelectorAll(".portfolio-item");
-    const nextBtn = document.querySelector(".arrow.right");
-    const prevBtn = document.querySelector(".arrow.left");
-
-    let currentIndex = 0;
-
-    if (track && items.length > 0 && nextBtn && prevBtn) {
-
-        function updateSlider() {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        nextBtn.addEventListener("click", () => {
-            if (currentIndex < items.length - 1) {
-                currentIndex++;
-                updateSlider();
-            }
-        });
-
-        prevBtn.addEventListener("click", () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
-        });
-
-        /* =========================
-           SWIPE TOUCH
-        ========================== */
-
-        let startX = 0;
-        let endX = 0;
-
-        track.addEventListener("touchstart", (e) => {
-            startX = e.touches[0].clientX;
-        });
-
-        track.addEventListener("touchend", (e) => {
-            endX = e.changedTouches[0].clientX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const threshold = 50;
-
-            if (startX - endX > threshold && currentIndex < items.length - 1) {
-                currentIndex++;
-                updateSlider();
-            }
-
-            if (endX - startX > threshold && currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
-        }
+    if (endX - startX > threshold) {
+      goPrev();
     }
+  }
+
+  window.addEventListener("resize", updateSlider);
 
 });
