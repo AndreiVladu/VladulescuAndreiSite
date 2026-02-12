@@ -37,39 +37,44 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======================
 
   const track = document.querySelector(".portfolio-track");
-  const slides = document.querySelectorAll(".portfolio-item");
-  const nextBtn = document.querySelector(".arrow.right");
-  const prevBtn = document.querySelector(".arrow.left");
+const slides = document.querySelectorAll(".portfolio-item");
+const nextBtn = document.querySelector(".arrow.right");
+const prevBtn = document.querySelector(".arrow.left");
 
-  if (!track || slides.length === 0) return;
+let currentIndex = 1; // pornim pe mijloc
 
-  let currentIndex = 0;
+function updateSlider() {
+  const slideWidth = slides[0].offsetWidth;
+  const containerWidth = document.querySelector(".portfolio").offsetWidth;
 
-  function getSlideWidth() {
-    return slides[0].getBoundingClientRect().width;
+  const offset =
+    (slideWidth * currentIndex) -
+    (containerWidth / 2) +
+    (slideWidth / 2);
+
+  track.style.transform = `translateX(-${offset}px)`;
+}
+
+function goNext() {
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    updateSlider();
   }
+}
 
-  function updateSlider() {
-    const slideWidth = getSlideWidth();
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+function goPrev() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateSlider();
   }
+}
 
-  function goNext() {
-    if (currentIndex < slides.length - 1) {
-      currentIndex++;
-      updateSlider();
-    }
-  }
+nextBtn.addEventListener("click", goNext);
+prevBtn.addEventListener("click", goPrev);
 
-  function goPrev() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlider();
-    }
-  }
+window.addEventListener("resize", updateSlider);
 
-  if (nextBtn) nextBtn.addEventListener("click", goNext);
-  if (prevBtn) prevBtn.addEventListener("click", goPrev);
+updateSlider();prevBtn.addEventListener("click", goPrev);
 
   // Swipe mobile
   let startX = 0;
