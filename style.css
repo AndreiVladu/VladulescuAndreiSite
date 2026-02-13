@@ -340,9 +340,13 @@ html, body {
   right: 20px;
 }
 @media (max-width: 768px) {
+    .portfolio {
+    margin-top: 150px;  /* spatiul dintre clip si scris */
+  }
+
     .hero {
-    min-height: auto;          /* scoatem full screen */
-    padding-top: 90px;         /* controlezi spațiul aici */
+    min-height: auto;          /* spatiul dintre scris si meniu */
+    padding-top: 130px;         /* controlezi spațiul aici */
     padding-bottom: 40px;
     }
   .hero h1 {
