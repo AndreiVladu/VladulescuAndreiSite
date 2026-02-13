@@ -375,6 +375,9 @@ html, body {
 
 }
 @media (max-width: 768px) {
+ .hero {
+      padding-top: 120px;   /* AICI controlezi distanța față de meniu */
+  }
 
 .portfolio {
     position: relative;
@@ -407,7 +410,7 @@ html, body {
   border: none;
   border-radius: 50%;
 
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 24px;
   cursor: pointer;
   z-index: 10;
