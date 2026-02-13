@@ -8,17 +8,19 @@
 
 body {
   font-family: Arial, sans-serif;
-  color: rgb(7, 5, 5);
+  color: rgb(0, 0, 0);
   background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 60%);
   overflow-x: hidden;
+  background-color: #000;  /* negru real */
+    color: #fff;
+    min-height: 100%;
+    overflow-x: hidden; /* elimină banda albă laterală */
 }
 
 html, body {
   touch-action: manipulation;
 }
-html{
-  color: black;
-}
+
 /* HEADER */
 
 .header {
