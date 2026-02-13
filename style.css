@@ -16,6 +16,9 @@ body {
 html, body {
   touch-action: manipulation;
 }
+html{
+  color: black;
+}
 /* HEADER */
 
 .header {
@@ -375,9 +378,6 @@ html, body {
 
 }
 @media (max-width: 768px) {
- .hero {
-      padding-top: 120px;   /* AICI controlezi distanța față de meniu */
-  }
 
 .portfolio {
     position: relative;
@@ -410,7 +410,7 @@ html, body {
   border: none;
   border-radius: 50%;
 
-  color: rgb(0, 0, 0);
+  color: white;
   font-size: 24px;
   cursor: pointer;
   z-index: 10;
