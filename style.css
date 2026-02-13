@@ -340,6 +340,11 @@ html, body {
   right: 20px;
 }
 @media (max-width: 768px) {
+    .hero {
+    min-height: auto;          /* scoatem full screen */
+    padding-top: 90px;         /* controlezi spațiul aici */
+    padding-bottom: 40px;
+    }
   .hero h1 {
     font-size: 32px;
   }
