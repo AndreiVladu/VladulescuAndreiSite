@@ -1,109 +1,335 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Andrei Vlădulescu</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrei Vlădulescu | Videograf</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- =========================
+       HEADER (DESKTOP + MOBILE)
+       Desktop: logo sus centrat + meniu text centrat (uppercase)
+       Mobile: logo stânga + hamburger dreapta (controlat din CSS)
+  ========================== -->
+  <header class="site-header" id="top">
 
-<header class="header">
+    <!-- Bară mobilă: logo stânga + hamburger dreapta -->
+    <div class="mobile-bar">
+      <a class="mobile-logo" href="index.html" aria-label="Acasă">
+        <img class="logo" src="Vladulescuandrei.svg" alt="Logo Andrei Vlădulescu" />
+      </a>
 
-  <div class="brand">
-    <img src="Vladulescuandrei.svg" class="logo" alt="Logo">
-    <div class="brand-text">
-      <span>Andrei</span>
-      <span>Vlădulescu</span>
+      <button class="menu-toggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Desktop: logo sus centrat -->
+    <div class="desktop-brand">
+      <a class="desktop-logo" href="index.html" aria-label="Acasă">
+        <img class="logo" src="Vladulescuandrei.svg" alt="Logo Andrei Vlădulescu" />
+      </a>
+    </div>
+
+    <!-- Desktop: meniu centrat (uppercase) -->
+    <nav class="desktop-nav" aria-label="Navigare principală">
+      <a href="#films">FILMS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#testimonials">TESTIMONIALS</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- =========================
+       MOBILE MENU OVERLAY
+  ========================== -->
+  <div class="menu-overlay" id="mobileMenu" aria-hidden="true">
+    <div class="menu-panel">
+      <button class="menu-close" type="button" aria-label="Închide meniul">✕</button>
+
+      <nav class="mobile-nav" aria-label="Navigare mobil">
+        <a href="#films">FILMS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#testimonials">TESTIMONIALS</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
     </div>
   </div>
 
-  <nav class="center-nav">
-    <a href="nunta.html">Nuntă</a>
-    <a href="botez.html">Botez</a>
-    <a href="majorat.html">Majorat</a>
-  </nav>
+  <!-- =========================
+       MAIN
+  ========================== -->
+  <main>
 
-<button class="menu-toggle" aria-label="Deschide meniul">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+    <!-- =========================
+         FILMS GRID (HOMEPAGE START)
+         IMPORTANT: Nu punem iframe-urile direct aici.
+         Punem thumbnails + buton play, iar iframe Bunny se injectează în MODAL la click.
+    ========================== -->
+    <section class="films" id="films">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">SELECTED FILMS</p>
+        </div>
 
-</header>
+        <div class="films-grid">
 
+          <!-- FILM CARD 1 -->
+          <article class="film-card">
+            <button
+              class="film-thumb"
+              type="button"
+              aria-label="Redă filmul: Nuntă - Film 01"
+              data-bunny-embed="https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            >
+              <img src="nunta.png" alt="Thumbnail film nuntă 01" loading="lazy" />
+              <span class="play" aria-hidden="true"></span>
+            </button>
 
-<!-- MENIU LATERAL -->
-<div class="menu-overlay">
-  <div class="menu-panel">
-   
-    <a href="index.html">Acasă</a>
-    <a href="nunta.html">Nuntă</a>
-    <a href="botez.html">Botez</a>
-    <a href="majorat.html">Majorat</a>
-    <a href="despre.html">Despre</a>
-    <a href="contact.html">Contact</a>
+            <h3 class="film-title">A Tapestry of Love</h3>
+            <p class="film-meta">Jupanesti, România</p>
+          </article>
+
+          <!-- FILM CARD 2 -->
+          <article class="film-card">
+            <button
+              class="film-thumb"
+              type="button"
+              aria-label="Redă filmul: Nuntă - Film 02"
+              data-bunny-embed="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            >
+              <img src="nuntaadi.png" alt="Thumbnail film nuntă 02" loading="lazy" />
+              <span class="play" aria-hidden="true"></span>
+            </button>
+
+            <h3 class="film-title">Two Hearts Aligned</h3>
+            <p class="film-meta">Târgu Jiu, România</p>
+          </article>
+
+          <!-- FILM CARD 3 -->
+          <article class="film-card">
+            <button
+              class="film-thumb"
+              type="button"
+              aria-label="Redă filmul: Nuntă - Film 03"
+              data-bunny-embed="https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            >
+              <img src="ws2.png" alt="Thumbnail film nuntă 03" loading="lazy" />
+              <span class="play" aria-hidden="true"></span>
+            </button>
+
+            <h3 class="film-title">WorkShop (Visionary)</h3>
+            <p class="film-meta">Craiova , România</p>
+          </article>
+
+          <!-- FILM CARD 4 -->
+          <article class="film-card">
+            <button
+              class="film-thumb"
+              type="button"
+              aria-label="Redă filmul: Botez - Film 01"
+              data-bunny-embed="https://player.mediadelivery.net/embed/595311/8e5a1cbf-5c67-45c3-8f9a-29da094461b9?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            >
+              <img src="botezvp.png" alt="Thumbnail film botez 01" loading="lazy" />
+              <span class="play" aria-hidden="true"></span>
+            </button>
+
+            <h3 class="film-title">A Journey to “I Do”</h3>
+            <p class="film-meta">București, România</p>
+          </article>
+
+          <!-- FILM CARD 5 -->
+          <article class="film-card">
+            <button
+              class="film-thumb"
+              type="button"
+              aria-label="Redă filmul: Civilă - Film 01"
+              data-bunny-embed="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            >
+              <img src="necta.png" alt="Thumbnail film cununie 01" loading="lazy" />
+              <span class="play" aria-hidden="true"></span>
+            </button>
+
+            <h3 class="film-title">18 years</h3>
+            <p class="film-meta">Jupanesti, România</p>
+          </article>
+
+          <!-- FILM CARD 6 -->
+          <article class="film-card">
+            <button
+              class="film-thumb"
+              type="button"
+              aria-label="Redă filmul: Nuntă - Film 04"
+              data-bunny-embed="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            >
+              <img src="necta.png" alt="Thumbnail film nuntă 04" loading="lazy" />
+              <span class="play" aria-hidden="true"></span>
+            </button>
+
+            <h3 class="film-title">18 years</h3>
+            <p class="film-meta">Constanța, România</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         STATEMENT (scurt, aerisit)
+    ========================== -->
+    <section class="statement">
+      <div class="container">
+        <p class="statement-text">
+          Timeless wedding films crafted with emotion.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABOUT (stilul din poza ta: aerisit)
+    ========================== -->
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <!-- poți schimba în cerc din CSS dacă vrei -->
+          <img src="IMG_3505 2.JPG" alt="Andrei Vlădulescu - portret" loading="lazy" />
+        </div>
+
+        <div class="about-text">
+          <p class="kicker">SOMETHING ABOUT ME</p>
+          <h2 class="about-title">I capture moments and create stories.</h2>
+          <p>
+            Sunt Andrei, videograf de nuntă. Îmi place un look cinematic, cu mișcare curată și emoție reală.
+            Îmi propun să livrez filme care rămân relevante peste ani.
+          </p>
+          <p class="about-link">
+            <a href="#contact">CONTACT →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TESTIMONIALS
+    ========================== -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <p class="kicker">VERIFIED TESTIMONIALS</p>
+
+        <div class="testimonials-grid">
+          <figure class="testimonial">
+            <blockquote>“Top Top , chiar nota 100, suntem cu nasii si l-au vazut si ei ,Genial”</blockquote>
+            <figcaption>— Adi & Alexandra</figcaption>
+          </figure>
+
+          <figure class="testimonial">
+            <blockquote>“Super profesionist, comunicare bună, rezultat peste așteptări.”</blockquote>
+            <figcaption>— Nume Client</figcaption>
+          </figure>
+
+          <figure class="testimonial">
+            <blockquote>“Cadre cinematice, atmosferă, totul a fost exact cum ne-am dorit.”</blockquote>
+            <figcaption>— Nume Client</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FAQ
+    ========================== -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <p class="kicker">FAQ</p>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>CARE ESTE PREȚUL?</summary>
+            <p>Prețul depinde de pachet și de orele de acoperire. Îți trimit oferta completă după ce îmi spui data și locația.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>ÎN CÂT TIMP PRIMIM MATERIALELE?</summary>
+            <p>În funcție de sezon și complexitate. În mod normal, între X și Y săptămâni.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>CÂT VEȚI STA LA EVENIMENT?</summary>
+            <p>Acoperirea standard este de la pregătiri până la momentul cheie din petrecere. Detaliem în ofertă.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="kicker">CONTACT</p>
+          <h2>Hai să vorbim despre evenimentul tău.</h2>
+          <p>Scrie-mi data, locația și ce îți dorești. Îți trimit oferta.</p>
+        </div>
+
+        <form class="contact-form" action="#" method="post">
+          <label>
+            Nume
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Mesaj
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <button type="submit">TRIMITE</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Andrei Vlădulescu</p>
+      <div class="footer-links">
+        <a href="#top">SUS ↑</a>
+        <a href="https://wa.me/" target="_blank" rel="noopener">WHATSAPP</a>
+        <a href="https://t.me/" target="_blank" rel="noopener">TELEGRAM</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================
+       VIDEO MODAL (Bunny iframe injectat din JS)
+  ========================== -->
+  <div class="modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="Player video">
+    <div class="modal-backdrop" data-close="true"></div>
+
+    <div class="modal-content" role="document">
+      <button class="modal-close" type="button" aria-label="Închide" data-close="true">✕</button>
+
+      <!-- JS pune aici iframe-ul Bunny -->
+      <div class="modal-player" id="modalPlayer"></div>
+    </div>
   </div>
-</div>
 
-
-<section class="hero">
-  <h1>Videograf de nuntă</h1>
-  <p>Sper că nu ai ajuns aici întâmplător.
-Iar dacă ai făcut-o, înseamnă că ești în căutarea cuiva care să transforme un moment important din viața ta într-o poveste care rămâne.</p>
-</section>
-
-
-<section class="portfolio">
-
-  <button class="arrow left">‹</button>
-  <button class="arrow right">›</button>
-
-  <div class="portfolio-track">
-
-    <div class="portfolio-item">
-<iframe 
-  src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
-  allow="fullscreen; picture-in-picture"
-  allowfullscreen>
-</iframe>
-    </div>
-
-    <div class="portfolio-item">
-      <iframe 
-  src="//player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy"
-  allow="fullscreen; picture-in-picture"
-  allowfullscreen>
-</iframe>
-    </div>
-
-    <div class="portfolio-item">
-     <iframe 
-  src="https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
-  allow="fullscreen; picture-in-picture"
-  allowfullscreen>
-</iframe>
-    </div>
-  <div class="portfolio-item">
-     <iframe 
-  src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
-  allow="fullscreen; picture-in-picture"
-  allowfullscreen>
-</iframe>
-    </div>
-     <div class="portfolio-item">
-     <iframe 
-  src="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
-  allow="fullscreen; picture-in-picture"
-  allowfullscreen>
-</iframe>
-    </div>
-    
-  </div>
-
-</section>
-
-<script src="index.js"></script>
+  <!-- JS -->
+  <script src="index.js"></script>
 </body>
 </html>

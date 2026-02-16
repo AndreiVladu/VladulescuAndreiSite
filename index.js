@@ -1,106 +1,158 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   CONFIG (OPTIONAL)
+   Dacă folosești data-video-id în loc de data-bunny-embed, completezi LIBRARY_ID.
+========================= */
+const BUNNY_LIBRARY_ID = "595311"; // schimbă dacă e altul la tine
 
-  // ======================
-  // MENU
-  // ======================
-
-  const menuBtn = document.querySelector(".menu-toggle");
-  const overlay = document.querySelector(".menu-overlay");
-  const closeBtn = document.querySelector(".close-menu");
-  const menuPanel = document.querySelector(".menu-panel");
-
-  if (menuBtn && overlay) {
-    menuBtn.addEventListener("click", () => {
-      overlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-    });
-  }
-
-  function closeMenu() {
-    overlay.classList.remove("active");
-    document.body.style.overflow = "auto";
-  }
-
-  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-
-  if (overlay && menuPanel) {
-    overlay.addEventListener("click", (e) => {
-      if (!menuPanel.contains(e.target)) {
-        closeMenu();
-      }
-    });
-  }
-
-
-  // ======================
-  // SLIDER
-  // ======================
-
-  const track = document.querySelector(".portfolio-track");
-const slides = document.querySelectorAll(".portfolio-item");
-const nextBtn = document.querySelector(".arrow.right");
-const prevBtn = document.querySelector(".arrow.left");
-
-let currentIndex = 1; // pornim pe mijloc
-
-function updateSlider() {
-  const slideWidth = slides[0].offsetWidth;
-  const containerWidth = document.querySelector(".portfolio").offsetWidth;
-
-  const offset =
-    (slideWidth * currentIndex) -
-    (containerWidth / 2) +
-    (slideWidth / 2);
-
-  track.style.transform = `translateX(-${offset}px)`;
+/* =========================
+   Helpers: Open / Close (cu aria + scroll lock)
+========================= */
+function lockScroll(lock) {
+  document.documentElement.style.overflow = lock ? "hidden" : "";
+  document.body.style.overflow = lock ? "hidden" : "";
 }
 
-function goNext() {
-  if (currentIndex < slides.length - 1) {
-    currentIndex++;
-    updateSlider();
-  }
+function openOverlay(overlayEl) {
+  overlayEl.style.display = "flex";
+  overlayEl.setAttribute("aria-hidden", "false");
+  lockScroll(true);
 }
 
-function goPrev() {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateSlider();
-  }
+function closeOverlay(overlayEl) {
+  overlayEl.style.display = "none";
+  overlayEl.setAttribute("aria-hidden", "true");
+  lockScroll(false);
 }
 
-nextBtn.addEventListener("click", goNext);
-prevBtn.addEventListener("click", goPrev);
+/* =========================
+   1) MOBILE MENU (hamburger)
+========================= */
+const menuToggle = document.querySelector(".menu-toggle");
+const menuOverlay = document.querySelector(".menu-overlay");
+const menuClose = document.querySelector(".menu-close");
+const mobileNavLinks = document.querySelectorAll(".mobile-nav a");
 
-window.addEventListener("resize", updateSlider);
+function openMenu() {
+  openOverlay(menuOverlay);
+  if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+}
 
-updateSlider();prevBtn.addEventListener("click", goPrev);
+function closeMenu() {
+  closeOverlay(menuOverlay);
+  if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+}
 
-  // Swipe mobile
-  let startX = 0;
-  let endX = 0;
-
-  track.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
+if (menuToggle && menuOverlay) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menuOverlay.getAttribute("aria-hidden") === "false";
+    isOpen ? closeMenu() : openMenu();
   });
+}
 
-  track.addEventListener("touchend", e => {
-    endX = e.changedTouches[0].clientX;
-    handleSwipe();
+if (menuClose) {
+  menuClose.addEventListener("click", closeMenu);
+}
+
+/* Închide meniul dacă apeși pe fundalul semi-transparent (nu pe panou) */
+if (menuOverlay) {
+  menuOverlay.addEventListener("click", (e) => {
+    const clickedPanel = e.target.closest(".menu-panel");
+    if (!clickedPanel) closeMenu();
   });
+}
 
-  function handleSwipe() {
-    const threshold = 50;
-
-    if (startX - endX > threshold) {
-      goNext();
-    }
-
-    if (endX - startX > threshold) {
-      goPrev();
-    }
-  }
-
-  window.addEventListener("resize", updateSlider);
-
+/* Închide meniul când dai click pe un link (UX normal pe mobil) */
+mobileNavLinks.forEach((link) => {
+  link.addEventListener("click", () => closeMenu());
 });
+
+/* =========================
+   2) VIDEO MODAL (Bunny)
+========================= */
+const videoModal = document.getElementById("videoModal");
+const modalPlayer = document.getElementById("modalPlayer");
+
+/* Toate cardurile care deschid video */
+const filmButtons = document.querySelectorAll(".film-thumb");
+
+function buildBunnyEmbedUrl(btn) {
+  // Varianta 1: ai pus direct URL-ul complet în HTML (data-bunny-embed)
+  const direct = btn.getAttribute("data-bunny-embed");
+  if (direct) return direct;
+
+  // Varianta 2: ai pus doar video-id (data-video-id), iar noi construim URL-ul
+  const videoId = btn.getAttribute("data-video-id");
+  if (!videoId) return null;
+
+  return `https://player.mediadelivery.net/embed/${BUNNY_LIBRARY_ID}/${videoId}?autoplay=true`;
+}
+
+function openVideoModal(embedUrl) {
+  if (!videoModal || !modalPlayer) return;
+
+  // Injectăm iframe doar acum (performanță + nu încarci 6 playere din start)
+  const iframe = document.createElement("iframe");
+  iframe.src = embedUrl;
+  iframe.allow =
+    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+  iframe.allowFullscreen = true;
+  iframe.setAttribute("title", "Video player");
+
+  modalPlayer.innerHTML = "";
+  modalPlayer.appendChild(iframe);
+
+  videoModal.style.display = "block";
+  videoModal.setAttribute("aria-hidden", "false");
+  lockScroll(true);
+}
+
+function closeVideoModal() {
+  if (!videoModal || !modalPlayer) return;
+
+  // Scoatem iframe-ul ca să oprim video complet
+  modalPlayer.innerHTML = "";
+
+  videoModal.style.display = "none";
+  videoModal.setAttribute("aria-hidden", "true");
+  lockScroll(false);
+}
+
+/* Click pe thumbnails -> deschide modal */
+filmButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const url = buildBunnyEmbedUrl(btn);
+    if (!url) return;
+    openVideoModal(url);
+  });
+});
+
+/* Închidere modal: butoane / backdrop */
+if (videoModal) {
+  videoModal.addEventListener("click", (e) => {
+    // în HTML: backdrop și buton close au data-close="true"
+    const shouldClose = e.target.matches('[data-close="true"]');
+    if (shouldClose) closeVideoModal();
+  });
+}
+
+/* ESC închide și meniul și modal-ul */
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+
+  // Închide modal dacă e deschis
+  if (videoModal && videoModal.getAttribute("aria-hidden") === "false") {
+    closeVideoModal();
+    return;
+  }
+
+  // Închide meniu dacă e deschis
+  if (menuOverlay && menuOverlay.getAttribute("aria-hidden") === "false") {
+    closeMenu();
+  }
+});
+
+/* =========================
+   3) Footer year
+========================= */
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
