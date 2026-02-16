@@ -856,3 +856,27 @@ button{ font-family: inherit; }
   width: auto;
   display: block;
 }
+/* --- Footer bottom mobile fix --- */
+@media (max-width: 720px){
+
+  .footer-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  .footer-left{
+    margin: 0;
+  }
+
+  .partner-logo{
+    margin-left: auto;
+  }
+
+  .partner-logo img{
+    height: 28px;
+    width: auto;
+  }
+
+}
