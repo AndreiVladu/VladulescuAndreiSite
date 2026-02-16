@@ -647,6 +647,7 @@ button{ font-family: inherit; }
 /* Mobile */
 @media (max-width: 720px){
   /* ascundem desktop header, arătăm mobile bar */
+
   .desktop-brand,
   .desktop-nav{
     display: none;
@@ -686,9 +687,7 @@ button{ font-family: inherit; }
 
 
 
-/* =========================
-   8) test
-========================= */
+
 /* =========================
    FOOTER (PRO)
 ========================= */
@@ -777,7 +776,7 @@ button{ font-family: inherit; }
 }
 
 .footer-bottom{
-  width: min(1100px, calc(100% - 48px));
+  width: min(2300px, calc(100% - 48px));
   margin: 48px auto 0;
   padding-top: 18px;
   border-top: 1px solid rgba(0,0,0,.08);
@@ -794,7 +793,31 @@ button{ font-family: inherit; }
   border-bottom: 1px solid rgba(0,0,0,.18);
   padding-bottom: 2px;
 }
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
 
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+  fill: #333;
+}
+
+.footer-social a:hover {
+  background: #111;
+  border-color: #111;
+}
+
+.footer-social a:hover svg {
+  fill: #fff;
+}
 /* Responsive */
 @media (max-width: 900px){
   .footer-container{
@@ -815,4 +838,44 @@ button{ font-family: inherit; }
   .films-grid {
     gap: 44px;
   }
+}
+/* =========================
+   8) FOTOGRAFI & CAMERAMANI 
+========================= */
+  
+.footer-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+.partner-logo img{
+  height: 40px;
+  width: auto;
+  display: block;
+}
+/* --- Footer bottom mobile fix --- */
+@media (max-width: 720px){
+
+  .footer-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  .footer-left{
+    margin: 0;
+  }
+
+  .partner-logo{
+    margin-left: auto;
+  }
+
+  .partner-logo img{
+    height: 28px;
+    width: auto;
+  }
+
 }
