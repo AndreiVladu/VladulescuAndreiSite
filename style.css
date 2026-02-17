@@ -333,10 +333,16 @@ button{ font-family: inherit; }
 
 .about-photo img{
   width: 100%;
-  border-radius: var(--radius);
-  box-shadow: 0 12px 40px rgba(0,0,0,.12);
+  height: 100%;
+  object-fit: cover;   /* taie elegant fără deformare */
+  display: block;
 }
-
+.about-photo{
+  width: 320px;        /* ajustează cât vrei */
+  height: 320px;       /* IMPORTANT – egal cu width */
+  overflow: hidden;
+  border-radius: 50%;
+}
 /* Titlu + text */
 .about-title{
   margin: 10px 0 14px;
@@ -361,7 +367,17 @@ button{ font-family: inherit; }
   border-bottom: 1px solid rgba(0,0,0,.35);
   padding-bottom: 4px;
 }
+@media (max-width: 768px){
+    .about-text{
+    text-align: center;
+  }
 
+  .about-photo{
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
+  }
+}
 /* =========================
    6) TESTIMONIALS
 ========================= */
@@ -647,6 +663,7 @@ button{ font-family: inherit; }
 
 /* Mobile */
 @media (max-width: 720px){
+  
   /* ascundem desktop header, arătăm mobile bar */
 
   .desktop-brand,
@@ -690,193 +707,158 @@ button{ font-family: inherit; }
 
 
 /* =========================
-   FOOTER (PRO)
-========================= */
+   FOOTER (layout + bottom bar)
+   ========================= */
+
 .footer-pro{
-  background: #f2f2f2;
-  border-top: 1px solid rgba(0,0,0,.08);
-  padding: 90px 0 40px;
-  margin-top: 60px;
+  /* dacă vrei un gri ușor mai “premium” */
+  background: #f1f2f3;
 }
 
+/* containerul cu 3 coloane (brand / links / contact) */
 .footer-container{
-  width: min(1100px, calc(100% - 48px));
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 48px 20px 18px;
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
   gap: 36px;
   align-items: start;
 }
 
-.footer-name{
-  font-size: 18px;
-  letter-spacing: .4px;
-  font-weight: 600;
-  color: rgba(0,0,0,.82);
+/* titluri coloane */
+.footer-title{
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
   margin-bottom: 10px;
 }
 
+/* Brand / role */
+.footer-name{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
 .footer-role{
-  font-size: 13px;
-  line-height: 1.6;
-  color: rgba(0,0,0,.55);
-  margin-bottom: 18px;
-}
-
-.footer-title{
   font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(0,0,0,.55);
-  margin-bottom: 14px;
+  opacity: 0.7;
 }
 
-.footer-col a{
-  display: inline-block;
-  font-size: 14px;
-  color: rgba(0,0,0,.72);
-  text-decoration: none;
-  margin: 8px 0;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-}
-.footer-col a:hover{
-  border-bottom-color: rgba(0,0,0,.25);
-}
-
+/* Social icons */
 .footer-social{
+  margin-top: 14px;
   display: flex;
   gap: 10px;
-  margin-top: 10px;
 }
-
 .footer-social a{
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.14);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0,0,0,.14);
-  background: rgba(255,255,255,.55);
-  color: rgba(0,0,0,.7);
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  transition: 0.2s ease;
 }
-
 .footer-social a:hover{
-  background: rgba(255,255,255,.9);
+  border-color: rgba(0,0,0,0.28);
+  transform: translateY(-1px);
+}
+.footer-social svg{
+  width: 16px;
+  height: 16px;
+  opacity: 0.75;
 }
 
-.footer-mini{
-  margin-top: 14px;
-  font-size: 12px;
-  line-height: 1.6;
-  color: rgba(0,0,0,.55);
-}
-
-.footer-bottom{
-  width: min(2300px, calc(100% - 48px));
-  margin: 48px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(0,0,0,.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  color: rgba(0,0,0,.55);
-}
-
-.footer-made a{
-  color: rgba(0,0,0,.65);
+/* Linkuri nav */
+.footer-col.links a{
+  display: block;
+  margin: 6px 0;
+  font-size: 13px;
+  opacity: 0.8;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,.18);
-  padding-bottom: 2px;
 }
-.footer-social a {
-  width: 44px;
-  height: 44px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
+.footer-col.links a:hover{
+  opacity: 1;
+}
+
+/* Contact */
+.footer-col.contact a{
+  display: inline-block;
+  margin: 6px 0;
+  font-size: 13px;
+  opacity: 0.85;
+  text-decoration: none;
+}
+.footer-mini{
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+/* Bara de jos: copyright stânga, logo dreapta */
+.footer-bottom{
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footer-left{
+  font-size: 12px;
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+/* linkul cu logo partener */
+.partner-logo{
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.footer-social svg {
-  width: 20px;
-  height: 20px;
-  fill: #333;
-}
-
-.footer-social a:hover {
-  background: #111;
-  border-color: #111;
-}
-
-.footer-social a:hover svg {
-  fill: #fff;
-}
-/* Responsive */
-@media (max-width: 900px){
-  .footer-container{
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-  .footer-bottom{
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-}
-@media (min-width: 1024px) {
-  .films-section .container {
-    max-width: 1400px;
-  }
-
-  .films-grid {
-    gap: 44px;
-  }
-}
-/* =========================
-   8) FOTOGRAFI & CAMERAMANI 
-========================= */
-  
-.footer-bottom{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-  padding-top: 20px;
+  justify-content: flex-end;
+  margin-left: auto; /* împinge în dreapta */
 }
 .partner-logo img{
-  height: 40px;
+  height: 80px;       /* ajustează după gust: 20-26 */
   width: auto;
   display: block;
+  opacity: 0.85;
+  transition: 0.2s ease;
 }
-/* --- Footer bottom mobile fix --- */
+.partner-logo:hover img{
+  opacity: 1;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
 @media (max-width: 720px){
+  .footer-container{
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 16px 14px;
+  }
 
+  /* centrezi conținutul din coloane pe mobil */
+  .footer-col{
+    text-align: center;
+  }
+  .footer-social{
+    justify-content: center;
+  }
+
+  /* dar bara de jos rămâne “stânga-dreapta”, cum ai cerut */
   .footer-bottom{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 16px;
+    padding-top: 12px;
   }
-
   .footer-left{
-    margin: 0;
+    text-align: left;
   }
-
   .partner-logo{
-    margin-left: auto;
+    justify-content: flex-end;
   }
-
-  .partner-logo img{
-    height: 28px;
-    width: auto;
-  }
-
 }
