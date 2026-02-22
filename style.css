@@ -862,3 +862,8 @@ button{ font-family: inherit; }
     justify-content: flex-end;
   }
 }
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}

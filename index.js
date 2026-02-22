@@ -202,3 +202,5 @@ form.addEventListener("submit", function (e) {
       alert("Eroare: " + (err?.text || JSON.stringify(err)));
     });
 });
+
+
