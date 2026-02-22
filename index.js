@@ -154,3 +154,51 @@ document.addEventListener("keydown", (e) => {
 /* =========================
    3) Footer year
 ========================= */
+
+
+// ===============================
+// EmailJS Contact Form (index.js)
+// ===============================
+
+// 1) Init EmailJS (PUNE public key-ul tău aici)
+emailjs.init({
+  publicKey: "Jyu4Yct8HwIZwfX60" // <- public key-ul tău
+});
+
+// 2) Prinde formularul
+const form = document.getElementById("contact-form");
+
+// 3) Când dai submit, trimite email
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Ia valorile din inputuri
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  // Validare simplă (că oamenii trimit orice)
+  if (!name || !email || !message) {
+    alert("Completează nume, email și mesaj 🙂");
+    return;
+  }
+
+  // Parametrii pe care îi folosește template-ul din EmailJS
+  const templateParams = {
+    name: name,
+    email: email,
+    message: message
+  };
+
+  // 4) Trimite email (Service ID + Template ID)
+  emailjs
+    .send("service_0wraenh", "template_wjipozn", templateParams)
+    .then(() => {
+      alert("Mesaj trimis ✅");
+      form.reset();
+    })
+    .catch((err) => {
+      console.error("EmailJS error:", err);
+      alert("Eroare: " + (err?.text || JSON.stringify(err)));
+    });
+});
