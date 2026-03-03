@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
   
-  <link rel="icon" href="https://poze.b-cdn.net/Vladulescuandrei.png">
+    <link rel="icon" href="https://poze.b-cdn.net/Vladulescuandrei.png">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVKELH1Z3X"></script>
 <script>
@@ -23,72 +23,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andrei Vlădulescu | Videograf</title>
-
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+<div id="videoOverlay" class="video-overlay">
+  <div class="video-box">
+    <span class="video-close">&times;</span>
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-
 <body>
-  <!-- =========================
-       HEADER (DESKTOP + MOBILE)
-       Desktop: logo sus centrat + meniu text centrat (uppercase)
-       Mobile: logo stânga + hamburger dreapta (controlat din CSS)
-  ========================== -->
-  <header class="site-header" id="top">
+  <!-- Navigation -->
+  <nav class="navbar">
+  <div class="container">
+    <a href="#hero" class="logo"><span>Andrei</span> Vladulescu</a>
 
-    <!-- Bară mobilă: logo stânga + hamburger dreapta -->
-    <div class="mobile-bar">
-      <a class="mobile-logo" href="index.html" aria-label="Acasă">
-        <img class="logo" src="Vladulescuandrei.svg" alt="Logo Andrei Vlădulescu" />
-      </a>
-
-      <button class="menu-toggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="nav-links">
+      <a href="#despre">Despre</a>
+      <a href="#film">Portofoliu</a>
+      <a href="#testimoniale">Testimoniale</a>
+      <a href="#contact">Contact</a>
     </div>
 
-    <!-- Desktop: logo sus centrat -->
-    <div class="desktop-brand">
-      <a class="desktop-logo" href="index.html" aria-label="Acasă">
-        <img class="logo" src="Vladulescuandrei.svg" alt="Logo Andrei Vlădulescu" />
-      </a>
-    </div>
-
-    <!-- Desktop: meniu centrat (uppercase) -->
-    <nav class="desktop-nav" aria-label="Navigare principală">
-      <a href="#films">FILMS</a>
-      <a href="#about">ABOUT</a>
-      <a href="#testimonials">TESTIMONIALS</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-  </header>
-
-  <!-- =========================
-       MOBILE MENU OVERLAY
-  ========================== -->
-  <div class="menu-overlay" id="mobileMenu" aria-hidden="true">
-    <div class="menu-panel">
-      <button class="menu-close" type="button" aria-label="Închide meniul">✕</button>
-
-      <nav class="mobile-nav" aria-label="Navigare mobil">
-        <a href="#films">FILMS</a>
-        <a href="#about">ABOUT</a>
-        <a href="#testimonials">TESTIMONIALS</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">CONTACT</a>
-      </nav>
-    </div>
+    <button id="menuToggle" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
   </div>
 
-  <!-- =========================
-       MAIN
-  ========================== -->
-  <main>
+  <div id="mobileMenu" class="mobile-menu">
+    <div class="container">
+      <a href="#despre">Despre</a>
+      <a href="#film">Portofoliu</a>
+      <a href="#testimoniale">Testimoniale</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-particles"></div>
+    
+    <div class="hero-content">
+      <div class="hero-content-inner">
+        <p class="section-label">Wedding Videographer</p>
+        <h1>
+          <span class="light">Capturing</span><br>
+          <span class="gold">Love Stories</span>
+        </h1>
+        <p>Videografie de nuntă atemporală care păstrează cele mai prețioase momente ale tale</p>
+        <a href="#portofoliu" class="btn-primary">
+          Vezi Lucrările Mele
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="scroll-indicator-inner"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="despre" class="section about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image scroll-reveal-left">
+          <img src="https://poze.b-cdn.net/IMG_3505%202.JPG" alt="Andrei Vladulescu - Videograf">
+        </div>
+        
+        <div class="about-content scroll-reveal-right">
+          <p class="section-label">Despre Mine</p>
+          <h2>Creez <span class="text-gold" style="font-style: italic;">Poezie Vizuală</span></h2>
+          
+          <p>Fiecare poveste de dragoste merită să fie spusă cu pasiune și artă. Ca videograf de nuntă, nu doar capturez momente – păstrez emoții, priviri și cuvintele nespuse care fac ziua ta unică.</p>
+          
+          <p>Abordarea mea îmbină tehnici cinematografice cu autenticitate documentară. Cred că cele mai frumoase cadre vin din conexiuni autentice, nu din poze regizate. Râsul tău, lacrimile tale, bucuria ta – acestea sunt comorile pe care le caut.</p>
+          
+          <p>De la emoția nervoasă a pregătirilor până la euforia primului dans, sunt acolo pentru a îmbina aceste momente într-un film atemporal pe care îl vei prețui pentru totdeauna.</p>
+          
+          <div class="about-signature">
+            <p>Andrei Vladulescu</p>
+            <span>Wedding Filmmaker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
     <!-- =========================
          FILMS GRID (HOMEPAGE START)
          IMPORTANT: Nu punem iframe-urile direct aici.
@@ -104,19 +147,18 @@
 
           <!-- FILM CARD 1 -->
           <article class="film-card">
-            <button
-              class="film-thumb"
-              type="button"
-              aria-label="Redă filmul: Nuntă - Film 01"
-              data-bunny-embed="https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
-            >
-              <img src="https://poze.b-cdn.net/nunta.png" alt="Thumbnail film nuntă 01" loading="lazy" />
-              <span class="play" aria-hidden="true"></span>
-            </button>
+  <button
+    class="film-thumb"
+    type="button"
+    aria-label="Redă filmul: Nuntă - Film 01"
+    data-bunny-embed="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=false&preload=true&responsive=true">
+    <img src="https://poze.b-cdn.net/necta.png" alt="Thumbnail film nuntă 01" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </button>
 
-            <h3 class="film-title">A Tapestry of Love</h3>
-            <p class="film-meta">Jupanesti, România</p>
-          </article>
+  <h3 class="film-title">A Tapestry of Love</h3>
+  <p class="film-meta">Jupânești, România</p>
+</article>
 
           <!-- FILM CARD 2 -->
           <article class="film-card">
@@ -202,225 +244,295 @@
       </div>
     </section>
 
-    <!-- =========================
-         STATEMENT (scurt, aerisit)
-    ========================== -->
-    <section class="statement">
-      <div class="container">
-        <p class="statement-text">
-          Timeless wedding films crafted with emotion.
-        </p>
-      </div>
-    </section>
 
-    <!-- =========================
-         ABOUT (stilul din poza ta: aerisit)
-    ========================== -->
-    <section class="about" id="about">
-      <div class="container about-grid">
-        <div class="about-photo">
-          <!-- poți schimba în cerc din CSS dacă vrei -->
-          <img src="https://poze.b-cdn.net/IMG_3505%202.JPG" alt="Andrei Vlădulescu - portret" loading="lazy" />
-        </div>
-
-        <div class="about-text">
-          <p class="kicker">SOMETHING ABOUT ME</p>
-          <h2 class="about-title">I capture moments and create stories.</h2>
-          <p>
-            Sunt Andrei, videograf de nuntă. Îmi place un look cinematic, cu mișcare curată și emoție reală.
-            Îmi propun să livrez filme care rămân relevante peste ani.
-          </p>
-          <p class="about-link">
-            <a href="#contact">CONTACT →</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================
-         TESTIMONIALS
-    ========================== -->
-    <section class="testimonials" id="testimonials">
-      <div class="container">
-        <p class="kicker">VERIFIED TESTIMONIALS</p>
-
-        <div class="testimonials-grid">
-          <figure class="testimonial">
-            <blockquote>“Top Top , chiar nota 100, suntem cu nasii si l-au vazut si ei ,Genial , bravo tie ai evoluat super”</blockquote>
-            <figcaption>— Alexandra & Adi</figcaption>
-          </figure>
-
-          <figure class="testimonial">
-            <blockquote>“...”</blockquote>
-            <figcaption>— Nume Client</figcaption>
-          </figure>
-
-          <figure class="testimonial">
-            <blockquote>“...”</blockquote>
-            <figcaption>— Nume Client</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================
-         FAQ
-    ========================== -->
-    <section class="faq" id="faq">
-      <div class="container">
-        <p class="kicker">FAQ</p>
-
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>CARE ESTE PREȚUL?</summary>
-            <p>Prețul depinde de pachet și de orele de acoperire. Îți trimit oferta completă după ce îmi spui data și locația.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>ÎN CÂT TIMP PRIMIM MATERIALELE?</summary>
-            <p>În funcție de sezon și complexitate. În mod normal, între 3 și 6 săptămâni.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>CÂT VEȚI STA LA EVENIMENT?</summary>
-            <p>Acoperirea standard este de la pregătiri până la momentul cheie din petrecere. Detaliem în ofertă.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-    <section class="contact" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <p class="kicker">CONTACT</p>
-          <h2>Hai să vorbim despre evenimentul tău.</h2>
-          <p>Scrie-mi data, locația și ce îți dorești. Îți trimit oferta.</p>
-        </div>
-
-       <form id="contact-form" class="contact-form">
-
-  <label>Nume</label>
-  <input type="text" id="name" name="name" required />
-
-  <label>Email</label>
-  <input type="email" id="email" name="email" required />
-
-  <label>Mesaj</label>
-  <textarea id="message" name="message" rows="5" required></textarea>
-
-  <button type="submit">TRIMITE</button>
-
-</form>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-
-  <!-- =========================
-       VIDEO MODAL (Bunny iframe injectat din JS)
-  ========================== -->
-  <div class="modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="Player video">
-    <div class="modal-backdrop" data-close="true"></div>
-
-    <div class="modal-content" role="document">
-      <button class="modal-close" type="button" aria-label="Închide" data-close="true">✕</button>
-
-      <!-- JS pune aici iframe-ul Bunny -->
-      <div class="modal-player" id="modalPlayer"></div>
-    </div>
-  </div>
-  
-<footer class="footer-pro" id="footer">
-  <div class="footer-container">
-    
-    <!-- LEFT: Brand + Social -->
-    <div class="footer-col brand">
-      <div class="footer-name">Andrei Vlădulescu</div>
-      <div class="footer-role">Wedding Videographer · Gorj / România</div>
-
-     <div class="footer-social" aria-label="Social media">
-
-  <a href="https://www.instagram.com/andrei.vladulescu/" target="_blank" rel="noopener" aria-label="Instagram">
-    <svg viewBox="0 0 24 24">
-      <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm6-1.2a1.2 1.2 0 1 1-1.2-1.2A1.2 1.2 0 0 1 18 6.3z"/>
-    </svg>
-  </a>
-
-  <a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank" rel="noopener" aria-label="Facebook">
-    <svg viewBox="0 0 24 24">
-      <path d="M13 22v-8h3l1-4h-4V8c0-1.2.3-2 2-2h2V2.3C16.6 2.2 15.4 2 14 2c-3 0-5 1.8-5 5v3H6v4h3v8z"/>
-    </svg>
-  </a>
-
-  <a href="https://wa.me/40762309113" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.8 5-1.3A10 10 0 1 0 12 2z"/>
-    </svg>
-  </a>
-
-  <a href="https://t.me/username_tau" target="_blank" rel="noopener" aria-label="Telegram">
-    <svg viewBox="0 0 24 24">
-      <path d="M21 3L3 10.5l4.5 1.5L9 18l3-4 4.5 3L21 3z"/>
-    </svg>
-  </a>
-
-</div>
-    </div>
-
-    <!-- MIDDLE: Links -->
-    <nav class="footer-col links" aria-label="Footer navigation">
-      <div class="footer-title">Navigation</div>
-      <a href="#top">Home</a>
-      <a href="#films">Films</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- RIGHT: Contact -->
-    <div class="footer-col contact">
-      <div class="footer-title">Contact</div>
-      <a href="mailto:andrei@email.ro">vladulescuandrei6@gmail.com@email.ro</a>
-      <a href="tel:+40762309113">+40 762 309 113</a>
-
-      <div class="footer-mini">
-        Disponibil pentru nunți / botezuri · 2026/2027
+  <!-- Testimonials Section -->
+  <section id="testimoniale" class="section testimonials">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <p class="section-label">Testimoniale</p>
+        <h2 style="color: white;">Cuvinte de la <span class="gold">Miri Fericiți</span></h2>
       </div>
       
+      <div class="testimonial-carousel scroll-reveal">
+        <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        
+        <div class="testimonial-card">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          
+          <blockquote class="testimonial-quote">
+            “Top Top , chiar nota 100, suntem cu nasii si l-au vazut si ei ,Genial , bravo tie ai evoluat super”
+          </blockquote>
+          
+          <div class="testimonial-author">
+            <p>Alexandra & Adi</p>
+            <span>Octombrie 2025</span>
+          </div>
+        </div>
+        
+        <div class="testimonial-nav">
+          <button class="testimonial-prev" onclick="prevTestimonial()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <div class="testimonial-dots"></div>
+          
+          <button class="testimonial-next" onclick="nextTestimonial()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="testimonial-cta">
+          <button class="btn-secondary" onclick="openReviewModal()">Împărtășește-ți Povestea</button>
+        </div>
+      </div>
     </div>
-    
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <p class="section-label">Contact</p>
+        <h2>Să Creăm <span class="gold" style="font-style: italic;">Magie</span> Împreună</h2>
+        <p>Pregătit să-ți spun povestea de dragoste? Aș dori să aud de la tine.</p>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-info scroll-reveal-left">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div>
+              <h4>Telefon</h4>
+              <p>+40 762 309 113</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>vladulescuandrei6@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div>
+              <h4>Locație</h4>
+              <p>Targu-jiu , România</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </div>
+            <div>
+              <h4>Disponibilitate</h4>
+              <p>Disponibil 7 zile pe săptămână</p>
+            </div>
+          </div>
+          
+          <div class="contact-social">
+            <h4>Urmărește-mă</h4>
+            <div class="social-links">
+              <a href="https://www.instagram.com/andrei.vladulescu/" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/vladulescu.andrei.52" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@vladulescuandrei4367" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper scroll-reveal-right">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Nume</label>
+              <input type="text" id="name" name="name" placeholder="Numele tău" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="email@exemplu.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="+40 722 123 456">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mesaj</label>
+              <textarea id="message" name="message" placeholder="Spune-mi despre ziua ta specială..." rows="4" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%;">Trimite Mesaj</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-border"></div>
+      
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><span>Andrei</span> Vladulescu</h3>
+          <p>Capturând povești de dragoste cu eleganță și artă. Fiecare moment merită să fie amintit.</p>
+          <p class="copyright">© <span class="current-year">2024</span> Andrei Vladulescu. Toate drepturile rezervate.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Linkuri Rapide</h4>
+          <ul>
+            <li><a href="#despre">Despre</a></li>
+            <li><a href="#portofoliu">Portofoliu</a></li>
+            <li><a href="#testimoniale">Testimoniale</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-social">
+          <h4>Conectează-te</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+            </a>
+          </div>
+          <p>vladulescuandrei6@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Video Title</h3>
+        <button class="modal-close" onclick="closeVideoModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="video-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <p>Videoclipul tău de la bunny.net va fi afișat aici</p>
+          <p class="video-info">Video Title • Date</p>
+        </div>
+        <p class="modal-hint">Înlocuiește acest placeholder cu linkul tău de la bunny.net</p>
+      </div>
+    </div>
   </div>
 
-  <div class="footer-bottom">
-    <div class="footer-left">
-        © <span id="year"></span> Andrei Vlădulescu
-      
+  <!-- Review Modal -->
+  <div id="reviewModal" class="modal modal-review">
+    <div class="modal-backdrop" onclick="closeReviewModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Împărtășește-ți <span style="color: var(--gold);">Povestea</span></h3>
+        <button class="modal-close" onclick="closeReviewModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="reviewForm">
+          <div class="form-group">
+            <label for="review-name">Nume</label>
+            <input type="text" id="review-name" name="name" placeholder="Numele tău și al partenerului" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="review-email">Email</label>
+            <input type="email" id="review-email" name="email" placeholder="email@exemplu.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="review-message">Recenzie</label>
+            <textarea id="review-message" name="message" placeholder="Spune-mi despre experiența ta..." rows="4" required></textarea>
+          </div>
+          
+          <div class="modal-actions">
+            <button type="button" class="btn-cancel" onclick="closeReviewModal()">Anulează</button>
+            <button type="submit" class="btn-primary">Trimite Recenzie</button>
+          </div>
+        </form>
+      </div>
     </div>
-  <a class="partner-logo"
-   href="https://www.fotografi-cameramani.ro/vladulescu-andrei-cristian_8630"
-   target="_blank"
-   rel="noopener"
-   aria-label="Fotografi Cameramani">
-   <img src="fotografi-cameramani-fundal-deschis-color.png" alt="Fotografi Cameramani">
-</a>
+  </div>
 
-    
-</div>
-</footer>
-
-  <!-- JS -->
- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="index.js"></script>
-
-</script>
+  <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>

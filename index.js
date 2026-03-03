@@ -1,206 +1,407 @@
-/* =========================
-   CONFIG (OPTIONAL)
-   Dacă folosești data-video-id în loc de data-bunny-embed, completezi LIBRARY_ID.
-========================= */
-const BUNNY_LIBRARY_ID = "595311"; // schimbă dacă e altul la tine
+// ==================== NAVIGATION ====================
+const navbar = document.querySelector('.navbar');
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
 
-/* =========================
-   Helpers: Open / Close (cu aria + scroll lock)
-========================= */
-function lockScroll(lock) {
-  document.documentElement.style.overflow = lock ? "hidden" : "";
-  document.body.style.overflow = lock ? "hidden" : "";
-}
-
-function openOverlay(overlayEl) {
-  overlayEl.style.display = "flex";
-  overlayEl.setAttribute("aria-hidden", "false");
-  lockScroll(true);
-}
-
-function closeOverlay(overlayEl) {
-  overlayEl.style.display = "none";
-  overlayEl.setAttribute("aria-hidden", "true");
-  lockScroll(false);
-}
-
-/* =========================
-   1) MOBILE MENU (hamburger)
-========================= */
-const menuToggle = document.querySelector(".menu-toggle");
-const menuOverlay = document.querySelector(".menu-overlay");
-const menuClose = document.querySelector(".menu-close");
-const mobileNavLinks = document.querySelectorAll(".mobile-nav a");
-
-function openMenu() {
-  openOverlay(menuOverlay);
-  if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
-}
-
-function closeMenu() {
-  closeOverlay(menuOverlay);
-  if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
-}
-
-if (menuToggle && menuOverlay) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = menuOverlay.getAttribute("aria-hidden") === "false";
-    isOpen ? closeMenu() : openMenu();
-  });
-}
-
-if (menuClose) {
-  menuClose.addEventListener("click", closeMenu);
-}
-
-/* Închide meniul dacă apeși pe fundalul semi-transparent (nu pe panou) */
-if (menuOverlay) {
-  menuOverlay.addEventListener("click", (e) => {
-    const clickedPanel = e.target.closest(".menu-panel");
-    if (!clickedPanel) closeMenu();
-  });
-}
-
-/* Închide meniul când dai click pe un link (UX normal pe mobil) */
-mobileNavLinks.forEach((link) => {
-  link.addEventListener("click", () => closeMenu());
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
 });
 
-/* =========================
-   2) VIDEO MODAL (Bunny)
-========================= */
-const videoModal = document.getElementById("videoModal");
-const modalPlayer = document.getElementById("modalPlayer");
+// Mobile menu toggle
+menuToggle.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+  const isOpen = mobileMenu.classList.contains('active');
+  menuToggle.innerHTML = isOpen 
+    ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+    : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+});
 
-/* Toate cardurile care deschid video */
-const filmButtons = document.querySelectorAll(".film-thumb");
-
-function buildBunnyEmbedUrl(btn) {
-  // Varianta 1: ai pus direct URL-ul complet în HTML (data-bunny-embed)
-  const direct = btn.getAttribute("data-bunny-embed");
-  if (direct) return direct;
-
-  // Varianta 2: ai pus doar video-id (data-video-id), iar noi construim URL-ul
-  const videoId = btn.getAttribute("data-video-id");
-  if (!videoId) return null;
-
-  return `https://player.mediadelivery.net/embed/${BUNNY_LIBRARY_ID}/${videoId}?autoplay=true`;
-}
-
-function openVideoModal(embedUrl) {
-  if (!videoModal || !modalPlayer) return;
-
-  // Injectăm iframe doar acum (performanță + nu încarci 6 playere din start)
-  const iframe = document.createElement("iframe");
-  iframe.src = embedUrl;
-  iframe.allow =
-    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
-  iframe.allowFullscreen = true;
-  iframe.setAttribute("title", "Video player");
-
-  modalPlayer.innerHTML = "";
-  modalPlayer.appendChild(iframe);
-
-  videoModal.style.display = "block";
-  videoModal.setAttribute("aria-hidden", "false");
-  lockScroll(true);
-}
-
-function closeVideoModal() {
-  if (!videoModal || !modalPlayer) return;
-
-  // Scoatem iframe-ul ca să oprim video complet
-  modalPlayer.innerHTML = "";
-
-  videoModal.style.display = "none";
-  videoModal.setAttribute("aria-hidden", "true");
-  lockScroll(false);
-}
-
-/* Click pe thumbnails -> deschide modal */
-filmButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const url = buildBunnyEmbedUrl(btn);
-    if (!url) return;
-    openVideoModal(url);
+// Close mobile menu on link click
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    menuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
   });
 });
 
-/* Închidere modal: butoane / backdrop */
-if (videoModal) {
-  videoModal.addEventListener("click", (e) => {
-    // în HTML: backdrop și buton close au data-close="true"
-    const shouldClose = e.target.matches('[data-close="true"]');
-    if (shouldClose) closeVideoModal();
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
+});
+
+// ==================== SCROLL REVEAL ANIMATIONS ====================
+const scrollRevealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
+
+const revealOnScroll = () => {
+  scrollRevealElements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (elementTop < windowHeight - 100) {
+      element.classList.add('visible');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// ==================== TESTIMONIALS CAROUSEL ====================
+const testimonials = [
+  {
+    quote: '“Top Top , chiar nota 100, suntem cu nasii si l-au vazut si ei ,Genial , bravo tie ai evoluat super”',
+    names:'Alexandra & Adi',
+    date: 'Octombrie 2025',
+    rating: 5
+  },
+  {
+    quote: '...',
+    names: '...',
+    date: '...',
+    rating: 5
+  },
+  {
+    quote: '...',
+    names: '...',
+    date: '...',
+    rating: 5
+  }
+];
+
+let activeTestimonial = 0;
+let testimonialInterval;
+
+const testimonialQuote = document.querySelector('.testimonial-quote');
+const testimonialNames = document.querySelector('.testimonial-author p');
+const testimonialDate = document.querySelector('.testimonial-author span');
+const testimonialDots = document.querySelector('.testimonial-dots');
+
+function renderTestimonial(index) {
+  const t = testimonials[index];
+  testimonialQuote.textContent = `"${t.quote}"`;
+  testimonialNames.textContent = t.names;
+  testimonialDate.textContent = t.date;
+  
+  // Update dots
+  testimonialDots.innerHTML = testimonials.map((_, i) => 
+    `<button class="${i === index ? 'active' : ''}" onclick="goToTestimonial(${i})"></button>`
+  ).join('');
 }
 
-/* ESC închide și meniul și modal-ul */
+function nextTestimonial() {
+  activeTestimonial = (activeTestimonial + 1) % testimonials.length;
+  renderTestimonial(activeTestimonial);
+}
+
+function prevTestimonial() {
+  activeTestimonial = (activeTestimonial - 1 + testimonials.length) % testimonials.length;
+  renderTestimonial(activeTestimonial);
+}
+
+function goToTestimonial(index) {
+  activeTestimonial = index;
+  renderTestimonial(activeTestimonial);
+  resetTestimonialInterval();
+}
+
+function resetTestimonialInterval() {
+  clearInterval(testimonialInterval);
+  testimonialInterval = setInterval(nextTestimonial, 6000);
+}
+
+// Initialize testimonials
+document.querySelector('.testimonial-next')?.addEventListener('click', () => {
+  nextTestimonial();
+  resetTestimonialInterval();
+});
+
+document.querySelector('.testimonial-prev')?.addEventListener('click', () => {
+  prevTestimonial();
+  resetTestimonialInterval();
+});
+
+renderTestimonial(0);
+testimonialInterval = setInterval(nextTestimonial, 6000);
+
+// ==================== VIDEO MODAL ====================
+// ===== REVIEW MODAL OPEN/CLOSE (cu id-ul tău: reviewModal) =====
+function openReviewModal() {
+  const modal = document.getElementById("reviewModal");
+  if (!modal) return;
+
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  // focus pe primul input
+  const first = document.getElementById("review-name");
+  if (first) first.focus();
+}
+
+function closeReviewModal() {
+  const modal = document.getElementById("reviewModal");
+  if (!modal) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+// dacă ai folosit altă capitalizare în HTML
+function CloseReviewModal(){ closeReviewModal(); }
+
+// ESC închide modalul
 document.addEventListener("keydown", (e) => {
-  if (e.key !== "Escape") return;
-
-  // Închide modal dacă e deschis
-  if (videoModal && videoModal.getAttribute("aria-hidden") === "false") {
-    closeVideoModal();
-    return;
-  }
-
-  // Închide meniu dacă e deschis
-  if (menuOverlay && menuOverlay.getAttribute("aria-hidden") === "false") {
-    closeMenu();
-  }
+  if (e.key === "Escape") closeReviewModal();
 });
 
-/* =========================
-   3) Footer year
-========================= */
+// ==================== CONTACT FORM ====================
+const contactForm = document.getElementById('contactForm');
 
-
-// ===============================
-// EmailJS Contact Form (index.js)
-// ===============================
-
-// 1) Init EmailJS (PUNE public key-ul tău aici)
-emailjs.init({
-  publicKey: "Jyu4Yct8HwIZwfX60" // <- public key-ul tău
-});
-
-// 2) Prinde formularul
-const form = document.getElementById("contact-form");
-
-// 3) Când dai submit, trimite email
-form.addEventListener("submit", function (e) {
+contactForm?.addEventListener('submit', (e) => {
   e.preventDefault();
+  showToast('Mesajul tău a fost trimis cu succes! Îți voi răspunde în curând.');
+  contactForm.reset();
+});
 
-  // Ia valorile din inputuri
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+// ==================== TOAST NOTIFICATION ====================
+function showToast(message) {
+  const existingToast = document.querySelector('.toast');
+  if (existingToast) {
+    existingToast.remove();
+  }
 
-  // Validare simplă (că oamenii trimit orice)
-  if (!name || !email || !message) {
-    alert("Completează nume, email și mesaj 🙂");
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `
+    <svg class="toast-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span>${message}</span>
+  `;
+  document.body.appendChild(toast);
+
+  // Trigger animation
+  requestAnimationFrame(() => {
+    toast.classList.add('active');
+  });
+
+  // Remove after 4 seconds
+  setTimeout(() => {
+    toast.classList.remove('active');
+    setTimeout(() => toast.remove(), 500);
+  }, 4000);
+}
+
+// ==================== PARTICLES ====================
+function createParticles() {
+  const container = document.querySelector('.hero-particles');
+  if (!container) return;
+
+  for (let i = 0; i < 15; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.animationDelay = `${Math.random() * 4}s`;
+    particle.style.animationDuration = `${4 + Math.random() * 4}s`;
+    container.appendChild(particle);
+  }
+}
+
+createParticles();
+
+// ==================== CURRENT YEAR ====================
+document.querySelectorAll('.current-year').forEach(el => {
+  el.textContent = new Date().getFullYear();
+});
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const buttons = document.querySelectorAll(".film-thumb");
+  const overlay = document.getElementById("videoOverlay");
+  const frame = document.getElementById("videoFrame");
+  const closeBtn = document.querySelector(".video-close");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", function () {
+
+      const videoUrl = this.getAttribute("data-bunny-embed");
+      if (!videoUrl) return;
+
+      frame.src = videoUrl;
+      overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+    });
+  });
+// ==================== acel ecran mic cand dai click pe video====================
+  function closeVideo() {
+    overlay.classList.remove("active");
+    frame.src = "";
+    document.body.style.overflow = "";
+  }
+
+  closeBtn.addEventListener("click", closeVideo);
+
+  overlay.addEventListener("click", function(e) {
+    if (e.target === overlay) {
+      closeVideo();
+    }
+  });
+
+});
+
+// ==================== tranzitie meniu====================
+
+
+// ===== EMAILJS CONFIG =====
+// ===== EMAILJS CONFIG =====
+const EMAILJS_PUBLIC_KEY = "Jyu4Yct8HwIZwfX60";
+const EMAILJS_SERVICE_ID = "service_0wraenh";     // din contul tău
+const EMAILJS_TEMPLATE_ID = "template_wjipozn";    // din contul tău
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) EmailJS init
+  if (!window.emailjs) {
+    console.error("EmailJS nu e încărcat. Verifică script-ul CDN.");
+    return;
+  }
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  // 2) Form submit (ID-urile tale din HTML)
+  const form = document.getElementById("reviewForm");
+  if (!form) {
+    console.error("Nu găsesc #reviewForm în HTML.");
     return;
   }
 
-  // Parametrii pe care îi folosește template-ul din EmailJS
-  const templateParams = {
-    name: name,
-    email: email,
-    message: message
-  };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // 4) Trimite email (Service ID + Template ID)
-  emailjs
-    .send("service_0wraenh", "template_wjipozn", templateParams)
-    .then(() => {
-      alert("Mesaj trimis ✅");
+    const nameEl = document.getElementById("review-name");
+    const emailEl = document.getElementById("review-email");
+    const msgEl = document.getElementById("review-message");
+
+    const name = (nameEl?.value || "").trim();
+    const reply_to = (emailEl?.value || "").trim();
+    const message = (msgEl?.value || "").trim();
+
+    if (!name || !message) {
+      alert("Completează numele și recenzia 🙂");
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      // IMPORTANT: aceste chei trebuie să existe în template-ul EmailJS:
+      // {{from_name}}, {{reply_to}}, {{message}}
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name: name,
+        reply_to: reply_to,
+        message: message
+      });
+
       form.reset();
-    })
-    .catch((err) => {
+      if (typeof closeReviewModal === "function") closeReviewModal();
+      alert("Trimis ✅ Mulțumesc!");
+    } catch (err) {
       console.error("EmailJS error:", err);
-      alert("Eroare: " + (err?.text || JSON.stringify(err)));
-    });
+      alert("Eroare la trimitere. Verifică service/template și variabilele din template.");
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
 });
+console.log("emailjs =", window.emailjs);
+console.log("SERVICE:", EMAILJS_SERVICE_ID, "TEMPLATE:", EMAILJS_TEMPLATE_ID, "PUBLIC:", EMAILJS_PUBLIC_KEY);
 
+
+
+
+
+
+
+
+
+const EMAILJS_PUBLIC_KEY1 = "Jyu4Yct8HwIZwfX60";
+const EMAILJS_SERVICE_ID1 = "service_0wraenh";     // din contul tău
+const EMAILJS_TEMPLATE_ID1 = "template_irqow5j";    // din contul tău
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) EmailJS init
+  if (!window.emailjs) {
+    console.error("EmailJS nu e încărcat. Verifică script-ul CDN.");
+    return;
+  }
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY1 });
+
+  // 2) Form submit (ID-urile tale din HTML)
+  const form = document.getElementById("reviewForm");
+  if (!form) {
+    console.error("Nu găsesc #reviewForm în HTML.");
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nameEl = document.getElementById("review-name");
+    const emailEl = document.getElementById("review-email");
+    const msgEl = document.getElementById("review-message");
+
+    const name = (nameEl?.value || "").trim();
+    const reply_to = (emailEl?.value || "").trim();
+    const message = (msgEl?.value || "").trim();
+
+    if (!name || !message) {
+      alert("Completează numele și recenzia 🙂");
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      // IMPORTANT: aceste chei trebuie să existe în template-ul EmailJS:
+      // {{from_name}}, {{reply_to}}, {{message}}
+      await emailjs.send(EMAILJS_SERVICE_ID1, EMAILJS_TEMPLATE_ID1, {
+        from_name: name,
+        reply_to: reply_to,
+        message: message
+      });
+
+      form.reset();
+      if (typeof closeReviewModal === "function") closeReviewModal();
+      alert("Trimis ✅ Mulțumesc!");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      alert("Eroare la trimitere. Verifică service/template și variabilele din template.");
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+});
+console.log("emailjs =", window.emailjs);
+console.log("SERVICE:", EMAILJS_SERVICE_ID1, "TEMPLATE:", EMAILJS_TEMPLATE_ID1, "PUBLIC:", EMAILJS_PUBLIC_KEY1);
 
