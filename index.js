@@ -344,68 +344,6 @@ console.log("SERVICE:", EMAILJS_SERVICE_ID, "TEMPLATE:", EMAILJS_TEMPLATE_ID, "P
 
 
 
-const EMAILJS_PUBLIC_KEY1 = "Jyu4Yct8HwIZwfX60";
-const EMAILJS_SERVICE_ID1 = "service_0wraenh";     // din contul tău
-const EMAILJS_TEMPLATE_ID1 = "template_irqow5j";    // din contul tău
-
-document.addEventListener("DOMContentLoaded", () => {
-  // 1) EmailJS init
-  if (!window.emailjs) {
-    console.error("EmailJS nu e încărcat. Verifică script-ul CDN.");
-    return;
-  }
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY1 });
-
-  // 2) Form submit (ID-urile tale din HTML)
-  const form = document.getElementById("reviewForm");
-  if (!form) {
-    console.error("Nu găsesc #reviewForm în HTML.");
-    return;
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const nameEl = document.getElementById("review-name");
-    const emailEl = document.getElementById("review-email");
-    const msgEl = document.getElementById("review-message");
-
-    const name = (nameEl?.value || "").trim();
-    const reply_to = (emailEl?.value || "").trim();
-    const message = (msgEl?.value || "").trim();
-
-    if (!name || !message) {
-      alert("Completează numele și recenzia 🙂");
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
-
-    try {
-      // IMPORTANT: aceste chei trebuie să existe în template-ul EmailJS:
-      // {{from_name}}, {{reply_to}}, {{message}}
-      await emailjs.send(EMAILJS_SERVICE_ID1, EMAILJS_TEMPLATE_ID1, {
-        from_name: name,
-        reply_to: reply_to,
-        message: message
-      });
-
-      form.reset();
-      if (typeof closeReviewModal === "function") closeReviewModal();
-      alert("Trimis ✅ Mulțumesc!");
-    } catch (err) {
-      console.error("EmailJS error:", err);
-      alert("Eroare la trimitere. Verifică service/template și variabilele din template.");
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  });
-});
-console.log("emailjs =", window.emailjs);
-console.log("SERVICE:", EMAILJS_SERVICE_ID1, "TEMPLATE:", EMAILJS_TEMPLATE_ID1, "PUBLIC:", EMAILJS_PUBLIC_KEY1);
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -457,4 +395,79 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth > 768) closeMenu();
   });
 });
+
+
+
+
+
+
+
+// ===== EMAILJS CONFIG =====
+// ===== EMAILJS CONFIG =====
+const EMAILJS_PUBLIC_KEY1 = "Jyu4Yct8HwIZwfX60";
+const EMAILJS_SERVICE_ID1 = "service_0wraenh";     // din contul tău
+const EMAILJS_TEMPLATE_ID1 = "template_wjipozn";    // din contul tău
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) EmailJS init
+  if (!window.emailjs) {
+    console.error("EmailJS nu e încărcat. Verifică script-ul CDN.");
+    return;
+  }
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  // 2) Form submit (ID-urile tale din HTML)
+  const form = document.getElementById("reviewForm");
+  if (!form) {
+    console.error("Nu găsesc #reviewForm în HTML.");
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nameEl = document.getElementById("review-name");
+    const emailEl = document.getElementById("review-email");
+    const msgEl = document.getElementById("review-message");
+
+    const name = (nameEl?.value || "").trim();
+    const reply_to = (emailEl?.value || "").trim();
+    const message = (msgEl?.value || "").trim();
+
+    if (!name || !message) {
+      alert("Completează numele și recenzia 🙂");
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      // IMPORTANT: aceste chei trebuie să existe în template-ul EmailJS:
+      // {{from_name}}, {{reply_to}}, {{message}}
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name: name,
+        reply_to: reply_to,
+        message: message
+      });
+
+      form.reset();
+      if (typeof closeReviewModal === "function") closeReviewModal();
+      alert("Trimis ✅ Mulțumesc!");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      alert("Eroare la trimitere. Verifică service/template și variabilele din template.");
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+});
+console.log("emailjs =", window.emailjs);
+console.log("SERVICE:", EMAILJS_SERVICE_ID, "TEMPLATE:", EMAILJS_TEMPLATE_ID, "PUBLIC:", EMAILJS_PUBLIC_KEY);
+
+
+
+
+
+
 
