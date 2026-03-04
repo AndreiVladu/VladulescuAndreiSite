@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+html, body {
+  overflow-x: hidden;
+}
+
+html, body {
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -webkit-text-size-adjust: 100%;
+}
 /* ==================== VARIABLES ==================== */
 :root {
   --gold: #D4AF37;
@@ -136,179 +145,203 @@ ul {
 }
 
 /* ==================== NAVIGATION ==================== */
-.navbar {
+/* =========================
+   NAVBAR (pe HTML-ul tău)
+   .navbar > .container > .logo + .nav-links + #menuToggle + #mobileMenu
+   ========================= */
+
+.navbar{
   position: fixed;
-  display:flex ;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  transition: all 0.5s var(--ease-cinematic);
-    padding: 1rem 5rem;
-
-   
-}
-
-.navbar.scrolled {
-  background: rgba(26, 26, 26, 0.95);
+  z-index: 9999;
+  background: rgba(26, 26, 26, 0.6);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.navbar .container {
-  display: flex;
+.navbar .container{
+  /* IMPORTANT: Grid ca să ai logo stânga, links centru, burger dreapta */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  position: relative;
-  width: 100%;
-  
+
+  /* ajustează dacă ai alt container global */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  gap: 12px;
 }
+
+/* LOGO mereu stânga */
 .logo{
-  position: fixed;
-  top: 0.5rem;   /* ajustezi dacă e nevoie */
-  left: 2rem;  /* aici controlezi cât de “stânga” vrei, dar rămâne constant */
-  z-index: 1001;
-}
-.logo span {
-  color: var(--gold);
-  left: 4rem;
-}
-
-.nav-links {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 2.5rem;
-}
-.nav-links a {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  justify-self: start;
+  text-decoration: none;
+  color: #fff;
   font-weight: 500;
-  transition: color 0.3s ease;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.logo span{
+  color: var(--gold, #d6b35a);
+}
+
+/* LINKS desktop în mijloc */
+.nav-links{
+  justify-self: center;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-links a{
+  text-decoration: none;
+  color: rgba(255,255,255,.88);
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 12px;
   position: relative;
+  padding: 6px 0;
+  transition: color .25s ease;
 }
-
-.nav-links a:hover {
-  color: var(--gold);
+.nav-links a:hover{ color: var(--gold, #d6b35a); }
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  height:2px;
+  width:0;
+  background: var(--gold, #d6b35a);
+  transition: width .25s ease;
 }
+.nav-links a:hover::after{ width:100%; }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gold);
-  transition: width 0.3s var(--ease-cinematic);
-}
+/* HAMBURGER (butonul tău #menuToggle) */
+#menuToggle{
+  justify-self: end;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 10px;
 
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.menu-toggle {
-  color: var(--white);
-  padding: 0.5rem;
+  /* pe desktop îl ascundem mai jos */
   display: none;
 }
-
-@media (max-width: 768px) {
-
-  .logo {
-    position: relative;
-    left: 0;
-   
-  }
-
-  .menu-toggle {
-    display: block;
-    position: absolute;
-    right: 0;
-  }
-
-  .nav-links {
-    display: none;
-  }
+#menuToggle svg{
+  width: 24px;
+  height: 24px;
+}
+#menuToggle svg line{
+  stroke: rgba(255,255,255,.90);
+}
+#menuToggle:focus{
+  outline: 2px solid rgba(214,179,90,.5);
+  outline-offset: 2px;
 }
 
-/* Mobile Menu */
-.mobile-menu {
-  display: none;
+/* MOBILE MENU (div-ul tău #mobileMenu) */
+#mobileMenu{
+  /* îl poziționăm sub navbar */
   position: absolute;
-  top: 100%;
   left: 0;
   right: 0;
-  background: rgba(26, 26, 26, 0.98);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem;
-}
-
-/* MOBILE MENU - cinematic dropdown */
-.mobile-menu {
-  display: block;                /* important: nu mai folosim display none */
-  position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
 
-  background: rgba(26, 26, 26, 0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(20,20,20,.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-  /* hidden state */
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  /* animația */
+  overflow: hidden;
+  max-height: 0;
   opacity: 0;
-  transform: translateY(-18px);
+  transform: translateY(-10px);
   pointer-events: none;
 
-  transition:
-    opacity 320ms var(--ease-cinematic, cubic-bezier(.2,.8,.2,1)),
-    transform 420ms var(--ease-cinematic, cubic-bezier(.2,.8,.2,1));
+  transition: max-height .35s ease, opacity .25s ease, transform .35s ease;
 }
 
-/* open state */
-.mobile-menu.active {
+/* container din mobileMenu (ai deja <div class="container"> înăuntru) */
+#mobileMenu .container{
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* linkurile din meniu mobil */
+#mobileMenu a{
+  text-decoration: none;
+  color: rgba(255,255,255,.92);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 12px;
+
+  padding: 14px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: background .2s ease, transform .2s ease;
+}
+#mobileMenu a:hover{
+  background: rgba(214,179,90,.12);
+  transform: translateY(-1px);
+}
+
+/* când e deschis */
+#mobileMenu.open{
+  max-height: 360px;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-/* container spacing */
-.mobile-menu .container {
-  padding: 18px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px){
+  /* pe mobil ascundem linkurile din navbar */
+  .nav-links{ display: none; }
+
+  /* pe mobil arătăm hamburger-ul */
+  #menuToggle{ display: inline-flex; align-items:center; justify-content:center; }
+
+  /* asigură-te că .navbar e "ancoră" pt #mobileMenu absolut */
+  .navbar{ position: sticky; }
 }
 
-/* links: come in one by one */
-.mobile-menu a {
-  color: rgba(255, 255, 255, 0.9);
-  opacity: 0;
-  transform: translateY(-8px);
-  transition:
-    opacity 320ms var(--ease-cinematic, cubic-bezier(.2,.8,.2,1)),
-    transform 420ms var(--ease-cinematic, cubic-bezier(.2,.8,.2,1));
+/* Desktop: ascunde mobileMenu dacă vrei (ca safety) */
+@media (min-width: 769px){
+  #mobileMenu{ display: none; }
+  #menuToggle{ display: none; }
+}
+/* ===== FIX: Mobile menu să NU mai arate ca "pills" și să NU se împacheteze ===== */
+#mobileMenu .container{
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
 }
 
-.mobile-menu.active a {
-  opacity: 1;
-  transform: translateY(0);
-}
+#mobileMenu a{
+  display: block !important;
+  width: 100% !important;
+  border-radius: 12px !important;
 
-/* stagger delays */
-.mobile-menu.active a:nth-child(1) { transition-delay: 60ms; }
-.mobile-menu.active a:nth-child(2) { transition-delay: 120ms; }
-.mobile-menu.active a:nth-child(3) { transition-delay: 180ms; }
-.mobile-menu.active a:nth-child(4) { transition-delay: 240ms; }
+  /* scoatem vibe-ul de "butoane împrăștiate" */
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
 
-/* optional: subtle top border line */
-.mobile-menu::before {
-  content: "";
-  display: block;
-  height: 1px;
-  background: rgba(229, 224, 224, 0.08);
+  padding: 14px 14px !important;
+  text-align: left !important;
+  white-space: nowrap !important;   /* NU wrap în două rânduri */
 }
 /* ==================== HERO SECTION ==================== */
 .hero {
@@ -485,76 +518,188 @@ ul {
 }
 
 /* ==================== ABOUT SECTION ==================== */
-.about {
-  background: var(--cream);
+/* ==========================
+   ABOUT (Despre Mine) – modern / cinematic
+   Clasele tale: .section.about .about-grid .about-image .about-content .about-signature
+   ========================== */
+
+.section.about{
+  padding: clamp(72px, 8vw, 120px) 0;
+  background:
+    radial-gradient(900px 520px at 70% 15%, rgba(212,175,55,0.10), transparent 60%),
+    linear-gradient(180deg, #f7f4ee 0%, #f2eee5 100%);
 }
 
-.about-grid {
+/* layout */
+.about-grid{
   display: grid;
-  gap: 3rem;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(18px, 3.5vw, 48px);
   align-items: center;
 }
 
-@media (min-width: 1024px) {
-  .about-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+/* IMAGE block (cinematic cover) */
+.about-image{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.06);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.12);
+  isolation: isolate;
+}
+
+.about-image img{
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transform: scale(1.02);
+  filter: contrast(1.03) saturate(1.05);
+  transition: transform .8s cubic-bezier(.2,.9,.2,1),
+              filter .8s cubic-bezier(.2,.9,.2,1);
+}
+
+.about-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(520px 320px at 20% 20%, rgba(255,255,255,0.18), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,0.10), transparent 40%, rgba(0,0,0,0.18));
+  z-index: 1;
+}
+
+.about-image:hover img{
+  transform: scale(1.06);
+  filter: contrast(1.06) saturate(1.12);
+}
+
+/* TEXT card (glass paper) */
+.about-content{
+  position: relative;
+  border-radius: 26px;
+  padding: clamp(18px, 2.8vw, 34px);
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.10);
+  backdrop-filter: blur(10px);
+}
+
+/* accent line */
+.about-content::before{
+  content:"";
+  position:absolute;
+  left: 22px;
+  top: 18px;
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.15));
+  opacity: 0.95;
+}
+
+/* label */
+.about-content .section-label{
+  margin: 10px 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+}
+
+/* title */
+.about-content h2{
+  margin: 0 0 14px;
+  line-height: 1.06;
+  font-size: clamp(34px, 3.2vw, 46px);
+  color: rgba(0,0,0,0.86);
+}
+
+/* dacă ai text-gold / gold */
+.about-content .text-gold,
+.about-content .gold{
+  color: var(--gold);
+}
+
+/* body text */
+.about-content p{
+  margin: 0 0 14px;
+  line-height: 1.75;
+  font-size: 15.5px;
+  color: rgba(0,0,0,0.72);
+}
+
+/* last paragraph spacing */
+.about-content p:last-of-type{
+  margin-bottom: 18px;
+}
+
+/* signature block */
+.about-signature{
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-signature p{
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(0,0,0,0.82);
+}
+
+.about-signature span{
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+}
+
+/* ==========================
+   Responsive (telefon)
+   ========================== */
+@media (max-width: 900px){
+  .about-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .about-image{
+    border-radius: 22px;
+  }
+
+  .about-content{
+    border-radius: 22px;
   }
 }
 
-.about-image {
-  position: relative;
-}
+/* pe telefon, mai aerisit + text mai mare */
+@media (max-width: 520px){
+  .section.about{
+    padding: 64px 0;
+  }
 
-.about-image img {
-  border-radius: 0.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
+  .about-image img{
+    aspect-ratio: 16 / 11;
+  }
 
-.about-image::after {
-  content: '';
-  position: absolute;
-  bottom: -1.5rem;
-  right: -1.5rem;
-  width: 8rem;
-  height: 8rem;
-  border: 2px solid var(--gold);
-  border-radius: 0.5rem;
-  z-index: -1;
-}
+  .about-content{
+    padding: 18px 16px;
+  }
 
-.about-content h2 {
-  font-size: 2.5rem;
-  color: var(--black);
-  margin-bottom: 1.5rem;
-}
+  .about-content h2{
+    font-size: 32px;
+  }
 
-.about-content p {
-  color: var(--charcoal);
-  margin-bottom: 1rem;
-  line-height: 1.8;
+  .about-content p{
+    font-size: 15px;
+  }
 }
-
-.about-signature {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.about-signature p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  margin-bottom: 0.25rem;
-}
-
-.about-signature span {
-  color: var(--gold);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-}
-
 /* =========================
    10) VIDEO MODAL
 ========================= */
@@ -563,6 +708,17 @@ ul {
    Target: section#films.films
    Classes: .container .section-head .kicker .films-grid .film-card .film-thumb .play .film-title .film-meta
 ========================= */
+
+
+
+
+
+
+
+
+
+
+
 
 :root{
   --bg0: #070708;

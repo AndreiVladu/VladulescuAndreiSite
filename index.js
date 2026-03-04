@@ -405,3 +405,56 @@ document.addEventListener("DOMContentLoaded", () => {
 console.log("emailjs =", window.emailjs);
 console.log("SERVICE:", EMAILJS_SERVICE_ID1, "TEMPLATE:", EMAILJS_TEMPLATE_ID1, "PUBLIC:", EMAILJS_PUBLIC_KEY1);
 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (!burger || !mobileMenu) return;
+
+  const openMenu = () => {
+    mobileMenu.classList.add("open");
+    burger.setAttribute("aria-expanded", "true");
+  };
+
+  const closeMenu = () => {
+    mobileMenu.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+  };
+
+  const toggleMenu = () => {
+    const isOpen = mobileMenu.classList.contains("open");
+    isOpen ? closeMenu() : openMenu();
+  };
+
+  burger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // click pe link => închide
+  mobileMenu.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (link) closeMenu();
+  });
+
+  // click în afara meniului => închide
+  document.addEventListener("click", (e) => {
+    if (!mobileMenu.classList.contains("open")) return;
+    if (mobileMenu.contains(e.target) || burger.contains(e.target)) return;
+    closeMenu();
+  });
+
+  // ESC => închide
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  // dacă treci pe desktop, închide
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+});
+
