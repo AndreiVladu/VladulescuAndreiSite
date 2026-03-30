@@ -1,7 +1,6 @@
 /* ========================================
    ANDREI VLADULESCU - FULL WIDTH LAYOUT
    ======================================== */
-
 :root {
   --gold: #d4a853;
   --gold-hover: #c49a48;
@@ -42,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 img { max-width: 100%; height: auto; display: block; }
+
 
 /* ========================================
    CONTAINER - TEXT ONLY PADDING
@@ -298,6 +298,104 @@ img { max-width: 100%; height: auto; display: block; }
   
   .mobile-menu-btn {
     display: flex;
+  }
+}
+/* ========================================
+   MOBILE NAV FIX - BUTOANE LA MARGINE
+   ======================================== */
+@media (max-width: 768px) {
+  .navbar { 
+    padding: 1rem 0; /* fără padding lateral */
+  }
+  
+  .nav-container {
+    padding: 0 1rem; /* padding doar pentru conținut */
+    width: 100%;
+  }
+  
+  .logo {
+    margin-left: 0; /* la marginea stângă */
+  }
+  
+  .mobile-menu-btn {
+    margin-right: 0; /* la marginea dreaptă */
+    padding-right: 0;
+  }
+}
+/* ========================================
+   NAV FIX - BUTOANE LA MARGINE (PC + MOBIL)
+   ======================================== */
+
+/* PC - navbar transparent pe home */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 1rem 0; /* fără padding lateral */
+  background-color: transparent;
+}
+
+.navbar.scrolled {
+  background-color: rgba(245, 245, 240, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0;
+}
+
+/* Container fără padding */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem; /* padding controlat aici */
+  max-width: none; /* fără limită de lățime */
+}
+
+/* Logo la marginea stângă */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+  margin-left: 0;
+}
+
+/* Desktop nav la marginea dreaptă */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-right: 0;
+}
+
+/* Buton CTA la margine */
+.btn-primary {
+  margin-right: 0;
+}
+
+/* ========================================
+   MOBILE - LA FEL
+   ======================================== */
+@media (max-width: 768px) {
+  .navbar { 
+    padding: 1rem 0;
+  }
+  
+  .nav-container {
+    padding: 0 1rem; /* mai puțin padding pe mobil */
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .mobile-menu-btn {
+    padding: 0;
+    margin-right: 0;
   }
 }
 
