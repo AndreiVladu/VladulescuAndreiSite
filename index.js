@@ -1,473 +1,393 @@
-// ==================== NAVIGATION ====================
+// === CUSTOM CURSOR ===
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+let mouseX = 0, mouseY = 0;
+let outlineX = 0, outlineY = 0;
+
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+if (!isTouchDevice) {
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+    });
+
+    function animateCursor() {
+        outlineX += (mouseX - outlineX) * 0.15;
+        outlineY += (mouseY - outlineY) * 0.15;
+        cursorOutline.style.left = `${outlineX}px`;
+        cursorOutline.style.top = `${outlineY}px`;
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover effects
+    const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .magnetic-btn, .faq-question');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // Magnetic buttons
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// === NAVBAR SCROLL ===
 const navbar = document.querySelector('.navbar');
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-// Navbar scroll effect
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-
-// Mobile menu toggle
-menuToggle.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-  const isOpen = mobileMenu.classList.contains('active');
-  menuToggle.innerHTML = isOpen 
-    ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
-    : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-});
-
-// Close mobile menu on link click
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    menuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-  });
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    if (window.pageYOffset > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
-  });
 });
 
-// ==================== SCROLL REVEAL ANIMATIONS ====================
-const scrollRevealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
+// === MOBILE MENU ===
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-const revealOnScroll = () => {
-  scrollRevealElements.forEach(element => {
-    const elementTop = element.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+}
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// === SCROLL VELOCITY ===
+let lastScrollY = window.scrollY;
+let velocity = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    velocity = (currentScrollY - lastScrollY) * 0.1;
+    velocity = Math.max(-2, Math.min(2, velocity));
     
-    if (elementTop < windowHeight - 100) {
-      element.classList.add('visible');
+    document.querySelectorAll('.card-image img, .hero-image img').forEach(img => {
+        img.style.transform = `skewY(${velocity}deg) scale(${1 + Math.abs(velocity) * 0.01})`;
+    });
+    
+    lastScrollY = currentScrollY;
+    
+    setTimeout(() => {
+        document.querySelectorAll('.card-image img, .hero-image img').forEach(img => {
+            img.style.transform = '';
+        });
+    }, 150);
+});
+
+// === INTERSECTION OBSERVER ===
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.section-title, .portfolio-card, .process-card, .faq-item').forEach(el => {
+    observer.observe(el);
+});
+
+// === VIDEO MODAL ===
+const modal = document.querySelector('.video-modal');
+const modalIframe = document.getElementById('video-iframe');
+const modalClose = document.querySelector('.modal-close');
+const modalBackdrop = document.querySelector('.modal-backdrop');
+
+function openModal(videoUrl) {
+    if (videoUrl) {
+        modalIframe.src = videoUrl;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-  });
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { modalIframe.src = ''; }, 400);
+}
+
+document.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.video));
+});
+
+if (modalClose) modalClose.addEventListener('click', closeModal);
+if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// === FAQ ACCORDION ===
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(faq => {
+            faq.classList.remove('active');
+        });
+        
+        // Open clicked if wasn't active
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// === PAGE TRANSITIONS ===
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = href;
+            }, 300);
+        });
+    }
+});
+
+// === FORM HANDLING ===
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nume = document.getElementById('nume')?.value.trim();
+        const telefon = document.getElementById('telefon')?.value.trim();
+        
+        if (!nume || !telefon) {
+            showNotification('Te rugăm să completezi toate câmpurile.', 'error');
+            return;
+        }
+        
+        const phoneRegex = /^(\+40|0)[0-9]{9}$/;
+        if (!phoneRegex.test(telefon.replace(/\s/g, ''))) {
+            showNotification('Te rugăm să introduci un număr de telefon valid.', 'error');
+            return;
+        }
+        
+        showNotification('Mesaj trimis cu succes! Te contactez în curând.', 'success');
+        contactForm.reset();
+    });
+}
+
+// === NOTIFICATION ===
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    Object.assign(notification.style, {
+        position: 'fixed',
+        bottom: '2rem',
+        right: '2rem',
+        padding: '1rem 2rem',
+        backgroundColor: type === 'success' ? 'var(--gold)' : '#e74c3c',
+        color: type === 'success' ? 'var(--text-primary)' : 'white',
+        fontFamily: 'var(--font-body)',
+        fontSize: '0.9rem',
+        borderRadius: '4px',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+        zIndex: '3000',
+        transform: 'translateY(100px)',
+        opacity: '0',
+        transition: 'all 0.4s var(--transition-cinematic)'
+    });
+    
+    document.body.appendChild(notification);
+    requestAnimationFrame(() => {
+        notification.style.transform = 'translateY(0)';
+        notification.style.opacity = '1';
+    });
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateY(100px)';
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 400);
+    }, 3000);
+}
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+    document.body.style.opacity = '1';
+});
+
+
+
+// === ANIMATIE NUMERE ===
+const animateNumbers = () => {
+    const numbers = document.querySelectorAll('.stat-number');
+    
+    numbers.forEach(num => {
+        const target = parseInt(num.dataset.target);
+        const duration = 2000; // 2 secunde
+        const step = target / (duration / 16); // 60fps
+        let current = 0;
+        
+        const updateNumber = () => {
+            current += step;
+            if (current < target) {
+                num.textContent = Math.floor(current) + (target === 100 ? '' : '+');
+                requestAnimationFrame(updateNumber);
+            } else {
+                num.textContent = target + (target === 100 ? '%' : '+');
+            }
+        };
+        
+        // Pornește când e vizibil
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateNumber();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(num);
+    });
 };
 
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
+// === ANIMATIE SCROLL POVESTE ===
+const animateStory = () => {
+    const storyImage = document.querySelector('.story-image');
+    const storyContent = document.querySelector('.story-content');
+    
+    if (!storyImage || !storyContent) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    observer.observe(storyImage);
+    observer.observe(storyContent);
+};
 
-// ==================== TESTIMONIALS CAROUSEL ====================
-const testimonials = [
-  {
-    quote: '“Top Top , chiar nota 100, suntem cu nasii si l-au vazut si ei ,Genial , bravo tie ai evoluat super”',
-    names:'Alexandra & Adi',
-    date: 'Octombrie 2025',
-    rating: 5
-  },
-  {
-    quote: '...',
-    names: '...',
-    date: '...',
-    rating: 5
-  },
-  {
-    quote: '...',
-    names: '...',
-    date: '...',
-    rating: 5
-  }
-];
-
-let activeTestimonial = 0;
-let testimonialInterval;
-
-const testimonialQuote = document.querySelector('.testimonial-quote');
-const testimonialNames = document.querySelector('.testimonial-author p');
-const testimonialDate = document.querySelector('.testimonial-author span');
-const testimonialDots = document.querySelector('.testimonial-dots');
-
-function renderTestimonial(index) {
-  const t = testimonials[index];
-  testimonialQuote.textContent = `"${t.quote}"`;
-  testimonialNames.textContent = t.names;
-  testimonialDate.textContent = t.date;
-  
-  // Update dots
-  testimonialDots.innerHTML = testimonials.map((_, i) => 
-    `<button class="${i === index ? 'active' : ''}" onclick="goToTestimonial(${i})"></button>`
-  ).join('');
-}
-
-function nextTestimonial() {
-  activeTestimonial = (activeTestimonial + 1) % testimonials.length;
-  renderTestimonial(activeTestimonial);
-}
-
-function prevTestimonial() {
-  activeTestimonial = (activeTestimonial - 1 + testimonials.length) % testimonials.length;
-  renderTestimonial(activeTestimonial);
-}
-
-function goToTestimonial(index) {
-  activeTestimonial = index;
-  renderTestimonial(activeTestimonial);
-  resetTestimonialInterval();
-}
-
-function resetTestimonialInterval() {
-  clearInterval(testimonialInterval);
-  testimonialInterval = setInterval(nextTestimonial, 6000);
-}
-
-// Initialize testimonials
-document.querySelector('.testimonial-next')?.addEventListener('click', () => {
-  nextTestimonial();
-  resetTestimonialInterval();
-});
-
-document.querySelector('.testimonial-prev')?.addEventListener('click', () => {
-  prevTestimonial();
-  resetTestimonialInterval();
-});
-
-renderTestimonial(0);
-testimonialInterval = setInterval(nextTestimonial, 6000);
-
-// ==================== VIDEO MODAL ====================
-// ===== REVIEW MODAL OPEN/CLOSE (cu id-ul tău: reviewModal) =====
-function openReviewModal() {
-  const modal = document.getElementById("reviewModal");
-  if (!modal) return;
-
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-
-  // focus pe primul input
-  const first = document.getElementById("review-name");
-  if (first) first.focus();
-}
-
-function closeReviewModal() {
-  const modal = document.getElementById("reviewModal");
-  if (!modal) return;
-
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-// dacă ai folosit altă capitalizare în HTML
-function CloseReviewModal(){ closeReviewModal(); }
-
-// ESC închide modalul
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeReviewModal();
-});
-
-// ==================== CONTACT FORM ====================
-const contactForm = document.getElementById('contactForm');
-
-contactForm?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  showToast('Mesajul tău a fost trimis cu succes! Îți voi răspunde în curând.');
-  contactForm.reset();
-});
-
-// ==================== TOAST NOTIFICATION ====================
-function showToast(message) {
-  const existingToast = document.querySelector('.toast');
-  if (existingToast) {
-    existingToast.remove();
-  }
-
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerHTML = `
-    <svg class="toast-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-    </svg>
-    <span>${message}</span>
-  `;
-  document.body.appendChild(toast);
-
-  // Trigger animation
-  requestAnimationFrame(() => {
-    toast.classList.add('active');
-  });
-
-  // Remove after 4 seconds
-  setTimeout(() => {
-    toast.classList.remove('active');
-    setTimeout(() => toast.remove(), 500);
-  }, 4000);
-}
-
-// ==================== PARTICLES ====================
-function createParticles() {
-  const container = document.querySelector('.hero-particles');
-  if (!container) return;
-
-  for (let i = 0; i < 15; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
-    particle.style.animationDelay = `${Math.random() * 4}s`;
-    particle.style.animationDuration = `${4 + Math.random() * 4}s`;
-    container.appendChild(particle);
-  }
-}
-
-createParticles();
-
-// ==================== CURRENT YEAR ====================
-document.querySelectorAll('.current-year').forEach(el => {
-  el.textContent = new Date().getFullYear();
+// Inițializează
+document.addEventListener('DOMContentLoaded', () => {
+    animateNumbers();
+    animateStory();
 });
 
 
 
 
 
-
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const buttons = document.querySelectorAll(".film-thumb");
-  const overlay = document.getElementById("videoOverlay");
-  const frame = document.getElementById("videoFrame");
-  const closeBtn = document.querySelector(".video-close");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", function () {
-
-      const videoUrl = this.getAttribute("data-bunny-embed");
-      if (!videoUrl) return;
-
-      frame.src = videoUrl;
-      overlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-
+document.addEventListener('DOMContentLoaded', function() {
+    // === TESTIMONIAL CAROUSEL ===
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    
+    if (!slides.length) return;
+    
+    let currentSlide = 0;
+    let autoPlayInterval;
+    const autoPlayDelay = 5000; // 5 secunde
+    
+    function showSlide(index) {
+        // Normalizează index
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        currentSlide = index;
+        
+        // Update slides
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active', 'prev');
+            if (i === currentSlide) {
+                slide.classList.add('active');
+            } else if (i < currentSlide) {
+                slide.classList.add('prev');
+            }
+        });
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+    
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+    
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
     });
-  });
-// ==================== acel ecran mic cand dai click pe video====================
-  function closeVideo() {
-    overlay.classList.remove("active");
-    frame.src = "";
-    document.body.style.overflow = "";
-  }
-
-  closeBtn.addEventListener("click", closeVideo);
-
-  overlay.addEventListener("click", function(e) {
-    if (e.target === overlay) {
-      closeVideo();
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+    });
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            resetAutoPlay();
+        });
+    });
+    
+    // Auto play
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
     }
-  });
-
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+    
+    // Pausă la hover
+    const carousel = document.querySelector('.testimonial-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+    }
+    
+    // Start
+    showSlide(0);
+    startAutoPlay();
 });
-
-// ==================== tranzitie meniu====================
-
-
-// ===== EMAILJS CONFIG =====
-// ===== EMAILJS CONFIG =====
-const EMAILJS_PUBLIC_KEY = "Jyu4Yct8HwIZwfX60";
-const EMAILJS_SERVICE_ID = "service_0wraenh";     // din contul tău
-const EMAILJS_TEMPLATE_ID = "template_wjipozn";    // din contul tău
-
-document.addEventListener("DOMContentLoaded", () => {
-  // 1) EmailJS init
-  if (!window.emailjs) {
-    console.error("EmailJS nu e încărcat. Verifică script-ul CDN.");
-    return;
-  }
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-  // 2) Form submit (ID-urile tale din HTML)
-  const form = document.getElementById("reviewForm");
-  if (!form) {
-    console.error("Nu găsesc #reviewForm în HTML.");
-    return;
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const nameEl = document.getElementById("review-name");
-    const emailEl = document.getElementById("review-email");
-    const msgEl = document.getElementById("review-message");
-
-    const name = (nameEl?.value || "").trim();
-    const reply_to = (emailEl?.value || "").trim();
-    const message = (msgEl?.value || "").trim();
-
-    if (!name || !message) {
-      alert("Completează numele și recenzia 🙂");
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
-
-    try {
-      // IMPORTANT: aceste chei trebuie să existe în template-ul EmailJS:
-      // {{from_name}}, {{reply_to}}, {{message}}
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name: name,
-        reply_to: reply_to,
-        message: message
-      });
-
-      form.reset();
-      if (typeof closeReviewModal === "function") closeReviewModal();
-      alert("Trimis ✅ Mulțumesc!");
-    } catch (err) {
-      console.error("EmailJS error:", err);
-      alert("Eroare la trimitere. Verifică service/template și variabilele din template.");
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  });
-});
-console.log("emailjs =", window.emailjs);
-console.log("SERVICE:", EMAILJS_SERVICE_ID, "TEMPLATE:", EMAILJS_TEMPLATE_ID, "PUBLIC:", EMAILJS_PUBLIC_KEY);
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const burger = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  if (!burger || !mobileMenu) return;
-
-  const openMenu = () => {
-    mobileMenu.classList.add("open");
-    burger.setAttribute("aria-expanded", "true");
-  };
-
-  const closeMenu = () => {
-    mobileMenu.classList.remove("open");
-    burger.setAttribute("aria-expanded", "false");
-  };
-
-  const toggleMenu = () => {
-    const isOpen = mobileMenu.classList.contains("open");
-    isOpen ? closeMenu() : openMenu();
-  };
-
-  burger.addEventListener("click", (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  });
-
-  // click pe link => închide
-  mobileMenu.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (link) closeMenu();
-  });
-
-  // click în afara meniului => închide
-  document.addEventListener("click", (e) => {
-    if (!mobileMenu.classList.contains("open")) return;
-    if (mobileMenu.contains(e.target) || burger.contains(e.target)) return;
-    closeMenu();
-  });
-
-  // ESC => închide
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
-  });
-
-  // dacă treci pe desktop, închide
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) closeMenu();
-  });
-});
-
-
-
-
-
-
-
-// ===== EMAILJS CONFIG =====
-// ===== EMAILJS CONFIG =====
-const EMAILJS_PUBLIC_KEY1 = "Jyu4Yct8HwIZwfX60";
-const EMAILJS_SERVICE_ID1 = "service_0wraenh";     // din contul tău
-const EMAILJS_TEMPLATE_ID1 = "template_wjipozn";    // din contul tău
-
-document.addEventListener("DOMContentLoaded", () => {
-  // 1) EmailJS init
-  if (!window.emailjs) {
-    console.error("EmailJS nu e încărcat. Verifică script-ul CDN.");
-    return;
-  }
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-  // 2) Form submit (ID-urile tale din HTML)
-  const form = document.getElementById("reviewForm");
-  if (!form) {
-    console.error("Nu găsesc #reviewForm în HTML.");
-    return;
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const nameEl = document.getElementById("review-name");
-    const emailEl = document.getElementById("review-email");
-    const msgEl = document.getElementById("review-message");
-
-    const name = (nameEl?.value || "").trim();
-    const reply_to = (emailEl?.value || "").trim();
-    const message = (msgEl?.value || "").trim();
-
-    if (!name || !message) {
-      alert("Completează numele și recenzia 🙂");
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
-
-    try {
-      // IMPORTANT: aceste chei trebuie să existe în template-ul EmailJS:
-      // {{from_name}}, {{reply_to}}, {{message}}
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name: name,
-        reply_to: reply_to,
-        message: message
-      });
-
-      form.reset();
-      if (typeof closeReviewModal === "function") closeReviewModal();
-      alert("Trimis ✅ Mulțumesc!");
-    } catch (err) {
-      console.error("EmailJS error:", err);
-      alert("Eroare la trimitere. Verifică service/template și variabilele din template.");
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  });
-});
-console.log("emailjs =", window.emailjs);
-console.log("SERVICE:", EMAILJS_SERVICE_ID, "TEMPLATE:", EMAILJS_TEMPLATE_ID, "PUBLIC:", EMAILJS_PUBLIC_KEY);
-
-
-
-
-
-
-
