@@ -26,46 +26,154 @@
     --transition-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+/* ============================================
+   MOBILE FIRST - FIXURI DE BAZĂ
+   ============================================ */
+
+/* Reset zoom pe mobil */
 html {
-    scroll-behavior: smooth;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
+/* Viewport fix */
+@viewport {
+    width: device-width;
+    zoom: 1.0;
+}
+
+/* Toate elementele să respecte containerul */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Imagini responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Text care să nu depășească ecranul */
 body {
-    font-family: var(--font-body);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
     overflow-x: hidden;
-    cursor: none;
-    line-height: 1.6;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
-/* === GRAIN OVERLAY === */
-.grain-overlay {
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: transparent url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
-    pointer-events: none;
-    z-index: 9999;
-    animation: grain 8s steps(10) infinite;
-    opacity: 0.4;
+/* ============================================
+   MOBILE SPECIFIC - MAX 768px
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Fonturi mai mici pe mobil */
+    html {
+        font-size: 14px; /* Redus de la 16px */
+    }
+    
+    /* Container mai mic padding */
+    .container-full {
+        padding: 0 1.5rem !important; /* Redus de la 4rem */
+    }
+    
+    /* Titluri mult mai mici */
+    .section-title {
+        font-size: 1.8rem !important; /* Nu clamp, valoare fixă mică */
+        line-height: 1.2;
+    }
+    
+    h1, h2, h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Text body mai mic */
+    p {
+        font-size: 0.95rem !important;
+        line-height: 1.6;
+    }
+    
+    /* Navbar fix */
+    .navbar {
+        padding: 0.8rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 1rem !important;
+    }
+    
+    .logo {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Hero mai mic */
+    .hero, .about-hero {
+        height: 50vh !important;
+        min-height: 300px;
+    }
+    
+    .hero-title, .about-hero-content h1 {
+        font-size: 2rem !important;
+        letter-spacing: 0;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.75rem !important;
+        letter-spacing: 2px;
+    }
+    
+    /* Grid 1 coloană */
+    .about-grid,
+    .values-grid,
+    .equipment-grid,
+    .portfolio-grid-preview,
+    .portfolio-full-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Stats pe verticală */
+    .stats-row {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Carduri mai compacte */
+    .value-card,
+    .equipment-item,
+    .portfolio-card {
+        padding: 1.5rem !important;
+    }
+    
+    /* Filtrare scroll orizontal */
+    .filter-bar {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        justify-content: flex-start !important;
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+    
+    .filter-btn {
+        white-space: nowrap;
+        font-size: 0.7rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    /* Footer mai compact */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 2rem !important;
+    }
 }
 
-@keyframes grain {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(-5%, -10%); }
-    20% { transform: translate(-15%, 5%); }
-    30% { transform: translate(7%, -25%); }
-    40% { transform: translate(-5%, 25%); }
-    50% { transform: translate(-15%, 10%); }
-    60% { transform: translate(15%, 0%); }
-    70% { transform: translate(0%, 15%); }
-    80% { transform: translate(3%, 35%); }
-    90% { transform: translate(-10%, 10%); }
-}
 
 /* === CUSTOM CURSOR === */
 .cursor-dot,
@@ -491,9 +599,30 @@ body {
 }
 
 .stats-row {
-    display: flex;
-    gap: 4rem;
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;           /* <-- ADAUGĂ ASTA */
+  justify-content: center;   /* <-- ADAUGĂ ASTA */
 }
+
+/* ADAUGĂ ASTA LA SFÂRȘITUL FIȘIERULUI CSS */
+@media (max-width: 768px) {
+  .stats-row {
+    gap: 2rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    min-width: 60px;
+  }
+  
+  .stat-item {
+    flex: 1;
+    min-width: 100px;
+    max-width: 120px;
+  }
+}
+
 
 .stat-item {
     display: flex;
@@ -501,12 +630,16 @@ body {
 }
 
 .stat-number {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--gold);
-    line-height: 1;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;  /* <-- ADAUGĂ ASTA */
+  min-width: 80px;                      /* <-- ADAUGĂ ASTA */
+  text-align: center;                   /* <-- ADAUGĂ ASTA */
 }
+
 
 .stat-label {
     font-family: var(--font-body);
