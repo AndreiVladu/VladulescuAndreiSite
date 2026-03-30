@@ -1,459 +1,561 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrei Vladulescu | Videograf Nuntă</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="principal.css">
+  <script src="https://cdn.jsdelivr.net/npm/@bunny.net/video-player@latest/dist/player.js"></script>
 
-    <title>Andrei Vladulescu | Videograf Nuntă</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Grain Overlay -->
-    <div class="grain-overlay"></div>
-    
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-    <div class="nav-container">
-        <!-- STÂNGA -->
-        <a href="index.html" class="logo">Andrei Vladulescu</a>
-        
-        <!-- MIJLOC (centrat automat cu CSS) -->
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active">Home</a></li>
-            <li><a href="portofoliu.html" class="nav-link">Portofoliu</a></li>
-            <li><a href="despre.html" class="nav-link">Despre</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-        
-        <!-- DREAPTA -->
-        <a href="contact.html" class="nav-cta magnetic-btn">Solicită Ofertă</a>
-        
-        <!-- Mobile hamburger -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</nav>
-
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80" alt="Moment cinematic de nuntă">
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Povești de Dragoste</h1>
-            <p class="hero-subtitle">Filmate cu Suflet</p>
-            <a href="portofoliu.html" class="hero-cta magnetic-btn">Vezi Lucrările</a>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- Povestea Mea Section -->
-   <section class="story-section">
-    <div class="container-full">
-        <div class="story-grid">
-            <!-- Stânga - Imagine -->
-            <div class="story-image">
-                <div class="image-frame">
-                    <img src="https://poze.b-cdn.net/IMG_3505%202.JPG" alt="Andrei Vladulescu">
-                    <div class="frame-decoration"></div>
-                </div>
-            </div>
-            
-            <!-- Dreapta - Conținut -->
-            <div class="story-content">
-                <span class="section-label">Despre Mine</span>
-                <h2 class="section-title">Povestea Mea</h2>
-                
-                <div class="story-text">
-                    <p>Sunt Vlădulescu Andrei, videograf de eveniment, iar pentru mine fiecare poveste merită mai mult decât simple cadre frumoase.</p>
-                  
-                    <p>Cu peste 3 ani de experiență și 100+ evenimente filmate, am învățat că un clip reușit nu înseamnă doar imagini spectaculoase, ci emoție reală, naturalețe și atenție la fiecare detaliu  </p>
-                      <p>Portofoliul meu nu este doar o colecție de videoclipuri.
-Este cea mai sinceră dovadă a modului în care aleg să lucrez: cu implicare, cu răbdare și cu respect pentru momentele care contează cu adevărat.  </p>
-                </div>
-                
-                <!-- Stats animate -->
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="150">0</span>
-                        <span class="stat-label">Nunți Filmate</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="5">0</span>
-                        <span class="stat-label">Ani Experiență</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="100">0</span>
-                        <span class="stat-label">Satisfacție %</span>
-                    </div>
-                </div>
-                
-                <!-- Carduri extra -->
-                <div class="story-extras">
-                    <div class="story-card">
-                        <h4>Echipament</h4>
-                        <p>Camere 4K, stabilizatoare profesionale, drone pentru cadre aeriene.</p>
-                    </div>
-                    <div class="story-card">
-                        <h4>Filozofie</h4>
-                        <p>Discreție totală, emoții autentice, povești spuse cinematic.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- Portofoliu Preview Section -->
-    <section class="portfolio-preview">
-        <div class="container-full">
-            <div class="section-header">
-                <div>
-                    <span class="section-label">Lucrări</span>
-                    <h2 class="section-title">Portofoliu</h2>
-                </div>
-                <a href="portofoliu.html" class="outline-button magnetic-btn">Vezi Tot</a>
-            </div>
-            <div class="portfolio-grid-preview">
-               <div class="portfolio-card" data-video="https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true">
-                    <div class="card-image">
-                        <img src="https://poze.b-cdn.net/nunta.png" alt="Ana & Mihai">
-                        <div class="card-overlay">
-                            <div class="play-btn"></div>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h3>Andrada & Vio</h3>
-                        <p>Nuntă • 2025</p>
-                    </div>
-                </div>
-
-
-
-                <div class="portfolio-card" data-video="https://iframe.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149">
-
-                    <div class="card-image">
-                        <img src="https://poze.b-cdn.net/vlcsnap-2026-02-02-22h44m09s478.png" alt="Botez Eric">
-                        <div class="card-overlay">
-                            <div class="play-btn"></div>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h3>Alexandra & Adi</h3>
-                        <p>Nuntă • 2025</p>
-                    </div>
-                </div>
-                <div class="portfolio-card" data-video="https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7?autoplay=true&loop=false&muted=false&preload=true&responsive=true">
-                    <div class="card-image">
-                        <img src="https://poze.b-cdn.net/ws2.png" alt="Ioana & Andrei">
-                        <div class="card-overlay">
-                            <div class="play-btn"></div>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h3>WorkShop CisionARy 5.0</h3>
-                        <p>Workshop • 2024</p>
-                    </div>
-                </div>
-                <div class="portfolio-card" data-video="https://player.mediadelivery.net/embed/595311/8e5a1cbf-5c67-45c3-8f9a-29da094461b9?autoplay=true&loop=false&muted=false&preload=true&responsive=true">
-                    <div class="card-image">
-                        <img src="https://poze.b-cdn.net/vlcsnap-2026-02-16-18h54m07s594.png" alt="Maria & Alexandru">
-                        <div class="card-overlay">
-                            <div class="play-btn"></div>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h3>Natalia Maria</h3>
-                        <p>Botez • 2024</p>
-                    </div>
-                </div>
-                <div class="portfolio-card" data-video="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=false&preload=true&responsive=true">
-                    <div class="card-image">
-                        <img src="https://poze.b-cdn.net/necta.png" alt="Botez Sofia">
-                        <div class="card-overlay">
-                            <div class="play-btn"></div>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h3>Necta</h3>
-                        <p>Majorat • 2025</p>
-                    </div>
-                </div>
-                <div class="portfolio-card" data-video="https://player.mediadelivery.net/embed/595311/cfeb331c-112f-4bdc-a620-fda6c18c3388?autoplay=true&loop=false&muted=false&preload=true&responsive=true">
-                    <div class="card-image">
-                        <img src="https://poze.b-cdn.net/vlcsnap-2026-03-30-14h31m33s613.png" alt="Elena & Victor">
-                        <div class="card-overlay">
-                            <div class="play-btn"></div>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h3>Lorena</h3>
-                        <p>Majorat • 2026</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cum Lucrez Section -->
-    <section class="process-section">
-        <div class="container-full">
-            <div class="section-header-center">
-                <span class="section-label">Proces</span>
-                <h2 class="section-title">Cum Lucrez</h2>
-                <p class="section-subtitle">Procesul meu este gândit pentru ca tu să te bucuri de ziua nunții, fără griji.</p>
-            </div>
-            <div class="process-grid">
-                <div class="process-card">
-                    <div class="process-number">01</div>
-                    <div class="process-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3>Consultare</h3>
-                    <p>Ne întâlnim pentru a ne cunoaște și pentru a discuta viziunea voastră. Vreau să înțeleg povestea voastră de dragoste.</p>
-                </div>
-                <div class="process-arrow">→</div>
-                <div class="process-card">
-                    <div class="process-number">02</div>
-                    <div class="process-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                    </div>
-                    <h3>Planificare</h3>
-                    <p>Stabilim împreună timeline-ul zilei și locațiile importante. Pregătesc echipamentul și planul de filmare.</p>
-                </div>
-                <div class="process-arrow">→</div>
-                <div class="process-card">
-                    <div class="process-number">03</div>
-                    <div class="process-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                        </svg>
-                    </div>
-                    <h3>Filmare</h3>
-                    <p>Ziua cea mare! Sunt prezent discret, capturând fiecare moment important, fără să întrerup fluxul natural.</p>
-                </div>
-                <div class="process-arrow">→</div>
-                <div class="process-card">
-                    <div class="process-number">04</div>
-                    <div class="process-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                        </svg>
-                    </div>
-                    <h3>Editare</h3>
-                    <p>Selectez cele mai bune cadre, adaug muzică și efecte pentru a crea un film care să vă emoționeze de fiecare dată.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Section -->
-    <section class="testimonial-section">
-    <div class="container-full">
-        <div class="testimonial-header">
-            <span class="section-label light">Testimoniale</span>
-            <h2 class="section-title light">Cuvinte de la <span class="gold-text">Miri Fericiți</span></h2>
-        </div>
-        
-        <div class="testimonial-carousel">
-            <!-- Quote icon -->
-            <div class="quote-icon">"</div>
-            
-            <!-- Container slides -->
-            <div class="carousel-container">
-                <!-- Slide 1 -->
-                <div class="testimonial-slide active" data-index="0">
-                    <div class="stars">★★★★★</div>
-                    <blockquote>
-                        "Top Top , chiar noa 100 , suntem cu nasii si l-au vazut si ei , Genial , bravo tie , ai evoluat super"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <strong>Alexandra & Adi</strong>
-                        <span>Nuntă la Riviera, Targu-Jiu </span>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="testimonial-slide" data-index="1">
-                    <div class="stars">★★★★★</div>
-                    <blockquote>
-                        "Top Top , chiar noa 100 , suntem cu nasii si l-au vazut si ei , Genial , bravo tie , ai evoluat super"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <strong>Alexandra & Adi</strong>
-                        <span>Nuntă la Riviera, Targu-Jiu</span>
-                    </div>
-                </div>
-                
-            
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo">Andrei Vladulescu</a>
       
+      <div class="nav-links desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="portofoliu.html" class="nav-link">Portofoliu</a>
+        <a href="despre.html" class="nav-link">Despre</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      
+      <a href="contact.html" class="btn btn-primary desktop-nav">Solicită Ofertă</a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-</section>
-
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container-full">
-            <div class="faq-grid">
-                <div class="faq-header">
-                    <span class="section-label">Informații</span>
-                    <h2 class="section-title">Întrebări Frecvente</h2>
-                    <p>Răspunsuri la cele mai comune întrebări. Dacă ai altele, nu ezita să mă contactezi.</p>
-                    <a href="contact.html" class="cta-button magnetic-btn">Contactează-mă →</a>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Cât durează filmarea în ziua nunții?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Prezența mea este flexibilă în funcție de pachetul ales. De obicei, acopăr întreaga zi, de la pregătiri până la petrecere.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Cât timp durează editarea?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Termenul standard este de 4-6 săptămâni, în funcție de sezon. Filmările din perioada de vârf pot necesita mai mult timp.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Ce includ pachetele tale?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Toate pachetele includ filmare HD/4K, editare profesională, color grading și livrare digitală. Discutăm detaliile la consultare.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Cum se face plata?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Se achită un avans la semnarea contractului, iar diferența cu 2 săptămâni înainte de eveniment. Accept transfer bancar sau cash.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Lucrezi și în alte orașe?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Da, călătoresc oriunde în România și în străinătate. Costurile de transport și cazare sunt discutate separat.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Ce se întâmplă dacă anulați?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Avansul este nerambursabil, dar putem reprograma data dacă avem disponibilitate, fără costuri suplimentare.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Folosești muzică licențiată?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Da, folosesc exclusiv muzică licențiată sau compoziții originale pentru a evita problemele de copyright pe platformele sociale.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Pot solicita modificări după ce primesc filmul?</span>
-                            <div class="faq-icon"></div>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Ofer o rundă de modificări minore incluse în preț. Modificări majore sau schimbări de structură pot implica costuri suplimentare.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container-full">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
-                    <p>Videograf de Nuntă</p>
-                </div>
-                <div class="footer-nav">
-                    <h4>Navigare</h4>
-                    <a href="index.html">Home</a>
-                    <a href="portofoliu.html">Portofoliu</a>
-                    <a href="despre.html">Despre</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="footer-social">
-                    <h4>Social</h4>
-                    <a href="https://www.instagram.com/andrei.vladulescu/" target="_blank">Instagram</a>
-                    <a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank">Facebook</a>
-                    <a href="https://www.youtube.com/@vladulescuandrei4367" target="_blank">YouTube</a>
-                    <a href="https://www.fotografi-cameramani.ro/admin_membru/video/videoclipuri" target="_blank" class="fotografi-link">Fotografi Cameramani →</a>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a>
-                    <a href="tel:+40762309113">+40 762 309 113</a>
-                    <p><Targu-Jiu></Targu-Jiu>Targu-JIu , România</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Andrei Vladulescu. Toate drepturile rezervate.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Video Modal -->
-    <div class="video-modal">
-        <div class="modal-backdrop"></div>
-        <div class="modal-container">
-            <button class="modal-close">&times;</button>
-            <div class="modal-content">
-                <iframe id="video-iframe" src="" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="portofoliu.html" class="mobile-link">Portofoliu</a>
+      <a href="despre.html" class="mobile-link">Despre</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="#contact.html" class="btn btn-primary mobile-cta">Solicită Ofertă</a>
     </div>
+  </nav>
 
-    <script src="index.js"></script>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80" alt="Wedding background">
+      <div class="hero-overlay"></div>
+      <div class="hero-gradient"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1 class="hero-title">Povești de Dragoste</h1>
+      <p class="hero-subtitle">Filmate cu Suflet</p>
+      <a href="portofoliu.html" class="btn btn-primary hero-cta">Vezi Lucrările</a>
+    </div>
+    
+    <div class="scroll-indicator">
+      <span class="scroll-text">Scroll</span>
+      <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about section-light">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Image -->
+        <div class="about-image-wrapper">
+          <div class="about-image">
+            <img src="https://poze.b-cdn.net/IMG_3505%202.JPG">
+          </div>
+          <div class="image-frame"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="about-content">
+          <span class="section-label">Despre Mine</span>
+          <h2 class="section-title">Povestea Mea</h2>
+          
+          <div class="about-text">
+            <p>Sunt Vlădulescu Andrei, videograf de eveniment, iar pentru mine fiecare poveste merită mai mult decât simple cadre frumoase.</p>
+            <p>Cu peste 3 ani de experiență și 100+ evenimente filmate, am învățat că un clip reușit nu înseamnă doar imagini spectaculoase, ci emoție reală, naturalețe și atenție la fiecare detaliu.</p>
+            <p>Portofoliul meu nu este doar o colecție de videoclipuri. Este cea mai sinceră dovadă a modului în care aleg să lucrez: cu implicare, cu răbdare și cu respect pentru momentele care contează cu adevărat.</p>
+          </div>
+          
+          <!-- Stats -->
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number" data-target="150" data-suffix="+">0+</span>
+              <span class="stat-label">Nunți Filmate</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="5" data-suffix="+">0+</span>
+              <span class="stat-label">Ani Experiență</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="100" data-suffix="%">0%</span>
+              <span class="stat-label">Satisfacție</span>
+            </div>
+          </div>
+          
+          <!-- Info Cards -->
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="info-card-header">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <h3 class="info-card-title">Echipament</h3>
+              </div>
+              <p class="info-card-text">Camere 4K, stabilizatoare profesionale, drone pentru cadre aeriene.</p>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-card-header">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <h3 class="info-card-title">Filozofie</h3>
+              </div>
+              <p class="info-card-text">Discreție totală, emoții autentice, povești spuse cinematic.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio section-cream">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Portofoliu</h2>
+        <a href="portofoliu.html" class="link-arrow">
+          Vezi Tot
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="portfolio-grid">
+        <!-- Portfolio Item 1 -->
+        <div class="portfolio-item" 
+     data-video="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+     data-poster="https://thumbnail_url.jpg">
+  <div class="portfolio-thumb">
+    <img src="https://poze.b-cdn.net/vlcsnap-2026-02-02-22h44m09s478.png" alt="Titlu">
+    <!-- restul -->
+  </div>
+</div>
+
+        
+        <!-- Portfolio Item 2 -->
+           <div class="portfolio-item" 
+     data-video="https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+     data-poster="https://thumbnail_url.jpg">
+  <div class="portfolio-thumb">
+    <img src="https://poze.b-cdn.net/nunta.png" alt="Titlu">
+    <!-- restul -->
+  </div>
+</div>
+        
+        <!-- Portfolio Item 3 -->
+         <div class="portfolio-item" 
+     data-video="https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+     data-poster="https://thumbnail_url.jpg">
+  <div class="portfolio-thumb">
+    <img src="https://poze.b-cdn.net/ws2.png" alt="Titlu">
+    <!-- restul -->
+  </div>
+</div>
+        
+        <!-- Portfolio Item 4 -->
+          <div class="portfolio-item" 
+     data-video="https://player.mediadelivery.net/embed/595311/8e5a1cbf-5c67-45c3-8f9a-29da094461b9?autoplay=true&loop=false&muted=false&preload=true&responsive=trueD"
+     data-poster="https://thumbnail_url.jpg">
+  <div class="portfolio-thumb">
+    <img src="https://poze.b-cdn.net/vlcsnap-2026-02-16-18h54m07s594.png" alt="Titlu">
+    <!-- restul -->
+  </div>
+</div>
+        
+        <!-- Portfolio Item 5 -->
+         <div class="portfolio-item" 
+     data-video="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+     data-poster="https://thumbnail_url.jpg">
+  <div class="portfolio-thumb">
+    <img src="https://poze.b-cdn.net/necta.png" alt="Titlu">
+    <!-- restul -->
+  </div>
+</div>
+        
+        <!-- Portfolio Item 6 -->
+         <div class="portfolio-item" 
+     data-video="https://player.mediadelivery.net/embed/595311/cfeb331c-112f-4bdc-a620-fda6c18c3388?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+     data-poster="https://thumbnail_url.jpg">
+  <div class="portfolio-thumb">
+    <img src="https://poze.b-cdn.net/vlcsnap-2026-03-30-14h31m33s613.png" alt="Titlu">
+    <!-- restul -->
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process section-light">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Proces</span>
+        <h2 class="section-title">Cum Lucrez</h2>
+        <p class="section-subtitle">Procesul meu este gândit pentru ca tu să te bucuri de ziua nunții, fără griji.</p>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-card">
+          <span class="process-number">01</span>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <h3 class="process-title">Consultare</h3>
+          <p class="process-text">Ne întâlnim pentru a ne cunoaște și pentru a discuta viziunea voastră. Vreau să înțeleg povestea voastră de dragoste.</p>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-number">02</span>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h3 class="process-title">Planificare</h3>
+          <p class="process-text">Stabilim împreună timeline-ul zilei și locațiile importante. Pregătesc echipamentul și planul de filmare.</p>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-number">03</span>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <h3 class="process-title">Filmare</h3>
+          <p class="process-text">Ziua cea mare! Sunt prezent discret, capturând fiecare moment important, fără să întrerup fluxul natural.</p>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-number">04</span>
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </div>
+          <h3 class="process-title">Editare</h3>
+          <p class="process-text">Selectez cele mai bune cadre, adaug muzică și efecte pentru a crea un film care să vă emoționeze de fiecare dată.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials section-dark">
+    <div class="container">
+      <div class="testimonials-content">
+        <span class="section-label">Testimoniale</span>
+        <h2 class="section-title">Cuvinte de la <span class="text-gold">Miri Fericiți</span></h2>
+        
+        <div class="quote-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+          </svg>
+        </div>
+        
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        
+        <div class="testimonial-slider" id="testimonialSlider">
+          <div class="testimonial-slide active">
+            <blockquote class="testimonial-quote">
+              "Top Top, chiar noi 100, suntem cu nasii si l-am vazut si ei. Genial, bravo tie, ai evoluat super!"
+            </blockquote>
+            <div class="testimonial-author">
+              <p class="author-name">Alexandra & Adi</p>
+              <p class="author-location">Riviera , Târgu-Jiu</p>
+            </div>
+          </div>
+          
+          <div class="testimonial-slide">
+            <blockquote class="testimonial-quote">
+              "Not Found"
+            </blockquote>
+            <div class="testimonial-author">
+              <p class="author-name">Not Found</p>
+              <p class="author-location">not Found</p>
+            </div>
+          </div>
+          
+          <div class="testimonial-slide">
+            <blockquote class="testimonial-quote">
+              Not Found
+            </blockquote>
+            <div class="testimonial-author">
+              <p class="author-name">Not Found</p>
+              <p class="author-location">Not Found</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-nav">
+          <button class="nav-btn prev" id="prevTestimonial" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          
+          <div class="testimonial-dots" id="testimonialDots">
+            <button class="dot active" data-index="0" aria-label="Testimonial 1"></button>
+            <button class="dot" data-index="1" aria-label="Testimonial 2"></button>
+            <button class="dot" data-index="2" aria-label="Testimonial 3"></button>
+          </div>
+          
+          <button class="nav-btn next" id="nextTestimonial" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="contact" class="faq section-light">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-intro">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title">Întrebări Frecvente</h2>
+          <p class="faq-text">Răspunsuri la cele mai comune întrebări. Dacă ai altele, nu ezita să mă contactezi.</p>
+          <a href="contact.html" class="btn btn-primary">
+            Contactează-mă
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="faq-accordion" id="faqAccordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Cât durează filmarea în ziua nunții?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Sunt prezent de la pregătiri până la finalul petrecerii, de obicei între 10-14 ore. Fiecare pachet include un număr specific de ore, dar sunt flexibil în funcție de programul evenimentului.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Cât timp durează editarea?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Timpul de editare variază între 4-8 săptămâni în funcție de sezon și complexitatea proiectului. În perioada de vârf (iunie-septembrie) poate dura puțin mai mult.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Ce includ pachetele tale?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Toate pachetele includ filmarea, editarea profesională, color grading, și livrarea filmului final în format digital. Pachetele premium includ și materiale extra precum trailer, film cu părinții, etc.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Cum se face plata?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Se achită un avans de 30% la semnarea contractului pentru a bloca data, iar restul de 70% cu cel puțin o săptămână înainte de eveniment. Accept transfer bancar sau Revolut.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Lucrați și în alte orașe?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Da, lucrez în toată România și chiar în străinătate. Pentru evenimentele în afara Târgu-Jiului se adaugă costuri de transport și cazare.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Ce se întâmplă dacă plouă?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Am echipament profesional rezistent la apă și experiență în filmarea în diverse condiții meteorologice. Uneori, ploaia poate adăuga un farmec special filmului!</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Folosiți muzică licențiată?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Da, folosesc exclusiv muzică licențiată sau din biblioteci de muzică fără drepturi de autor pentru a evita problemele cu copyright-ul pe platformele de social media.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Pot solicita modificări după ce primesc filmul?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Da, includ în pachet o rundă de modificări gratuite pentru ajustări minore. Modificări majore sau adăugarea de materiale noi pot necesita costuri suplimentare.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer section-dark">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
+          <p class="footer-tagline">Videograf de Nuntă</p>
+        </div>
+        
+        <div class="footer-nav">
+          <h4 class="footer-title">Navigare</h4>
+          <ul class="footer-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="portofoliu.html">Portofoliu</a></li>
+            <li><a href="despre.html">Despre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-social">
+          <h4 class="footer-title">Social</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/andrei.vladulescu/">Instagram</a></li>
+            <li><a href="https://www.facebook.com/vladulescu.andrei.52">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@vladulescuandrei4367">YouTube</a></li>
+            <li><a href="fotografi-cameramani.ro/vladulescu-andrei-cristian_8630?fbclid=IwVERDUAQAADxleHRuA2FlbQIxMABzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEe9ryW9LZ_SQdRoAF34dZreIXJLTDPAKMjuH-nHPSNXda8iKTWiVGtcZeWCIQ_aem_hT99_1Rtjbs3PpT1F4QcQQ" class="text-gold">Fotografi-Cameramani →</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:vladulescuandrei6@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                vladulescuandrei6@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+40762309113">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                +40 762 309 113
+              </a>
+            </li>
+            <li>
+              <span class="footer-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Târgu-Jiu, România
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> Andrei Vladulescu. Toate drepturile rezervate.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div class="video-modal" id="videoModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="modal-video">
+        <iframe id="videoIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
