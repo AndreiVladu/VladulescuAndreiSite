@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Andrei Vladulescu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Andrei Vladulescu</a>
+      
+      <div class="nav-links desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="portofoliu.html" class="nav-link">Portofoliu</a>
+        <a href="despre.html" class="nav-link">Despre</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+      
+      <a href="contact.html" class="btn btn-primary desktop-nav">Solicită Ofertă</a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="portofoliu.html" class="mobile-link">Portofoliu</a>
+      <a href="despre.html" class="mobile-link">Despre</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="contact.html" class="btn btn-primary mobile-cta">Solicită Ofertă</a>
+    </div>
+  </nav>
+
+  <!-- Contact Header -->
+  <header class="contact-header">
+    <p class="contact-label scroll-hidden">Contact</p>
+    <h1 class="contact-title scroll-hidden">Hai să Vorbim</h1>
+    <p class="contact-subtitle scroll-hidden">Completează formularul de mai jos și îți voi răspunde în cel mai scurt timp posibil.</p>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper scroll-hidden">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nume">Nume *</label>
+                <input type="text" id="nume" name="nume" placeholder="Numele tău" required>
+              </div>
+              <div class="form-group">
+                <label for="prenume">Prenume *</label>
+                <input type="text" id="prenume" name="prenume" placeholder="Prenumele tău" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="email@exemplu.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="+40 7xx xxx xxx">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="data">Data Nunții</label>
+                <input type="date" id="data" name="data">
+              </div>
+              <div class="form-group">
+                <label for="locatie">Locație</label>
+                <input type="text" id="locatie" name="locatie" placeholder="Oraș / Localitate">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="mesaj">Mesaj *</label>
+              <textarea id="mesaj" name="mesaj" rows="5" placeholder="Spune-mi mai multe despre evenimentul vostru..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <span class="btn-text">Trimite Mesajul</span>
+              <span class="btn-loading" style="display: none;">Se trimite...</span>
+            </button>
+            
+            <p class="form-message" id="formMessage"></p>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info scroll-hidden">
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <h3 class="info-title">Email</h3>
+            <a href="mailto:vladulescuandrei1@gmail.com" class="info-text">vladulescuandrei1@gmail.com</a>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <h3 class="info-title">Telefon</h3>
+            <a href="tel:+40762309113" class="info-text">+40 762 309 113</a>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3 class="info-title">Locație</h3>
+            <p class="info-text">Târgu-Jiu, România</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <h3 class="info-title">Program</h3>
+            <p class="info-text">Luni - Vineri: 9:00 - 18:00</p>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
+        <p class="footer-tagline">Videograf de Nuntă</p>
+      </div>
+      
+      <div class="footer-nav">
+        <h4 class="footer-title">Navigare</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portofoliu</a></li>
+          <li><a href="despre.html">Despre</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h4 class="footer-title">Social</h4>
+        <ul class="footer-links">
+         <li><a href="https://www.instagram.com/andrei.vladulescu/">Instagram</a></li>
+            <li><a href="https://www.facebook.com/vladulescu.andrei.52">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@vladulescuandrei4367">YouTube</a></li>
+          <li><a href="https://www.fotografi-cameramani.ro/admin_membru/video/videoclipuri" style="color: var(--gold);">Fotografi-Cameramani →</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h4 class="footer-title">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a></li>
+          <li><a href="tel:+40762309113">+40 762 309 113</a></li>
+          <li><a href="#">Târgu-Jiu, România</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2024 Andrei Vladulescu. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>
