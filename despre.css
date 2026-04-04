@@ -60,7 +60,7 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 1rem 2rem;
-  background-color: transparent;
+  background-color: var(--bg-light);
 }
 
 .navbar.scrolled {
@@ -80,12 +80,8 @@ img { max-width: 100%; height: auto; display: block; }
 .logo {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  color: var(--text-light);
-  transition: color 0.3s ease;
-}
-
-.navbar.scrolled .logo {
   color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .nav-links {
@@ -99,13 +95,9 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   transition: color 0.2s ease;
   position: relative;
-}
-
-.navbar.scrolled .nav-link {
-  color: var(--text-secondary);
 }
 
 .nav-link:hover,
@@ -157,12 +149,8 @@ img { max-width: 100%; height: auto; display: block; }
   display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--text-light);
-  transition: all 0.3s ease;
-}
-
-.navbar.scrolled .mobile-menu-btn span {
   background-color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .mobile-menu {
@@ -198,6 +186,7 @@ img { max-width: 100%; height: auto; display: block; }
   .desktop-nav { display: none; }
   .mobile-menu-btn { display: flex; }
 }
+
 
 /* ========================================
    HERO ABOUT
