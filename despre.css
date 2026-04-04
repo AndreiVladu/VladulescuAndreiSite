@@ -289,7 +289,11 @@ img { max-width: 100%; height: auto; display: block; }
   height: 100%;
   object-fit: cover;
 }
-
+.story-section {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center; /* Centrează tot textul */
+}
 .story-label {
   font-size: 0.6875rem;
   font-weight: 500;

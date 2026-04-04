@@ -472,11 +472,18 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .about-text p {
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.8;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 300;
 }
-
+#about {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 60px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sau un font similar cu Montserrat sau Raleway */
+}
 /* Stats - FIXED WIDTH */
 .stats-row {
   display: flex;
