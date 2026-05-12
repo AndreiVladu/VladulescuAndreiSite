@@ -421,7 +421,7 @@ img { max-width: 100%; height: auto; display: block; }
 .footer-logo {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  color: var(--text-light);
+  color: white;
   display: block;
   margin-bottom: 0.5rem;
 }
