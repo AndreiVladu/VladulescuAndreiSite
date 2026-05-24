@@ -1,101 +1,99 @@
-// ========================================
-// MOBILE MENU
-// ========================================
+const body = document.body;
+const navbar = document.getElementById('navbar');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-cta');
-
-mobileMenuBtn.addEventListener('click', function() {
-  this.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
-  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-
-mobileLinks.forEach(link => {
-  link.addEventListener('click', function() {
-    mobileMenuBtn.classList.remove('active');
-    mobileMenu.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-});
+const faqItems = document.querySelectorAll('.faq-item');
+const scrollElements = document.querySelectorAll('.scroll-hidden');
 
 // ========================================
-// NAVBAR SCROLL
+// NAVBAR SCROLL EFFECT
 // ========================================
-const navbar = document.getElementById('navbar');
-
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 50) {
+function handleNavbarScroll() {
+  if (window.scrollY > 40) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
-}, { passive: true });
+}
+
+window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+handleNavbarScroll();
 
 // ========================================
-// SCROLL REVEAL ANIMATIONS - EXACT CA LA DESPRE
+// MOBILE MENU
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
-  
-  const scrollElements = document.querySelectorAll('.scroll-hidden');
-  
-  const elementInView = (el, percentageScroll = 100) => {
-    const elementTop = el.getBoundingClientRect().top;
-    return (
-      elementTop <= 
-      ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
-    );
-  };
-  
-  const displayScrollElement = (element) => {
-    element.classList.add('scroll-visible');
-  };
-  
-  const handleScrollAnimation = () => {
-    scrollElements.forEach((el) => {
-      if (elementInView(el, 85)) {
-        displayScrollElement(el);
-      }
-    });
-  };
-  
-  handleScrollAnimation();
-  
-  window.addEventListener('scroll', handleScrollAnimation, { passive: true });
-  
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  mobileMenuBtn.classList.remove('active');
+  mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  body.classList.remove('menu-open');
+}
+
+mobileMenuBtn.addEventListener('click', () => {
+  const isActive = mobileMenu.classList.toggle('active');
+
+  mobileMenuBtn.classList.toggle('active');
+  mobileMenuBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+  body.classList.toggle('menu-open', isActive);
 });
 
+mobileLinks.forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
 
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    closeMobileMenu();
+  }
+});
 
+// ========================================
+// FAQ ACCORDION
+// ========================================
+faqItems.forEach(item => {
+  const button = item.querySelector('.faq-question');
 
+  button.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
 
-// FAQ Accordion
-const faqQuestions = document.querySelectorAll('.faq-question');
-
-faqQuestions.forEach(question => {
-  question.addEventListener('click', () => {
-    const faqItem = question.parentElement;
-    const isActive = faqItem.classList.contains('active');
-    
-    // Close all other items
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.classList.remove('active');
+    faqItems.forEach(faq => {
+      faq.classList.remove('active');
+      faq.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
     });
-    
-    // Toggle current item
+
     if (!isActive) {
-      faqItem.classList.add('active');
+      item.classList.add('active');
+      button.setAttribute('aria-expanded', 'true');
     }
   });
 });
 
-// Open first item by default
-document.addEventListener('DOMContentLoaded', () => {
-  const firstFaqItem = document.querySelector('.faq-item');
-  if (firstFaqItem) {
-    firstFaqItem.classList.add('active');
-  }
+// ========================================
+// SCROLL REVEAL
+// ========================================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('scroll-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
 });
 
+scrollElements.forEach(element => {
+  revealObserver.observe(element);
+});
 
-
+// ========================================
+// ESCAPE CLOSE MENU
+// ========================================
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeMobileMenu();
+  }
+});
