@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Andrei Vladulescu</title>
+  <title>Întrebări frecvente | Andrei Vlădulescu</title>
+  <meta name="description" content="Răspunsuri clare despre serviciile de videografie pentru nunți, rezervări, plată, filmare, livrare și modificări.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="fq.css">
-  
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav id="navbar" class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">Andrei Vladulescu</a>
-      
+
       <div class="nav-links desktop-nav">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portofoliu.html" class="nav-link">Portofoliu</a>
@@ -26,16 +23,16 @@
         <a href="contact.html" class="nav-link">Contact</a>
         <a href="fq.html" class="nav-link active">F&Q</a>
       </div>
-      
+
       <a href="contact.html" class="btn btn-primary desktop-nav">Solicită Ofertă</a>
-      
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Deschide meniul" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-    
+
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html" class="mobile-link">Home</a>
       <a href="portofoliu.html" class="mobile-link">Portofoliu</a>
@@ -46,246 +43,178 @@
     </div>
   </nav>
 
-   <!-- FAQ Header -->
-  <header class="faq-header">
-    <div class="header-content">
-      <p class="faq-label">Informații</p>
-      <h1 class="faq-title">Întrebări Frecvente</h1>
-   
-    </div>
-  </header>
+  <main>
+    <header class="faq-hero">
+      <div class="faq-hero-inner scroll-hidden">
+        <p class="faq-label">Informații clare</p>
+        <h1>Întrebări frecvente</h1>
+        <p class="faq-intro">Am adunat aici cele mai importante detalii despre filmare, rezervare, plată și livrare, ca să știi exact la ce să te aștepți înainte să lucrăm împreună.</p>
+      </div>
+    </header>
 
-  <!-- FAQ Content -->
-  <section class="faq-section">
-    <div class="faq-container">
-      
-      <!-- Categorie 1: Despre Servicii -->
-      <div class="faq-category">
-        <h2 class="category-title">Despre Servicii</h2>
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Ce servicii oferi?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Ofer servicii complete de videografie pentru nunți, boteze, ședințe foto/video și evenimente speciale. Pachetele includ filmare, editare profesională și livrarea materialului final în format digital.</p>
-          </div>
-        </div>
+    <section class="faq-section" aria-label="Întrebări frecvente">
+      <div class="faq-layout">
+        <aside class="faq-side-card scroll-hidden">
+          <p class="side-label">Pe scurt</p>
+          <h2>Totul este gândit să fie simplu pentru voi.</h2>
+          <p>În ziua evenimentului mă ocup de partea video discret și organizat, iar voi vă concentrați pe ziua voastră.</p>
+          <a href="contact.html" class="btn btn-primary">Cere ofertă</a>
+        </aside>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Cât durează filmarea unei nunți?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Rezultatul final al unei nunți durează între 2–3 ore, îmi doresc să creez amintiri care să fie relevante și peste ani.</p>
-          </div>
-        </div>
+        <div class="faq-list scroll-hidden">
+          <section class="faq-category">
+            <div class="category-heading">
+              <span>01</span>
+              <h2>Servicii și filmare</h2>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Ce primesc la final?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>La final primești un teaser de 2–3 minute și filmul nunții de 2–3 ore.</p>
-          </div>
+            <article class="faq-item active">
+              <button class="faq-question" type="button" aria-expanded="true">
+                <span>Ce servicii oferi?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>Ofer videografie pentru nunți, botezuri, majorate, cununii și proiecte de promovare. În funcție de eveniment, pachetul poate include filmare, editare, colorizare, sunet captat separat și livrare digitală.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Cât timp ești prezent la o nuntă?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>De regulă sunt prezent de la pregătiri până la momentele importante ale petrecerii. Programul exact îl stabilim înainte, în funcție de timeline-ul vostru.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Filmezi discret sau regizezi mult?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>Îmi place să filmez discret, fără să întrerup momentele naturale. Intervin doar când este nevoie de ghidaj pentru cadre mai bune, mai ales la ședința foto-video.</p>
+              </div>
+            </article>
+          </section>
+
+          <section class="faq-category">
+            <div class="category-heading">
+              <span>02</span>
+              <h2>Rezervare și plată</h2>
+            </div>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Cât de devreme trebuie să rezerv?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>Ideal este să rezervi cu 6-12 luni înainte, mai ales pentru lunile aglomerate. Dacă evenimentul este mai aproape, poți întreba oricum, uneori există date libere.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Cum se face plata?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>Data se rezervă printr-un avans stabilit la confirmarea colaborării. Restul sumei se achită conform înțelegerii stabilite în ofertă sau contract.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Lucrezi și în alte orașe?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>Da, lucrez și în afara orașului Târgu-Jiu. Pentru distanțe mai mari pot apărea costuri de transport sau cazare, discutate transparent înainte.</p>
+              </div>
+            </article>
+          </section>
+
+          <section class="faq-category">
+            <div class="category-heading">
+              <span>03</span>
+              <h2>Livrare și modificări</h2>
+            </div>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Ce primesc la final?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>În funcție de pachet, poți primi highlight scurt, film lung al evenimentului și materiale suplimentare stabilite înainte. Livrarea se face digital, într-un format ușor de accesat.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Cât durează editarea?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>În general, livrarea durează câteva săptămâni, în funcție de sezon, lungimea materialului și complexitatea editării. Termenul concret îl stabilim înainte.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Pot cere modificări după livrare?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-answer">
+                <p>Da, pot face modificări rezonabile dacă este nevoie. Cel mai important este ca filmul final să fie o amintire bună, nu doar un fișier bifat și uitat într-un folder.</p>
+              </div>
+            </article>
+          </section>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Categorie 2: Prețuri și Plată -->
-      <div class="faq-category">
-        <h2 class="category-title">Prețuri și Plată</h2>
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Cât costă un film de nuntă?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Prețul variază în funcție de pachetul ales și complexitatea evenimentului. Pentru o ofertă personalizată, te invit să completezi formularul de contact sau să mă suni direct. Fiecare cuplu primește o ofertă adaptată nevoilor sale.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Cum se face plata?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Se plătește un avans de 20% la semnarea contractului pentru a rezerva data, iar restul de 80% se achită cu cel puțin o săptămână înainte de eveniment. Accept plata prin transfer bancar sau cash.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Există costuri suplimentare pentru deplasare?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Pentru evenimentele din Târgu Jiu și împrejurimi (până la 50 km), nu există costuri suplimentare. Pentru distanțe mai mari, se adaugă un cost de deplasare care va fi discutat și inclus în ofertă.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Categorie 3: Rezervări -->
-      <div class="faq-category">
-        <h2 class="category-title">Rezervări</h2>
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Cât de devreme trebuie să rezerv?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Recomand rezervarea cu cel puțin 6-12 luni înainte, mai ales pentru lunile de vârf (mai-septembrie). Uneori am disponibilități și pentru termene mai scurte, așa că nu ezita să întrebi.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Ce se întâmplă dacă anulez?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Dacă anulezi cu mai mult de 3 luni înainte, avansul este returnat complet. Pentru anulări în termen de 1-3 luni, avansul poate fi folosit pentru reprogramare. Detaliile complete sunt specificate în contract.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Pot schimba data după ce am rezervat?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Da, pot fi făcute modificări dacă am disponibilitate pentru noua dată. Te rog să mă anunți cât mai curând posibil pentru a găsi cea mai bună soluție.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Categorie 4: Livrare -->
-      <div class="faq-category">
-        <h2 class="category-title">Livrare</h2>
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Cât durează până primesc filmul?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Timpul de livrare este de obicei între 4 și 8 săptămâni, în funcție de sezon și complexitatea proiectului. Vei primi un highlight scurt mai repede, în 2-3 săptămâni.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Pot cere modificări după ce primesc filmul?</span>
-            <span class="faq-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>Da, pot face modificări în cazul în care e nevoie.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
         <p class="footer-tagline">Videograf de Nuntă</p>
       </div>
-      
+
       <div class="footer-nav">
         <h4 class="footer-title">Navigare</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="portfolio.html">Portofoliu</a></li>
+          <li><a href="portofoliu.html">Portofoliu</a></li>
           <li><a href="despre.html">Despre</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="fq.html">F&Q</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-social">
         <h4 class="footer-title">Social</h4>
         <ul class="footer-links">
-         <li><a href="https://www.instagram.com/andrei.vladulescu/">Instagram</a></li>
-            <li><a href="https://www.facebook.com/vladulescu.andrei.52">Facebook</a></li>
-            <li><a href="https://www.youtube.com/watch?v=ew_LOu42hwY&list=PLWAviscOy8TmkK8KoADyk1QSXtL0xjzTn">YouTube</a></li>
-          <li><a href="https://www.fotografi-cameramani.ro/admin_membru/video/videoclipuri" style="color: var(--gold);">Fotografi-Cameramani →</a></li>
+          <li><a href="https://www.instagram.com/andrei.vladulescu/">Instagram</a></li>
+          <li><a href="https://www.facebook.com/vladulescu.andrei.52">Facebook</a></li>
+          <li><a href="https://www.youtube.com/watch?v=ew_LOu42hwY&list=PLWAviscOy8TmkK8KoADyk1QSXtL0xjzTn">YouTube</a></li>
+          <li><a href="https://www.fotografi-cameramani.ro/admin_membru/video/videoclipuri" class="text-gold">Fotografi-Cameramani →</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-contact">
         <h4 class="footer-title">Contact</h4>
         <ul class="footer-links">
           <li><a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a></li>
           <li><a href="tel:+40762309113">+40 762 309 113</a></li>
-          <li><a href="#">Târgu-Jiu, România</a></li>
+          <li><span>Târgu-Jiu, România</span></li>
         </ul>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <p>© 2026 Andrei Vladulescu. Toate drepturile rezervate.</p>
     </div>
