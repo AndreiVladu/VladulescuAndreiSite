@@ -3,163 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Descoperă pachetele video pentru nuntă, botez și majorat oferite de Andrei Vlădulescu. Solicită o ofertă personalizată.">
-  <title>Prețuri și pachete video | Andrei Vlădulescu</title>
-  <link rel="canonical" href="https://andreivladulescu.ro/preturi.html">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <title>Andrei Vladulescu | Prețuri Videograf Nuntă & Botez</title>
+  <meta name="description" content="Prețuri videograf nuntă și botez — pachete Standard și Premium. Filme cu suflet, povești de dragoste.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portofoliu.css">
   <link rel="stylesheet" href="preturi.css">
-  <script src="preturi.js" defer></script>
 </head>
 <body>
-<nav id="navbar" class="navbar">
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">Andrei Vladulescu</a>
-      
+
       <div class="nav-links desktop-nav">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portofoliu.html" class="nav-link">Portofoliu</a>
         <a href="despre.html" class="nav-link">Despre</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="fq.html" class="nav-link">F&Q</a>
-        <a href="preturi.html" class="nav-link active" aria-current="page">Prețuri</a>
+        <a href="faq.html" class="nav-link">F&amp;Q</a>
       </div>
-      
+
       <a href="contact.html" class="btn btn-primary desktop-nav">Solicită Ofertă</a>
-      
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Meniu">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-    
+
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html" class="mobile-link">Home</a>
       <a href="portofoliu.html" class="mobile-link">Portofoliu</a>
       <a href="despre.html" class="mobile-link">Despre</a>
       <a href="contact.html" class="mobile-link">Contact</a>
-      <a href="fq.html" class="mobile-link">F&Q</a>
-      <a href="preturi.html" class="mobile-link" aria-current="page">Prețuri</a>
+      <a href="faq.html" class="mobile-link">F&amp;Q</a>
       <a href="contact.html" class="btn btn-primary mobile-cta">Solicită Ofertă</a>
     </div>
   </nav>
-<main>
-<header class="pricing-hero">
-  <p class="portfolio-label">INVESTIȚIA ÎN AMINTIRI</p>
-  <h1 class="portfolio-title">Pachete & Prețuri</h1>
-  <p class="pricing-intro">Fiecare eveniment spune o poveste unică. Alege categoria și descoperă pachetele video pregătite pentru momentele tale speciale.</p>
-  <div class="pricing-filters" aria-label="Categorii de evenimente" role="group">
-    <button type="button" class="pricing-filter active" data-filter="nunta" aria-pressed="true">Nunți</button>
-    <button type="button" class="pricing-filter" data-filter="botez" aria-pressed="false">Botezuri</button>
-    <button type="button" class="pricing-filter" data-filter="majorat" aria-pressed="false">Majorate</button>
-  </div>
-</header>
-<section class="pricing-content" aria-label="Pachete video">
-  <div class="pricing-heading"><span class="section-eyebrow">OFERTA VIDEO</span><h2 id="category-title">Nuntă</h2><p>Două variante. Aceeași atenție la fiecare detaliu.</p></div>
-  <div class="price-grid" id="priceGrid"><article class="price-card" data-category="nunta">
-  <div class="card-top"><span class="card-kicker">01 / Esențial</span><h3>Pachet Essential</h3><p class="card-subtitle">Amintirile importante, surprinse cu grijă.</p></div>
-  <div class="card-price"><!-- EDITEAZĂ PREȚUL AICI: înlocuiește „Preț la cerere” cu suma dorită, de exemplu „2.800 lei”. --><span class="amount">Preț la cerere</span><span class="price-note">Oferta finală se stabilește în funcție de eveniment.</span></div>
-  <ul class="feature-list"><li>Filmarea momentelor principale ale nunții</li>
-<li>Montaj video cinematic</li>
-<li>Filmul evenimentului</li>
-<li>Sunet înregistrat separat pentru momentele importante</li></ul>
-  <a class="btn btn-primary price-action" href="contact.html?eveniment=nunta&pachet=1">Solicită ofertă <span aria-hidden="true">↗</span></a>
-</article>
-<article class="price-card highlighted" data-category="nunta">
-  <div class="card-top"><span class="card-kicker">02 / Complet</span><h3>Pachet Signature</h3><p class="card-subtitle">Mai multă poveste, mai multe emoții.</p></div>
-  <div class="card-price"><!-- EDITEAZĂ PREȚUL AICI: înlocuiește „Preț la cerere” cu suma dorită, de exemplu „2.800 lei”. --><span class="amount">Preț la cerere</span><span class="price-note">Oferta finală se stabilește în funcție de eveniment.</span></div>
-  <ul class="feature-list"><li>Tot ce include pachetul Essential</li>
-<li>Highlight cinematic dedicat</li>
-<li>Cadre aeriene cu drona, unde zborul este permis</li>
-<li>Ședință video cu mirii</li></ul>
-  <a class="btn btn-primary price-action" href="contact.html?eveniment=nunta&pachet=2">Solicită ofertă <span aria-hidden="true">↗</span></a>
-</article>
-<article class="price-card" data-category="botez">
-  <div class="card-top"><span class="card-kicker">01 / Esențial</span><h3>Pachet Essential</h3><p class="card-subtitle">Primele amintiri, păstrate pentru totdeauna.</p></div>
-  <div class="card-price"><!-- EDITEAZĂ PREȚUL AICI: înlocuiește „Preț la cerere” cu suma dorită, de exemplu „2.800 lei”. --><span class="amount">Preț la cerere</span><span class="price-note">Oferta finală se stabilește în funcție de eveniment.</span></div>
-  <ul class="feature-list"><li>Filmarea ceremoniei religioase</li>
-<li>Cadre cu familia și invitații</li>
-<li>Montaj video al evenimentului</li>
-<li>Sunetul momentelor importante</li></ul>
-  <a class="btn btn-primary price-action" href="contact.html?eveniment=botez&pachet=1">Solicită ofertă <span aria-hidden="true">↗</span></a>
-</article>
-<article class="price-card highlighted" data-category="botez">
-  <div class="card-top"><span class="card-kicker">02 / Complet</span><h3>Pachet Signature</h3><p class="card-subtitle">O poveste completă despre începuturi.</p></div>
-  <div class="card-price"><!-- EDITEAZĂ PREȚUL AICI: înlocuiește „Preț la cerere” cu suma dorită, de exemplu „2.800 lei”. --><span class="amount">Preț la cerere</span><span class="price-note">Oferta finală se stabilește în funcție de eveniment.</span></div>
-  <ul class="feature-list"><li>Tot ce include pachetul Essential</li>
-<li>Cadre din pregătiri, în funcție de program</li>
-<li>Highlight cinematic</li>
-<li>Cadre aeriene cu drona, unde este permis</li></ul>
-  <a class="btn btn-primary price-action" href="contact.html?eveniment=botez&pachet=2">Solicită ofertă <span aria-hidden="true">↗</span></a>
-</article>
-<article class="price-card" data-category="majorat">
-  <div class="card-top"><span class="card-kicker">01 / Esențial</span><h3>Pachet Essential</h3><p class="card-subtitle">Energia unei seri de neuitat.</p></div>
-  <div class="card-price"><!-- EDITEAZĂ PREȚUL AICI: înlocuiește „Preț la cerere” cu suma dorită, de exemplu „2.800 lei”. --><span class="amount">Preț la cerere</span><span class="price-note">Oferta finală se stabilește în funcție de eveniment.</span></div>
-  <ul class="feature-list"><li>Filmarea momentelor principale</li>
-<li>Cadre cu sărbătoritul și invitații</li>
-<li>Filmul evenimentului</li>
-<li>Montaj dinamic</li></ul>
-  <a class="btn btn-primary price-action" href="contact.html?eveniment=majorat&pachet=1">Solicită ofertă <span aria-hidden="true">↗</span></a>
-</article>
-<article class="price-card highlighted" data-category="majorat">
-  <div class="card-top"><span class="card-kicker">02 / Complet</span><h3>Pachet Signature</h3><p class="card-subtitle">Atmosfera serii, transformată în film.</p></div>
-  <div class="card-price"><!-- EDITEAZĂ PREȚUL AICI: înlocuiește „Preț la cerere” cu suma dorită, de exemplu „2.800 lei”. --><span class="amount">Preț la cerere</span><span class="price-note">Oferta finală se stabilește în funcție de eveniment.</span></div>
-  <ul class="feature-list"><li>Tot ce include pachetul Essential</li>
-<li>Highlight cinematic pentru social media</li>
-<li>Mini-ședință video cu sărbătoritul</li>
-<li>Montaj cu accent pe atmosferă și detalii</li></ul>
-  <a class="btn btn-primary price-action" href="contact.html?eveniment=majorat&pachet=2">Solicită ofertă <span aria-hidden="true">↗</span></a>
-</article></div>
-  <p class="pricing-disclaimer">Pachetele sunt orientative și pot fi adaptate. Disponibilitatea, durata filmării, deplasarea și livrarea se stabilesc la confirmarea ofertei.</p>
-</section>
-<section class="pricing-cta"><p class="section-eyebrow">URMĂTORUL PAS</p><h2>Hai să povestim despre evenimentul tău.</h2><p>Spune-mi data, locația și ce ți-ai dori să păstrăm în film.</p><a href="contact.html" class="btn btn-primary">Hai să vorbim ↗</a></section>
-</main>
-<footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
-        <p class="footer-tagline">Videograf de Nuntă</p>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Videograf de Nuntă · Târgu-Jiu</p>
+      <h1 class="hero-title">Prețuri &amp; Pachete</h1>
+      <p class="hero-text">Fiecare poveste merită să fie spusă. Alege pachetul care ți se potrivește și hai să filmăm împreună amintirile tale.</p>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Pachete</p>
+        <h2 class="section-title">Alege experiența ta</h2>
+        <p class="section-text">Prețuri transparente, fără costuri ascunse. Toate pachetele includ consultanță înainte de eveniment.</p>
       </div>
-      
-      <div class="footer-nav">
-        <h4 class="footer-title">Navigare</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="portofoliu.html">Portofoliu</a></li>
-          <li><a href="despre.html">Despre</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="preturi.html">Prețuri</a></li>
-        </ul>
+
+      <div class="event-tabs">
+        <button class="tab-btn active" data-tab="nunta">Nuntă</button>
+        <button class="tab-btn" data-tab="botez">Botez</button>
       </div>
-      
-      <div class="footer-social">
-        <h4 class="footer-title">Social</h4>
-       <ul class="footer-links">
-            <li><a href="https://www.instagram.com/andrei.vladulescu/">Instagram</a></li>
-            <li><a href="https://www.facebook.com/vladulescu.andrei.52">Facebook</a></li>
-            <li><a href="https://www.youtube.com/watch?v=ew_LOu42hwY&list=PLWAviscOy8TmkK8KoADyk1QSXtL0xjzTn">YouTube</a></li>
-            <li><a href="https://www.fotografi-cameramani.ro/admin_membru/video/videoclipuri" style="color: var(--gold);" class="text-gold">Fotografi-Cameramani →</a></li>
-          </ul>
+
+      <!-- NUNTĂ -->
+      <div class="tab-content active" id="nunta">
+        <div class="cards-grid">
+
+          <article class="price-card">
+            <div class="card-badge">Standard</div>
+            <h3 class="card-event">Nuntă</h3>
+            <p class="card-tagline">Esentialul unei povești de dragoste</p>
+            <div class="card-price">
+              <span class="price-amount" data-eur="500" data-ron="2500">500</span>
+              <span class="price-currency">€</span>
+            </div>
+            <p class="price-note">durata filmului final: 120-150 min</p>
+            <ul class="card-features">
+              <li>Filmare eveniment: 10 ore</li>
+              <li>Film artistic nunta + petrecere</li>
+              <li>Highlight / Trailer (2–3 min)</li>
+              <li>1 cameră + operator</li>
+              <li>Predare online (cloud)</li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline card-btn">Solicită Ofertă</a>
+          </article>
+
+          <article class="price-card featured">
+            <div class="card-badge premium">Recomandat</div>
+            <h3 class="card-event">Nuntă</h3>
+            <p class="card-tagline">Povestea completă, fără compromisuri</p>
+            <div class="card-price">
+              <span class="price-amount" data-eur="600" data-ron="3000">3000</span>
+              <span class="price-currency">€</span>
+            </div>
+            <p class="price-note">durata filmului final: 150+ min</p>
+            <ul class="card-features">
+              <li>Pe tot parcursul evenimentului </li>
+              <li>Sesiune video After Wedding</li>
+              <li>Highlight cinematic (3-4 min)</li>
+              <li>Film nuntă complet, film petrecere</li>
+              <li> dronă</li>
+              <li>Microfon wireless pentru discursuri</li>
+              <li>Montaj color-graded 4K</li>
+              <li>Predare online + stick USB </li>
+              <li>Sunet profesional din mixer </li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary card-btn">Solicită Ofertă</a>
+          </article>
+
+        </div>
       </div>
-      
-      <div class="footer-contact">
-        <h4 class="footer-title">Contact</h4>
-        <ul class="footer-links">
-          <li><a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a></li>
-          <li><a href="tel:+40762309113">+40 762 309 113</a></li>
-          <li><a href="#">Târgu-Jiu, România</a></li>
-        </ul>
+
+      <!-- BOTEZ -->
+      <div class="tab-content" id="botez">
+        <div class="cards-grid">
+
+          <article class="price-card">
+            <div class="card-badge">Standard</div>
+            <h3 class="card-event">Botez</h3>
+            <p class="card-tagline">Primul capitol din povestea lui</p>
+            <div class="card-price">
+              <span class="price-amount" data-eur="230" data-ron="1220">230</span>
+              <span class="price-currency">€</span>
+            </div>
+            <p class="price-note">durata filmului final: 60-120 min</p>
+            <ul class="card-features">
+              <li>Film biserică + petrecere</li>
+              <li>Highlight / Trailer (2–3 min)</li>
+              <li>1 cameră + operator</li>
+              <li>Montaj profesional cu muzică licențiată</li>
+              <li>Predare online (cloud)</li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline card-btn">Solicită Ofertă</a>
+          </article>
+
+          <article class="price-card featured">
+            <div class="card-badge premium">Recomandat</div>
+            <h3 class="card-event">Botez</h3>
+            <p class="card-tagline">O zi întreagă de emoții, imortalizată</p>
+            <div class="card-price">
+              <span class="price-amount" data-eur="300" data-ron="1500">300</span>
+              <span class="price-currency">€</span>
+            </div>
+            <p class="price-note">durata filmului final: 150+ min</p>
+            <ul class="card-features">
+              <li>Highlight cinematic (3–5 min)</li>
+              <li>Drona</li>
+              <li>Film petrecere complet</li>
+              <li>Montaj color-graded Full HD / 4K</li>
+               <li>Sunet profesional din mixer </li>
+              <li>Predare online + stick USB</li>
+               <li>Microfon wireless pentru discursuri</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary card-btn">Solicită Ofertă</a>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Currency toggle -->
+      <div class="currency-toggle">
+        <span>Afișează prețurile în:</span>
+        <button class="currency-btn active" data-currency="eur">EUR</button>
+        <button class="currency-btn" data-currency="ron">RON</button>
+      </div>
+
+      <div class="pricing-note">
+        <p>Ai un eveniment special sau vrei un pachet personalizat? <a href="contact.html">Contactează-mă</a> și construim împreună oferta perfectă pentru tine.</p>
       </div>
     </div>
-    
+  </section>
+
+  <!-- FAQ Teaser -->
+  <section class="faq-teaser">
+    <div class="container">
+      <h2 class="section-title">Întrebări frecvente</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Cât timp durează predarea materialelor?</summary>
+          <p>În general, între 3 și 6 săptămâni de la eveniment, în funcție de sezon. Highlight-ul poate fi gata în 7–10 zile.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Se plătește avans?</summary>
+          <p>Da, se achită un avans de 30% la rezervare, iar diferența în ziua evenimentului sau la predarea materialelor.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Călătorești și în alte orașe?</summary>
+          <p>Da, mă deplasez oriunde în România. Taxele de transport și cazare se calculează separat, transparent.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer section-dark">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
+          <p class="footer-tagline">Videograf de Nuntă</p>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-title">Navigare</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portofoliu.html">Portofoliu</a></li>
+            <li><a href="despre.html">Despre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h4 class="footer-title">Social</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/andrei.vladulescu/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://www.fotografi-cameramani.ro/" target="_blank" rel="noopener" style="color: var(--gold)" class="text-gold">Fotografi-Cameramani →</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a>
+            </li>
+            <li>
+              <a href="tel:+40762303113">+40 762 303 113</a>
+            </li>
+            <li>
+              <span class="footer-location">Târgu-Jiu, România</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
     <div class="footer-bottom">
-      <p>© 2026 Andrei Vladulescu. Toate drepturile rezervate.</p>
+      <p>© <span id="currentYear"></span> Andrei Vladulescu. Toate drepturile rezervate.</p>
     </div>
   </footer>
+
+  <script src="preturi.js"></script>
 </body>
 </html>

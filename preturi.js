@@ -1,33 +1,85 @@
-'use strict';
-const menuButton = document.getElementById('mobileMenuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
+// ============================================
+// ANDREI VLADULESCU — PREȚURI (JS)
+// ============================================
+
+// ----- Anul curent în footer -----
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// ----- Navbar: fundal la scroll -----
 const navbar = document.getElementById('navbar');
-menuButton?.addEventListener('click', () => {
-  const expanded = mobileMenu.classList.toggle('active');
-  menuButton.classList.toggle('active', expanded);
-  menuButton.setAttribute('aria-expanded', String(expanded));
-  document.body.style.overflow = expanded ? 'hidden' : '';
+const handleScroll = () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+};
+window.addEventListener('scroll', handleScroll);
+handleScroll();
+
+// ----- Meniu mobil -----
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
 });
-document.querySelectorAll('.mobile-link, .mobile-cta').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('active');
-  menuButton.classList.remove('active');
-  menuButton.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}));
-const updateNav = () => navbar?.classList.toggle('scrolled', window.scrollY > 50);
-window.addEventListener('scroll', updateNav, { passive: true });
-updateNav();
-const filters = Array.from(document.querySelectorAll('.pricing-filter'));
-const cards = Array.from(document.querySelectorAll('.price-card'));
-const names = { nunta: 'Nuntă', botez: 'Botez', majorat: 'Majorat' };
-function selectCategory(category) {
-  filters.forEach(button => {
-    const active = button.dataset.filter === category;
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-pressed', String(active));
+
+// Închide meniul la click pe un link
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenuBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
   });
-  cards.forEach(card => { card.hidden = card.dataset.category !== category; });
-  document.getElementById('category-title').textContent = names[category];
-}
-filters.forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.filter)));
-selectCategory('nunta');
+});
+
+// ----- Tab-uri Nuntă / Botez -----
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabButtons.forEach(b => b.classList.remove('active'));
+    tabContents.forEach(c => c.classList.remove('active'));
+
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ----- Comutator valută EUR / RON -----
+const currencyButtons = document.querySelectorAll('.currency-btn');
+const priceAmounts = document.querySelectorAll('.price-amount');
+
+currencyButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    currencyButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const currency = btn.dataset.currency; // 'eur' sau 'ron'
+
+    priceAmounts.forEach(amount => {
+      amount.style.opacity = '0';
+      setTimeout(() => {
+        amount.textContent = amount.dataset[currency];
+        amount.nextElementSibling.textContent = currency === 'eur' ? '€' : 'lei';
+        amount.style.opacity = '1';
+      }, 200);
+    });
+  });
+});
+
+// ----- Animație simplă la apariția cardurilor -----
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.price-card').forEach((card, i) => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(30px)';
+  card.style.transition = `opacity 0.6s ease ${i * 0.12}s, transform 0.6s ease ${i * 0.12}s`;
+  observer.observe(card);
+});
