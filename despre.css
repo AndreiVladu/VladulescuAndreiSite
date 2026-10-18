@@ -466,7 +466,10 @@ img { max-width: 100%; height: auto; display: block; }
   .hero-about { margin-top: 64px; }
 }
 
-/* Pe calculator, zona pozei și mai înaltă: se vede mai mult din poză */
+/* Pe calculator: se vede cât mai mult din poză (tot ecranul de sub
+   bara de sus, dar nu mai mult decât poza), iar capul rămâne la ~2 cm
+   (80px) sub marginea de sus. 9.65vw = poziția capului în poză. */
 @media (min-width: 769px) {
-  .hero-about { height: 78vh; }
+  .hero-about { height: min(calc(100vh - 74px), calc(65.35vw + 80px)); }
+  .hero-bg img { object-position: 50% calc(80px - 9.65vw); }
 }
