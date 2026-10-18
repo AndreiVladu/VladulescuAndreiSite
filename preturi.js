@@ -8,7 +8,7 @@ document.getElementById('currentYear').textContent = new Date().getFullYear();
 // ----- Navbar: fundal la scroll -----
 const navbar = document.getElementById('navbar');
 const handleScroll = () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
 };
 window.addEventListener('scroll', handleScroll);
 handleScroll();
@@ -18,15 +18,17 @@ const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
 mobileMenuBtn.addEventListener('click', () => {
-  mobileMenuBtn.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
+  mobileMenuBtn.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
 });
 
 // Închide meniul la click pe un link
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    mobileMenuBtn.classList.remove('open');
-    mobileMenu.classList.remove('open');
+    mobileMenuBtn.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
   });
 });
 

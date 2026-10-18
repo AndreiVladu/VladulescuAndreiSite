@@ -42,7 +42,6 @@ a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 img { max-width: 100%; height: auto; display: block; }
 
-
 /* ========================================
    CONTAINER - TEXT ONLY PADDING
    ======================================== */
@@ -86,7 +85,6 @@ img { max-width: 100%; height: auto; display: block; }
 /* ========================================
    TYPOGRAPHY
    ======================================== */
-.text-gold { color: var(--gold); }
 
 .section-label {
   display: block;
@@ -154,68 +152,6 @@ img { max-width: 100%; height: auto; display: block; }
 /* ========================================
    NAVIGATION
    ======================================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  padding: 1rem 2rem;
-  background-color: var(--bg-light);
-}
-
-.navbar.scrolled {
-  background-color: rgba(245, 245, 240, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-  padding: 0.75rem 2rem;
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 100%;
-}
-
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--text-primary);
-  transition: color 0.3s ease;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.nav-link {
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-  position: relative;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--gold);
-}
-
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: var(--gold);
-}
 
 .btn {
   display: inline-flex;
@@ -239,78 +175,9 @@ img { max-width: 100%; height: auto; display: block; }
   background-color: var(--gold-hover);
 }
 
-.mobile-menu-btn {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-  z-index: 1001;
-}
-
-.mobile-menu-btn span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--text-primary);
-  transition: all 0.3s ease;
-}
-
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 280px;
-  height: 100vh;
-  background-color: white;
-  padding: 5rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  transition: right 0.3s ease;
-  z-index: 999;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-menu.active { right: 0; }
-
-.mobile-link {
-  font-size: 1.125rem;
-  color: var(--text-primary);
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-}
-
-.mobile-link:hover { color: var(--gold); }
-
-@media (max-width: 768px) {
-  .navbar { padding: 1rem; }
-  .navbar.scrolled { padding: 0.75rem 1rem; }
-  .desktop-nav { display: none; }
-  .mobile-menu-btn { display: flex; }
-}
-
 /* ========================================
    MOBILE NAV FIX - BUTOANE LA MARGINE
    ======================================== */
-@media (max-width: 768px) {
-  .navbar { 
-    padding: 1rem 0; /* fără padding lateral */
-  }
-  
-  .nav-container {
-    padding: 0 1rem; /* padding doar pentru conținut */
-    width: 100%;
-  }
-  
-  .logo {
-    margin-left: 0; /* la marginea stângă */
-  }
-  
-  .mobile-menu-btn {
-    margin-right: 0; /* la marginea dreaptă */
-    padding-right: 0;
-  }
-}
 
 /* ========================================
    HERO SECTION - FULL WIDTH
@@ -778,7 +645,6 @@ img { max-width: 100%; height: auto; display: block; }
   }
 }
 
-
 /* ========================================
    PROCESS SECTION - FULL WIDTH
    ======================================== */
@@ -1114,122 +980,8 @@ img { max-width: 100%; height: auto; display: block; }
 /* ========================================
    FOOTER - FULL WIDTH
    ======================================== */
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  padding: 4rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-brand,
-.footer-nav,
-.footer-social,
-.footer-contact {
-  padding: 0 2rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-contact {
-  border-right: none;
-}
-
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--text-light);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.footer-tagline {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.footer-title {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
-
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 0.75rem;
-}
-
-.footer-links a,
-.footer-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: var(--gold);
-}
-
-.footer-links svg {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-}
-
-.footer-bottom {
-  padding: 2rem;
-  text-align: center;
-}
-
-.footer-bottom p {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.4);
-}
 
 /* Footer Responsive */
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 3rem 0;
-  }
-  
-  .footer-brand,
-  .footer-nav,
-  .footer-social,
-  .footer-contact {
-    padding: 1.5rem 2rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
-
-@media (max-width: 640px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-brand,
-  .footer-nav,
-  .footer-social,
-  .footer-contact {
-    padding: 1.5rem;
-    text-align: center;
-    border-right: none;
-  }
-  
-  .footer-links a,
-  .footer-location {
-    justify-content: center;
-  }
-}
 
 /* ========================================
    VIDEO MODAL

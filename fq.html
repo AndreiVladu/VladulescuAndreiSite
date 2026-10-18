@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Întrebări frecvente | Andrei Vlădulescu</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+  <link rel="apple-touch-icon" href="favicon-48x48.png">
   <meta name="description" content="Răspunsuri clare despre serviciile de videografie pentru nunți, rezervări, plată, filmare, livrare și modificări.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="fq.css">
+  <link rel="stylesheet" href="layout.css">
 </head>
 <body>
 
@@ -21,24 +25,25 @@
         <a href="portofoliu.html" class="nav-link">Portofoliu</a>
         <a href="despre.html" class="nav-link">Despre</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="fq.html" class="nav-link active">F&Q</a>
+        <a href="fq.html" class="nav-link active" aria-current="page">F&amp;Q</a>
       </div>
 
       <a href="contact.html" class="btn btn-primary desktop-nav">Solicită Ofertă</a>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Deschide meniul" aria-expanded="false">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Meniu" aria-controls="mobileMenu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
 
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html" class="mobile-link">Home</a>
       <a href="portofoliu.html" class="mobile-link">Portofoliu</a>
       <a href="despre.html" class="mobile-link">Despre</a>
       <a href="contact.html" class="mobile-link">Contact</a>
-      <a href="fq.html" class="mobile-link">F&Q</a>
+      <a href="fq.html" class="mobile-link active" aria-current="page">F&amp;Q</a>
       <a href="contact.html" class="btn btn-primary mobile-cta">Solicită Ofertă</a>
     </div>
   </nav>
@@ -178,45 +183,47 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
-        <p class="footer-tagline">Videograf de Nuntă</p>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Andrei Vladulescu</a>
+          <p class="footer-tagline">Videograf de Nuntă</p>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-title">Navigare</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portofoliu.html">Portofoliu</a></li>
+            <li><a href="despre.html">Despre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="fq.html">F&amp;Q</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h4 class="footer-title">Social</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/andrei.vladulescu/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@vladulescuandrei4367" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://www.fotografi-cameramani.ro/vladulescu-andrei-cristian_8630" target="_blank" rel="noopener" class="text-gold">Fotografi-Cameramani →</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:vladulescuandrei6@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> vladulescuandrei6@gmail.com</a></li>
+            <li><a href="tel:+40762309113"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +40 762 309 113</a></li>
+            <li><span class="footer-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Târgu-Jiu, România</span></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="footer-nav">
-        <h4 class="footer-title">Navigare</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="portofoliu.html">Portofoliu</a></li>
-          <li><a href="despre.html">Despre</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="fq.html">F&Q</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>© <span id="currentYear">2026</span> Andrei Vladulescu. Toate drepturile rezervate.</p>
       </div>
-
-      <div class="footer-social">
-        <h4 class="footer-title">Social</h4>
-        <ul class="footer-links">
-          <li><a href="https://www.instagram.com/andrei.vladulescu/">Instagram</a></li>
-          <li><a href="https://www.facebook.com/vladulescu.andrei.52">Facebook</a></li>
-          <li><a href="https://www.youtube.com/watch?v=ew_LOu42hwY&list=PLWAviscOy8TmkK8KoADyk1QSXtL0xjzTn">YouTube</a></li>
-          <li><a href="https://www.fotografi-cameramani.ro/admin_membru/video/videoclipuri" class="text-gold">Fotografi-Cameramani →</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-contact">
-        <h4 class="footer-title">Contact</h4>
-        <ul class="footer-links">
-          <li><a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a></li>
-          <li><a href="tel:+40762309113">+40 762 309 113</a></li>
-          <li><span>Târgu-Jiu, România</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Andrei Vladulescu. Toate drepturile rezervate.</p>
     </div>
   </footer>
 
