@@ -335,3 +335,26 @@ body.menu-open { overflow: hidden; }
   .footer-links a,
   .footer-location { justify-content: center; }
 }
+
+/* ---------- Bara de derulare (aceeași pe toate paginile) ---------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--bg-light);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-hover);
+}
