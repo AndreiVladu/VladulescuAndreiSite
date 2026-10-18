@@ -465,3 +465,8 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 768px) {
   .hero-about { margin-top: 64px; }
 }
+
+/* Pe calculator, zona pozei și mai înaltă: se vede mai mult din poză */
+@media (min-width: 769px) {
+  .hero-about { height: 78vh; }
+}
