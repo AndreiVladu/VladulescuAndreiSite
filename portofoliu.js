@@ -55,7 +55,7 @@ const modalClose = document.getElementById('modalClose');
 const modalOverlay = document.querySelector('.modal-overlay');
 
 function openModal(videoUrl) {
-  videoIframe.src = videoUrl + '?autoplay=true';
+  videoIframe.src = videoUrl;
   videoModal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
