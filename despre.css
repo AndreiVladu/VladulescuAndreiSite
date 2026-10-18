@@ -434,6 +434,7 @@ img { max-width: 100%; height: auto; display: block; }
   position: relative;
   height: 55vh; /* puțin mai înalt */
   min-height: 450px;
+  margin-top: 74px; /* începe sub bara de navigație fixă */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -444,16 +445,14 @@ img { max-width: 100%; height: auto; display: block; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Zoom out ușor */
-  transform: scale(1.15);
 }
 
 .hero-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Poziționează imaginea să se vadă capul */
-  object-position: center 15%;
+  /* Aliniată sus, ca să nu se taie capul */
+  object-position: center top;
 }
 
 .hero-overlay {
@@ -461,4 +460,8 @@ img { max-width: 100%; height: auto; display: block; }
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-about { margin-top: 64px; }
 }
