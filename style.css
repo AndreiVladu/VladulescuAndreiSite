@@ -35,6 +35,9 @@
 /* pe monitoare mari totul crește puțin, ca să nu pară mic */
 @media (min-width: 1800px) { html { font-size: 17px; } }
 @media (min-width: 2300px) { html { font-size: 19px; } }
+/* 3K / 4K fără scalare în Windows/macOS: totul crește proporțional, ca să umple ecranul */
+@media (min-width: 2900px) { html { zoom: 1.3; } }
+@media (min-width: 3600px) { html { zoom: 1.6; } }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 1rem); background: var(--bg); }
 body {
   font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg);
