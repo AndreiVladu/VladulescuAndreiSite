@@ -692,3 +692,10 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 .is-3d .tdots { display: flex; justify-content: center; gap: 8px; position: absolute; left: 0; right: 0; bottom: 0.4rem; }
 .tdots i { width: 7px; height: 7px; border-radius: 99px; background: rgba(255,255,255,0.25); transition: width 0.3s, background 0.3s; }
 .tdots i.on { width: 22px; background: var(--lime); }
+
+/* ---------- Bobina: fără ramă, doar cadrul cu luciu și reflexie ---------- */
+.reel-card { padding: 0; border: 0; background: #1a1a1a; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 30px 60px -25px rgba(0,0,0,0.95); }
+.reel-card img { border-radius: 0; }
+.reel-card::before { content: none; }
+.reel-card::after { inset: 0; border-radius: inherit; box-shadow: none; }
