@@ -246,9 +246,14 @@ const MAIL_CONFIG = {
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  // scriptul EmailJS poate fi blocat de ad-blockere
-  const emailjsLoaded = typeof emailjs !== 'undefined';
-  if (emailjsLoaded) emailjs.init(MAIL_CONFIG.USER_KEY);
+  // scriptul EmailJS se încarcă cu „defer” (după site.js) și poate fi blocat de ad-blockere,
+  // așa că îl verificăm abia când se trimite formularul
+  let emailjsReady = false;
+  const emailjsLoaded = () => {
+    if (typeof emailjs === 'undefined') return false;
+    if (!emailjsReady) { emailjs.init(MAIL_CONFIG.USER_KEY); emailjsReady = true; }
+    return true;
+  };
 
   const submitBtn = document.getElementById('submitBtn');
   const btnText = submitBtn.querySelector('.btn-text');
@@ -261,7 +266,7 @@ if (contactForm) {
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!emailjsLoaded) {
+    if (!emailjsLoaded()) {
       formMessage.textContent = 'Formularul nu poate fi trimis momentan. Scrie-mi direct la vladulescuandrei6@gmail.com sau sună la +40 762 309 113.';
       return;
     }
