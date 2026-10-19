@@ -593,3 +593,38 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
   .header-bar { background: rgba(18,18,18,0.92); }
 }
 .header-bar .brand, .header-bar .nav-link { text-shadow: 0 1px 10px rgba(0,0,0,0.45); }
+
+/* ---------- Bobina: cadre în ramă de sticlă lichidă ---------- */
+.reel { perspective: 1500px; }
+.reel-card {
+  padding: 7px; border-radius: 22px; overflow: visible;
+  background: linear-gradient(150deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 38%, rgba(255,255,255,0.03) 62%, rgba(255,255,255,0.16) 100%), rgba(30,30,30,0.35);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.45),
+    inset 0 -1px 0 rgba(255,255,255,0.12),
+    inset 0 0 18px rgba(255,255,255,0.08),
+    0 30px 60px -25px rgba(0,0,0,0.95);
+  /* reflexie pe „podea” (Chrome, Safari, Edge) */
+  -webkit-box-reflect: below 14px linear-gradient(transparent 62%, rgba(255,255,255,0.16));
+}
+.reel-card img { border-radius: 15px; }
+/* luciul de pe sticlă, peste poză */
+.reel-card::after {
+  inset: 7px; border-radius: 15px; pointer-events: none;
+  background:
+    linear-gradient(125deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 26%, transparent 42%),
+    linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.28));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+}
+/* marginea care prinde lumina */
+.reel-card::before {
+  content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(130deg, rgba(255,255,255,0.75), rgba(255,255,255,0.05) 30%, rgba(255,255,255,0) 60%, rgba(200,245,96,0.45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.reel { height: calc(var(--w) * 1.25 + 2.5rem); }
+@media (max-width: 640px) {
+  .reel { --w: clamp(170px, 50vw, 230px); perspective: 1100px; }
+}
