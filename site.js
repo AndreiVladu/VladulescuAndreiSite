@@ -24,6 +24,15 @@ if (nav) {
   onScroll();
 }
 
+// ----- Reflexia de pe bara de sus urmărește mouse-ul -----
+const headerBar = document.querySelector('.header-bar');
+if (headerBar && finePointer && !reduceMotion) {
+  headerBar.addEventListener('pointermove', (e) => {
+    const r = headerBar.getBoundingClientRect();
+    headerBar.style.setProperty('--mx', `${(((e.clientX - r.left) / r.width) * 100).toFixed(1)}%`);
+  });
+}
+
 // ----- Meniu mobil -----
 const menuBtn = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
