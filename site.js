@@ -113,12 +113,14 @@ if (modal) {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     modal.querySelector('.modal-close').focus();
   };
   const close = () => {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     setTimeout(() => { iframe.src = ''; }, 400);
     if (lastFocus) lastFocus.focus();
   };
@@ -154,26 +156,32 @@ if (filters.length) {
   });
 }
 
-// ----- Testimoniale -----
-const quotes = document.querySelectorAll('.quote');
-if (quotes.length) {
-  const dots = document.querySelectorAll('.dots button');
-  let current = 0;
-  let timer;
-  const show = (i) => {
-    current = (i + quotes.length) % quotes.length;
-    quotes.forEach((q, n) => q.classList.toggle('is-active', n === current));
-    dots.forEach((d, n) => {
-      d.removeAttribute('aria-current');
-      if (n === current) { void d.offsetWidth; d.setAttribute('aria-current', 'true'); }
-    });
-  };
-  const restart = () => { clearInterval(timer); timer = setInterval(() => show(current + 1), 6000); };
-  document.getElementById('prevQuote').addEventListener('click', () => { show(current - 1); restart(); });
-  document.getElementById('nextQuote').addEventListener('click', () => { show(current + 1); restart(); });
-  dots.forEach((d, n) => d.addEventListener('click', () => { show(n); restart(); }));
-  show(0);
-  restart();
+// ----- Mesajele de la miri: săgeata duce la următorul, apoi înapoi la primul -----
+const ttrack = document.getElementById('ttrack');
+const tnext = document.getElementById('tnext');
+if (ttrack && tnext) {
+  tnext.addEventListener('click', () => {
+    const card = ttrack.querySelector('.tcard');
+    const step = card.offsetWidth + parseFloat(getComputedStyle(ttrack).columnGap || 0);
+    const atEnd = ttrack.scrollLeft + ttrack.clientWidth >= ttrack.scrollWidth - 4;
+    ttrack.scrollTo({ left: atEnd ? 0 : ttrack.scrollLeft + step, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+}
+
+// ----- Bara de jos: apare după primul card și se ascunde lângă footer -----
+const dock = document.getElementById('dock');
+if (dock) {
+  const first = document.querySelector('main .card');
+  const foot = document.querySelector('.footer');
+  if (!('IntersectionObserver' in window) || !first || !foot) {
+    dock.classList.add('is-visible');
+  } else {
+    let pastFirst = false;
+    let nearFoot = false;
+    const update = () => dock.classList.toggle('is-visible', pastFirst && !nearFoot);
+    new IntersectionObserver(([e]) => { pastFirst = !e.isIntersecting && e.boundingClientRect.top < 0; update(); }).observe(first);
+    new IntersectionObserver(([e]) => { nearFoot = e.isIntersecting; update(); }).observe(foot);
+  }
 }
 
 // ----- Întrebări frecvente (acordeon) -----

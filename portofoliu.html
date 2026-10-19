@@ -6,8 +6,8 @@
   <title>Portofoliu | Andrei Vladulescu</title>
   <meta name="description" content="Portofoliu video: nunți, cununii, botezuri, majorate și clipuri de promovare filmate de Andrei Vlădulescu în Gorj și în toată România.">
   <link rel="canonical" href="https://andreivladulescu.ro/portofoliu.html">
-  <meta name="theme-color" content="#f3eee5">
-  <meta name="msapplication-TileColor" content="#f3eee5">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="msapplication-TileColor" content="#0b0b0b">
 
   <!-- Previzualizare când linkul e trimis pe WhatsApp, Facebook, Instagram etc. -->
   <meta property="og:type" content="website">
@@ -30,27 +30,32 @@
   <link rel="apple-touch-icon" href="favicon-48x48.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Sari la conținut</a>
 
   <!-- Navigație -->
-  <header class="nav on-paper" id="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">Andrei Vlădulescu<small>videograf</small></a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="portofoliu.html" class="nav-link" aria-current="page">Portofoliu</a>
-        <a href="despre.html" class="nav-link">Despre</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-        <a href="fq.html" class="nav-link">F&amp;Q</a>
-      </nav>
-      <a href="contact.html" class="btn">Solicită ofertă</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Deschide meniul" aria-controls="menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
+  <header class="header" id="nav">
+    <div class="wrap">
+      <div class="header-bar">
+        <a href="index.html" class="brand">
+          <img src="img/avatar.webp" width="160" height="160" alt="">
+          <div><strong>Andrei Vlădulescu</strong><span>Videograf de <b>nuntă</b></span></div>
+        </a>
+        <nav class="nav-links" aria-label="Principal">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="portofoliu.html" class="nav-link" aria-current="page">Portofoliu</a>
+          <a href="despre.html" class="nav-link">Despre</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="fq.html" class="nav-link">F&amp;Q</a>
+        </nav>
+        <a href="contact.html" class="mail-btn" aria-label="Scrie-mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Deschide meniul" aria-controls="menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -61,18 +66,16 @@
     <a href="despre.html" class="menu-link"><small>03</small>Despre</a>
     <a href="contact.html" class="menu-link"><small>04</small>Contact</a>
     <a href="fq.html" class="menu-link"><small>05</small>F&amp;Q</a>
-    <div class="menu-foot">
-      <a href="contact.html" class="btn">Solicită ofertă</a>
-      <p>+40 762 309 113<br>vladulescuandrei6@gmail.com</p>
-    </div>
+    <a href="preturi.html" class="menu-link"><small>06</small>Prețuri</a>
+    <p class="menu-foot">+40 762 309 113<br>vladulescuandrei6@gmail.com</p>
   </nav>
 
   <main id="main">
-    <header class="page-hero">
-      <div class="container">
-        <span class="slate fade-in"><b>Lucrări</b>14 filme</span>
-        <h1 class="h-display"><span class="line"><span>Portofoliu</span></span></h1>
-        <p class="lead fade-in">Fiecare film este o poveste de dragoste unică, creată cu pasiune și atenție la detalii.</p>
+    <section class="wrap">
+      <div class="card hero page-hero">
+        <span class="pill-label fade-in"><span class="dot"></span>14 filme</span>
+        <h1 class="h-big"><span class="line"><span>Portofoliu</span></span></h1>
+        <p class="sub fade-in">Fiecare film este o poveste de dragoste unică, creată cu pasiune și atenție la detalii.</p>
         <div class="filters fade-in" role="group" aria-label="Filtrează după eveniment">
           <button class="filter" data-filter="all" aria-pressed="true">Toate</button>
           <button class="filter" data-filter="nunta" aria-pressed="false">Nunți</button>
@@ -82,207 +85,130 @@
           <button class="filter" data-filter="marketing" aria-pressed="false">Marketing</button>
         </div>
       </div>
-    </header>
+    </section>
 
-    <section class="section-tight">
-      <div class="container">
-        <div class="work-grid all" id="portfolioGrid">
-        <article class="work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/b039636b-7abe-4d1f-85ef-eb58d41993f2?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Flavia &amp; Robert" data-reveal style="--d:0">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/IMG_9329.png" width="1600" height="900" alt="Flavia și Robert, film de nuntă" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Flavia &amp; Robert</h3>
-            <p class="work-meta"><b>Nuntă</b><br>Eden by Werk - Hunedoara</p>
-          </div>
+    <section class="wrap">
+      <div class="works three" id="portfolioGrid">
+        <article class="card work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/b039636b-7abe-4d1f-85ef-eb58d41993f2?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Flavia &amp; Robert" data-reveal data-tilt style="--d:0">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Flavia &amp; Robert</h3><p class="work-cat">Nuntă</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/IMG_9329.png" width="1600" height="900" alt="Flavia și Robert, film de nuntă" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Eden by Werk - Hunedoara</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Alexandra &amp; Adi" data-reveal style="--d:1">
-          <div class="work-thumb">
-            <img src="img/alexandra-adi-1280.webp" srcset="img/alexandra-adi-640.webp 640w, img/alexandra-adi-1280.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw" width="1280" height="545" alt="Alexandra și Adi, film de nuntă" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Alexandra &amp; Adi</h3>
-            <p class="work-meta"><b>Nuntă</b><br>Riviera - Targu-Jiu</p>
-          </div>
+        <article class="card work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Alexandra &amp; Adi" data-reveal data-tilt style="--d:1">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Alexandra &amp; Adi</h3><p class="work-cat">Nuntă</p></div></div>
+          <div class="work-thumb"><img src="img/alexandra-adi-1280.webp" srcset="img/alexandra-adi-640.webp 640w, img/alexandra-adi-1280.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 360px" width="1280" height="545" alt="Alexandra și Adi, film de nuntă" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Riviera - Targu-Jiu</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Andrada &amp; Vio" data-reveal style="--d:2">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/DSC00413.jpg" width="1600" height="900" alt="Andrada și Vio, film de nuntă" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Andrada &amp; Vio</h3>
-            <p class="work-meta"><b>Nuntă</b><br>Jupanesti - Gorj</p>
-          </div>
+        <article class="card work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Andrada &amp; Vio" data-reveal data-tilt style="--d:2">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Andrada &amp; Vio</h3><p class="work-cat">Nuntă</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/DSC00413.jpg" width="1600" height="900" alt="Andrada și Vio, film de nuntă" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Jupanesti - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="cununi" data-video="https://player.mediadelivery.net/embed/595311/b109d5e0-6f24-44aa-8c9f-91df57d07e84?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Georgiana &amp; Ionut" data-reveal style="--d:0">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/ionut.png" width="1600" height="900" alt="Georgiana și Ionuț, film de cununie" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Georgiana &amp; Ionut</h3>
-            <p class="work-meta"><b>Cununie</b><br>Negomir - Gorj</p>
-          </div>
+        <article class="card work" data-category="cununi" data-video="https://player.mediadelivery.net/embed/595311/b109d5e0-6f24-44aa-8c9f-91df57d07e84?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Georgiana &amp; Ionut" data-reveal data-tilt style="--d:0">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Georgiana &amp; Ionut</h3><p class="work-cat">Cununie</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/ionut.png" width="1600" height="900" alt="Georgiana și Ionuț, film de cununie" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Negomir - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul WorkShop" data-reveal style="--d:1">
-          <div class="work-thumb">
-            <img src="img/workshop-1280.webp" srcset="img/workshop-640.webp 640w, img/workshop-1280.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw" width="1280" height="645" alt="Workshop VisionARy 5.0, Craiova" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">WorkShop</h3>
-            <p class="work-meta"><b>Workshop</b><br>VisionARy 5.0 - Craiova</p>
-          </div>
+        <article class="card work" data-category="nunta" data-video="https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul WorkShop" data-reveal data-tilt style="--d:1">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">WorkShop</h3><p class="work-cat">Workshop</p></div></div>
+          <div class="work-thumb"><img src="img/workshop-1280.webp" srcset="img/workshop-640.webp 640w, img/workshop-1280.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 360px" width="1280" height="645" alt="Workshop VisionARy 5.0, Craiova" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>VisionARy 5.0 - Craiova</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="boteze" data-video="https://player.mediadelivery.net/embed/595311/e7bb372b-7ef9-42e3-bd69-974d363dc161?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Natalia Maria" data-reveal style="--d:2">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/vlcsnap-2026-05-05-15h20m44s368.png" width="1600" height="900" alt="Natalia Maria, film de botez" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Natalia Maria</h3>
-            <p class="work-meta"><b>Botez</b><br>Gorj</p>
-          </div>
+        <article class="card work" data-category="boteze" data-video="https://player.mediadelivery.net/embed/595311/e7bb372b-7ef9-42e3-bd69-974d363dc161?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Natalia Maria" data-reveal data-tilt style="--d:2">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Natalia Maria</h3><p class="work-cat">Botez</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/vlcsnap-2026-05-05-15h20m44s368.png" width="1600" height="900" alt="Natalia Maria, film de botez" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="boteze" data-video="https://player.mediadelivery.net/embed/595311/8e5a1cbf-5c67-45c3-8f9a-29da094461b9?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Natalia Maria" data-reveal style="--d:0">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/vlcsnap-2026-02-16-18h54m07s594.png" width="1600" height="900" alt="Natalia Maria, film de botez" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Natalia Maria</h3>
-            <p class="work-meta"><b>Botez</b><br>Gorj</p>
-          </div>
+        <article class="card work" data-category="boteze" data-video="https://player.mediadelivery.net/embed/595311/8e5a1cbf-5c67-45c3-8f9a-29da094461b9?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Natalia Maria" data-reveal data-tilt style="--d:0">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Natalia Maria</h3><p class="work-cat">Botez</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/vlcsnap-2026-02-16-18h54m07s594.png" width="1600" height="900" alt="Natalia Maria, film de botez" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/ac27939c-89fb-4fa5-ba59-d1e46f921491?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Daria" data-reveal style="--d:1">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/vlcsnap-2026-07-26-22h24m54s419.png" width="1600" height="900" alt="Daria, film de majorat" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Daria</h3>
-            <p class="work-meta"><b>Majorat</b><br>Targu jiu - Gorj</p>
-          </div>
+        <article class="card work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/ac27939c-89fb-4fa5-ba59-d1e46f921491?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Daria" data-reveal data-tilt style="--d:1">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Daria</h3><p class="work-cat">Majorat</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/vlcsnap-2026-07-26-22h24m54s419.png" width="1600" height="900" alt="Daria, film de majorat" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Targu jiu - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="marketing" data-video="https://player.mediadelivery.net/embed/595311/61f94c81-6e53-4058-9e75-ce4fabf3aa2a?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Mihai" data-reveal style="--d:2">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/IMG_8024.png" width="1600" height="900" alt="Mihai, clip de promovare" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Mihai</h3>
-            <p class="work-meta"><b>Marketing</b><br>Piscuri - Gorj</p>
-          </div>
+        <article class="card work" data-category="marketing" data-video="https://player.mediadelivery.net/embed/595311/61f94c81-6e53-4058-9e75-ce4fabf3aa2a?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Mihai" data-reveal data-tilt style="--d:2">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Mihai</h3><p class="work-cat">Marketing</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/IMG_8024.png" width="1600" height="900" alt="Mihai, clip de promovare" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Piscuri - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/cfeb331c-112f-4bdc-a620-fda6c18c3388?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Lorena" data-reveal style="--d:0">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/vlcsnap-2026-03-30-14h31m33s613.png" width="1600" height="900" alt="Lorena, film de majorat" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Lorena</h3>
-            <p class="work-meta"><b>Majorat</b><br>Matasari - Gorj</p>
-          </div>
+        <article class="card work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/cfeb331c-112f-4bdc-a620-fda6c18c3388?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Lorena" data-reveal data-tilt style="--d:0">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Lorena</h3><p class="work-cat">Majorat</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/vlcsnap-2026-03-30-14h31m33s613.png" width="1600" height="900" alt="Lorena, film de majorat" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Matasari - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/b493fc22-4cd8-4ccd-974e-1b015bdc241b?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Cristi" data-reveal style="--d:1">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/IMG_8037.png" width="1600" height="900" alt="Cristi, film de majorat" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Cristi</h3>
-            <p class="work-meta"><b>Majorat</b><br>TArgu-jiu - Gorj</p>
-          </div>
+        <article class="card work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/b493fc22-4cd8-4ccd-974e-1b015bdc241b?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Cristi" data-reveal data-tilt style="--d:1">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Cristi</h3><p class="work-cat">Majorat</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/IMG_8037.png" width="1600" height="900" alt="Cristi, film de majorat" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>TArgu-jiu - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/ccb9b0dd-d9e8-46d8-b40a-c68861d0b5f7?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Claudia" data-reveal style="--d:2">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/IMG_8026.png" width="1600" height="900" alt="Claudia, film de majorat" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Claudia</h3>
-            <p class="work-meta"><b>Majorat</b><br>Balesti - Gorj</p>
-          </div>
+        <article class="card work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/ccb9b0dd-d9e8-46d8-b40a-c68861d0b5f7?autoplay=true&loop=false&muted=false&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Claudia" data-reveal data-tilt style="--d:2">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Claudia</h3><p class="work-cat">Majorat</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/IMG_8026.png" width="1600" height="900" alt="Claudia, film de majorat" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Balesti - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Necta" data-reveal style="--d:0">
-          <div class="work-thumb">
-            <img src="img/necta-1920.webp" srcset="img/necta-768.webp 768w, img/necta-1280.webp 1280w, img/necta-1920.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw" width="1920" height="817" alt="Necta, film de majorat" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Necta</h3>
-            <p class="work-meta"><b>Majorat</b><br>Jupânești - Gorj</p>
-          </div>
+        <article class="card work" data-category="majorate" data-video="https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Necta" data-reveal data-tilt style="--d:0">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Necta</h3><p class="work-cat">Majorat</p></div></div>
+          <div class="work-thumb"><img src="img/necta-1920.webp" srcset="img/necta-768.webp 768w, img/necta-1280.webp 1280w, img/necta-1920.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 360px" width="1920" height="817" alt="Necta, film de majorat" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Jupânești - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        <article class="work" data-category="marketing" data-video="https://player.mediadelivery.net/embed/595311/df571041-fa7d-4123-9ac9-88890b820f92?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Edi" data-reveal style="--d:1">
-          <div class="work-thumb">
-            <img src="https://poze.b-cdn.net/vlcsnap-2026-06-05-17h03m17s696.png" width="1600" height="900" alt="Edi, clip de promovare" loading="lazy" decoding="async">
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg> Play</span>
-          </div>
-          <div class="work-cap">
-            <h3 class="work-title">Edi</h3>
-            <p class="work-meta"><b>Marketing</b><br>Runcu - Gorj</p>
-          </div>
+        <article class="card work" data-category="marketing" data-video="https://player.mediadelivery.net/embed/595311/df571041-fa7d-4123-9ac9-88890b820f92?autoplay=true&loop=false&muted=true&preload=true&responsive=true" tabindex="0" role="button" aria-label="Vezi filmul Edi" data-reveal data-tilt style="--d:1">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="work-head"><div><h3 class="work-title">Edi</h3><p class="work-cat">Marketing</p></div></div>
+          <div class="work-thumb"><img src="https://poze.b-cdn.net/vlcsnap-2026-06-05-17h03m17s696.png" width="1600" height="900" alt="Edi, clip de promovare" loading="lazy" decoding="async"></div>
+          <div class="work-foot"><span>Runcu - Gorj</span><span class="play-chip"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></i>Play</span></div>
         </article>
-        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div>
-          <h2 class="h2">Hai să vorbim despre evenimentul vostru.</h2>
-          <span class="hand">scrie-mi sau sună-mă, oricând</span>
-        </div>
-        <div class="footer-contact">
-          <a href="tel:+40762309113">+40 762 309 113</a>
-          <a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a>
-        </div>
-      </div>
-      <div class="footer-grid">
-        <div>
-          <h4>Pagini</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portofoliu.html">Portofoliu</a></li>
-            <li><a href="despre.html">Despre</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="fq.html">F&amp;Q</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Mă găsești și pe</h4>
-          <ul>
-            <li><a href="https://www.instagram.com/andrei.vladulescu/" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank" rel="noopener">Facebook</a></li>
-            <li><a href="https://www.youtube.com/@vladulescuandrei4367" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://www.fotografi-cameramani.ro/vladulescu-andrei-cristian_8630" target="_blank" rel="noopener">Fotografi-Cameramani</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>De unde sunt</h4>
-          <ul>
-            <li><span>Târgu-Jiu, Gorj</span></li>
-            <li><span>Filmez în toată România</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© <span id="currentYear">2026</span> Andrei Vladulescu. Toate drepturile rezervate.</p>
-        <a href="#main">Înapoi sus ↑</a>
-      </div>
+    <span class="signature" aria-hidden="true">Andrei</span>
+    <nav class="footer-links" aria-label="Pagini">
+      <a href="index.html">Home</a>
+      <a href="portofoliu.html">Portofoliu</a>
+      <a href="despre.html">Despre</a>
+      <a href="preturi.html">Prețuri</a>
+      <a href="fq.html">F&amp;Q</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/andrei.vladulescu/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.youtube.com/@vladulescuandrei4367" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.fotografi-cameramani.ro/vladulescu-andrei-cristian_8630" target="_blank" rel="noopener">Fotografi-Cameramani</a>
     </div>
+    <p class="footer-small"><a href="tel:+40762309113">+40 762 309 113</a> · <a href="mailto:vladulescuandrei6@gmail.com">vladulescuandrei6@gmail.com</a></p>
+    <p class="footer-small">© <span id="currentYear">2026</span> Andrei Vlădulescu · Filmat cu drag din <b>Târgu-Jiu</b></p>
   </footer>
+
+  <!-- Bara de jos -->
+  <a href="contact.html" class="dock" id="dock">
+    <p><b>Data e încă liberă?</b>Hai să vorbim despre ziua voastră</p>
+    <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></i>
+  </a>
 
   <!-- Video -->
   <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="true">
-    <button class="modal-close" aria-label="Închide video">Închide ✕</button>
+    <button class="modal-close" aria-label="Închide video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
     <div class="modal-box">
       <iframe src="" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
