@@ -133,22 +133,6 @@ if (modal) {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
 }
 
-// ----- Cursor „Play” peste lucrări (doar cu mouse) -----
-const grid = document.querySelector('.work-grid');
-if (grid && finePointer && !reduceMotion) {
-  const cursor = document.createElement('div');
-  cursor.className = 'cursor';
-  cursor.setAttribute('aria-hidden', 'true');
-  cursor.textContent = 'Play';
-  document.body.appendChild(cursor);
-  window.addEventListener('pointermove', (e) => {
-    cursor.style.setProperty('--x', `${e.clientX}px`);
-    cursor.style.setProperty('--y', `${e.clientY}px`);
-    cursor.classList.toggle('is-active', !!e.target.closest('.work'));
-  }, { passive: true });
-  document.addEventListener('pointerleave', () => cursor.classList.remove('is-active'));
-}
-
 // ----- Filtre portofoliu (cu tranziție animată) -----
 const filters = document.querySelectorAll('.filter[data-filter]');
 if (filters.length) {
