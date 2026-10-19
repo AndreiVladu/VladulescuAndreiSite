@@ -6,6 +6,7 @@
 document.documentElement.classList.add('js');
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const useMotion = document.documentElement.classList.contains('motion');
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 // ----- Navigație: fundal la scroll, se ascunde la coborâre -----
@@ -41,7 +42,9 @@ if (menuBtn && menu) {
 
 // ----- Apariție la scroll -----
 const revealEls = document.querySelectorAll('[data-reveal]');
-if ('IntersectionObserver' in window && !reduceMotion) {
+if (useMotion) {
+  // animate de anim.js
+} else if ('IntersectionObserver' in window && !reduceMotion) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -65,7 +68,7 @@ document.querySelectorAll('.step').forEach((step, i) => {
 });
 
 // ----- Numărătoare pentru statistici -----
-document.querySelectorAll('[data-count]').forEach((el) => {
+if (!useMotion) document.querySelectorAll('[data-count]').forEach((el) => {
   const target = Number(el.dataset.count);
   const suffix = el.dataset.suffix || '';
   if (reduceMotion || !('IntersectionObserver' in window)) { el.textContent = target + suffix; return; }
@@ -84,7 +87,7 @@ document.querySelectorAll('[data-count]').forEach((el) => {
 
 // ----- Parallax ușor (doar pe calculator) -----
 const parallaxEls = document.querySelectorAll('[data-parallax]');
-if (parallaxEls.length && finePointer && !reduceMotion) {
+if (parallaxEls.length && finePointer && !reduceMotion && !useMotion) {
   let ticking = false;
   const update = () => {
     parallaxEls.forEach((el) => {
@@ -160,7 +163,7 @@ if (filters.length) {
         filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
         cards.forEach((card) => { card.hidden = !(f === 'all' || card.dataset.category === f); });
       };
-      if (!document.startViewTransition || reduceMotion) return apply();
+      if (!document.startViewTransition || reduceMotion || useMotion) return apply();
       nameCards(true);
       document.startViewTransition(apply).finished.finally(() => nameCards(false));
     });
