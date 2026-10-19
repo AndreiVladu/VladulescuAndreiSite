@@ -32,12 +32,6 @@
 
 /* ---------- Bază ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-/* pe monitoare mari totul crește puțin, ca să nu pară mic */
-@media (min-width: 1800px) { html { font-size: 17px; } }
-@media (min-width: 2300px) { html { font-size: 19px; } }
-/* 3K / 4K fără scalare în Windows/macOS: totul crește proporțional, ca să umple ecranul */
-@media (min-width: 2900px) { html { zoom: 1.3; } }
-@media (min-width: 3600px) { html { zoom: 1.6; } }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 1rem); background: var(--bg); }
 body {
   font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--text); background: var(--bg);
@@ -181,7 +175,7 @@ body.menu-open { overflow: hidden; }
 
 /* ---------- Bobina 3D (cadre din filme care se rotesc) ---------- */
 .reel {
-  --w: clamp(170px, 26vw, 380px);
+  --w: clamp(170px, 26vw, 320px);
   --n: 6;
   position: relative; height: calc(var(--w) * 1.05 + 2.5rem); margin-top: clamp(1.5rem, 4vw, 2.5rem);
   perspective: 1200px; perspective-origin: 50% 30%;
