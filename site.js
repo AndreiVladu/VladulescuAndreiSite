@@ -171,7 +171,7 @@ if (ttrack && tnext) {
 // ----- Bara de jos: apare după primul card și se ascunde lângă footer -----
 const dock = document.getElementById('dock');
 if (dock) {
-  const first = document.querySelector('main .card');
+  const first = document.querySelector('main > *');
   const foot = document.querySelector('.footer');
   if (!('IntersectionObserver' in window) || !first || !foot) {
     dock.classList.add('is-visible');
