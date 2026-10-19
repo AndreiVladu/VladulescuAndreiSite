@@ -272,6 +272,7 @@ if (contactForm) {
     }
     submitBtn.disabled = true;
     btnText.textContent = 'Se trimite...';
+    formMessage.textContent = '';
 
     // Numele câmpurilor trebuie să fie IDENTICE cu cele din șablonul EmailJS
     const formData = {
@@ -292,6 +293,9 @@ if (contactForm) {
       reset();
     }, (error) => {
       console.error('EmailJS Error:', error);
+      // arătăm și răspunsul EmailJS, ca să se vadă ce trebuie reparat în cont
+      const why = error && (error.text || error.message) ? ` (${error.status || ''} ${error.text || error.message})` : '';
+      formMessage.textContent = `Mesajul nu a putut fi trimis${why}. Scrie-mi direct la vladulescuandrei6@gmail.com sau sună la +40 762 309 113.`;
       btnText.textContent = 'Eroare! Reîncearcă';
       submitBtn.classList.add('is-error');
       reset();
