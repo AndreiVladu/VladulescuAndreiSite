@@ -9,6 +9,7 @@
 //   .line > span           rândurile titlului urcă la încărcare
 //   .fade-in               apare după titlu
 //   .reel                  bobina 3D cu cadre: se rotește singură, se poate trage cu degetul/mouse-ul
+//   .tslider               mesajele de la miri pe un inel 3D din sticlă, se rotesc singure
 //   data-tilt              cardul se înclină 3D după mouse (doar pe calculator)
 //   .scrub                 cuvintele se „aprind” pe rând la scroll
 //   #offerStage .chip3d    etichetele 3D din cardul cu pachete
@@ -147,6 +148,101 @@
     reel.addEventListener('pointerup', release);
     reel.addEventListener('pointercancel', release); // pe telefon, scroll vertical
     reel.addEventListener('lostpointercapture', release);
+  }
+
+  // ----- Mesajele de la miri: carusel 3D, se oprește pe fiecare mesaj, se poate trage -----
+  const tslider = document.querySelector('.tslider');
+  const ttrack = tslider && tslider.querySelector('.ttrack');
+  if (ttrack) {
+    const originals = [...ttrack.querySelectorAll('.tcard')];
+    const count = originals.length;
+    const STEP = 60; // 6 fețe pe inel: mesajele se repetă ca inelul să fie plin
+    const N = 360 / STEP;
+    for (let k = count; k < N; k++) {
+      const c = originals[k % count].cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      ttrack.appendChild(c);
+    }
+    const cards = [...ttrack.querySelectorAll('.tcard')];
+    cards.forEach((c, i) => c.style.setProperty('--i', i));
+    tslider.classList.add('is-3d');
+    const dots = document.createElement('div');
+    dots.className = 'tdots';
+    dots.setAttribute('aria-hidden', 'true');
+    dots.innerHTML = '<i></i>'.repeat(count);
+    tslider.appendChild(dots);
+    const nextBtn = tslider.querySelector('.tnav');
+
+    let rot = 0, target = 0, vel = 0, dragging = false, moved = 0, lastX = 0, lastT = 0, flick = 0;
+    let raf = 0, prev = 0, onScreen = false, hovering = false, timer = 0;
+    const front = () => ((Math.round(-target / STEP) % N) + N) % N;
+    const paint = () => {
+      ttrack.style.setProperty('--rot', rot.toFixed(2));
+      const f = front();
+      cards.forEach((c, i) => {
+        let a = ((i * STEP + rot) % 360 + 540) % 360 - 180; // unghiul față de privitor
+        c.style.setProperty('--o', (0.25 + 0.75 * Math.max(0, Math.cos(a * Math.PI / 180)) ** 1.5).toFixed(3));
+        c.classList.toggle('is-front', i === f);
+      });
+      [...dots.children].forEach((d, i) => d.classList.toggle('on', i === f % count));
+    };
+    const frame = (t) => {
+      const dt = Math.min(t - (prev || t), 50);
+      prev = t;
+      if (!dragging) {
+        // arc: se așază lin pe mesajul din față
+        const k = 0.00012, damp = 0.022;
+        vel += ((target - rot) * k - vel * damp) * dt;
+        rot += vel * dt;
+        if (Math.abs(target - rot) < 0.02 && Math.abs(vel) < 0.0005) { rot = target; vel = 0; }
+      }
+      paint();
+      raf = (dragging || rot !== target) ? requestAnimationFrame(frame) : 0;
+    };
+    const kick = () => { if (!raf) { prev = 0; raf = requestAnimationFrame(frame); } };
+    const go = (dir) => { target = Math.round(target / STEP) * STEP - dir * STEP; kick(); };
+    const auto = () => {
+      clearInterval(timer); timer = 0;
+      if (onScreen && !hovering && !document.hidden) timer = setInterval(() => { if (!dragging) go(1); }, 4500);
+    };
+    new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; auto(); }).observe(tslider);
+    document.addEventListener('visibilitychange', auto);
+    if (fine) {
+      tslider.addEventListener('pointerenter', () => { hovering = true; auto(); });
+      tslider.addEventListener('pointerleave', () => { hovering = false; auto(); });
+    }
+    if (nextBtn) nextBtn.addEventListener('click', () => { go(1); auto(); });
+    ttrack.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(e.key === 'ArrowRight' ? 1 : -1); auto(); }
+    });
+
+    tslider.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0 || e.target.closest('.tnav')) return;
+      dragging = true; moved = 0; flick = 0; lastX = e.clientX; lastT = e.timeStamp; vel = 0;
+      tslider.classList.add('is-dragging');
+      tslider.setPointerCapture(e.pointerId);
+      kick();
+    });
+    tslider.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      const dt = Math.max(e.timeStamp - lastT, 1);
+      const d = dx * (STEP / Math.max(ttrack.offsetWidth, 200)); // o lățime de card = un mesaj
+      rot += d; moved += Math.abs(dx);
+      flick = d / dt;
+      lastX = e.clientX; lastT = e.timeStamp;
+    });
+    const release = () => {
+      if (!dragging) return;
+      dragging = false; tslider.classList.remove('is-dragging');
+      // se oprește pe cel mai apropiat mesaj, ținând cont de cât de repede ai dat
+      target = Math.round((rot + flick * 180) / STEP) * STEP;
+      vel = 0; kick(); auto();
+    };
+    tslider.addEventListener('pointerup', release);
+    tslider.addEventListener('pointercancel', release); // pe telefon, scroll vertical
+    tslider.addEventListener('lostpointercapture', release);
+    paint();
   }
 
   // ----- Tilt 3D pe carduri (doar cu mouse) -----

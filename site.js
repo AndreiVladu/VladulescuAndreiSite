@@ -170,6 +170,7 @@ const ttrack = document.getElementById('ttrack');
 const tnext = document.getElementById('tnext');
 if (ttrack && tnext) {
   tnext.addEventListener('click', () => {
+    if (ttrack.closest('.is-3d')) return; // caruselul 3D din anim.js se ocupă
     const card = ttrack.querySelector('.tcard');
     const step = card.offsetWidth + parseFloat(getComputedStyle(ttrack).columnGap || 0);
     const atEnd = ttrack.scrollLeft + ttrack.clientWidth >= ttrack.scrollWidth - 4;
