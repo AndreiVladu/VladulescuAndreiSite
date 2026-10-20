@@ -699,3 +699,8 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 .reel-card img { border-radius: 0; }
 .reel-card::before { content: none; }
 .reel-card::after { inset: 0; border-radius: inherit; box-shadow: none; }
+
+/* ---------- Bara de sus pe calculator: cu ~30% mai îngustă, centrată ---------- */
+@media (min-width: 901px) {
+  .header-bar { width: min(100%, max(70%, 820px)); margin-inline: auto; }
+}
