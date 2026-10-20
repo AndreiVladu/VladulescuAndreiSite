@@ -208,8 +208,10 @@
     new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; auto(); }).observe(tslider);
     document.addEventListener('visibilitychange', auto);
     if (fine) {
-      tslider.addEventListener('pointerenter', () => { hovering = true; auto(); });
-      tslider.addEventListener('pointerleave', () => { hovering = false; auto(); });
+      // se oprește doar cât timp mouse-ul e chiar pe mesajul din față (ca să poată fi citit), nu oriunde în zonă
+      const setHover = (h) => { if (h !== hovering) { hovering = h; auto(); } };
+      tslider.addEventListener('pointermove', (e) => setHover(!!(e.target.closest && e.target.closest('.is-front'))));
+      tslider.addEventListener('pointerleave', () => setHover(false));
     }
     if (nextBtn) nextBtn.addEventListener('click', () => { go(1); auto(); });
     ttrack.addEventListener('keydown', (e) => {
