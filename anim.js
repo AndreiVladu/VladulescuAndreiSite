@@ -309,3 +309,76 @@
     }
   }
 })();
+
+// ----- Color grading: LOG vs final. Bara din mijloc se trage cu mouse-ul sau degetul (merge și fără Motion) -----
+(function () {
+  document.querySelectorAll('[data-ba]').forEach((ba) => {
+    const tagL = ba.querySelector('.ba-tag-l');
+    const tagR = ba.querySelector('.ba-tag-r');
+    let pos = 50;
+    const set = (p) => {
+      pos = Math.max(0, Math.min(100, p));
+      ba.style.setProperty('--pos', pos + '%');
+      ba.setAttribute('aria-valuenow', Math.round(pos));
+      ba.setAttribute('aria-valuetext', Math.round(pos) + '% LOG');
+      if (tagL) tagL.style.opacity = pos < 14 ? 0 : 1;
+      if (tagR) tagR.style.opacity = pos > 86 ? 0 : 1;
+    };
+    const fromX = (x) => { const r = ba.getBoundingClientRect(); set(((x - r.left) / r.width) * 100); };
+    let id = null, startX = 0, startY = 0, decided = false, hinted = false;
+    ba.addEventListener('pointerdown', (e) => {
+      id = e.pointerId; startX = e.clientX; startY = e.clientY; hinted = true;
+      // cu mouse-ul mută imediat; pe telefon așteaptă să vadă dacă degetul merge în lateral (altfel e scroll)
+      decided = e.pointerType === 'mouse';
+      if (decided) { ba.setPointerCapture(id); ba.classList.add('is-drag'); fromX(e.clientX); }
+    });
+    ba.addEventListener('pointermove', (e) => {
+      if (e.pointerId !== id) return;
+      if (!decided) {
+        const dx = Math.abs(e.clientX - startX), dy = Math.abs(e.clientY - startY);
+        if (dx < 6 && dy < 6) return;
+        if (dy > dx) { id = null; return; }
+        decided = true; ba.setPointerCapture(id); ba.classList.add('is-drag');
+      }
+      fromX(e.clientX);
+    });
+    const end = (e) => {
+      if (e.pointerId !== id) return;
+      if (!decided && e.type === 'pointerup') fromX(e.clientX); // atingere scurtă = sare acolo
+      id = null; ba.classList.remove('is-drag');
+    };
+    ba.addEventListener('pointerup', end);
+    ba.addEventListener('pointercancel', end);
+    ba.addEventListener('keydown', (e) => {
+      const step = e.shiftKey ? 10 : 2;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') set(pos - step);
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') set(pos + step);
+      else if (e.key === 'Home') set(0);
+      else if (e.key === 'End') set(100);
+      else return;
+      hinted = true; e.preventDefault();
+    });
+    set(50);
+    // când apare prima dată pe ecran, bara se mișcă puțin singură ca să se vadă că se poate trage
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((ents) => {
+        if (!ents[0].isIntersecting) return;
+        io.disconnect();
+        const keys = [[0, 50], [700, 30], [1500, 68], [2200, 50]];
+        const t0 = performance.now();
+        const ease = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        const tick = (now) => {
+          if (hinted) return;
+          const t = now - t0;
+          let k = 1; while (k < keys.length - 1 && t > keys[k][0]) k++;
+          const [ta, pa] = keys[k - 1], [tb, pb] = keys[k];
+          const f = Math.min(1, Math.max(0, (t - ta) / (tb - ta)));
+          set(pa + (pb - pa) * ease(f));
+          if (t < keys[keys.length - 1][0]) requestAnimationFrame(tick);
+        };
+        setTimeout(() => requestAnimationFrame(tick), 400);
+      }, { threshold: 0.6 });
+      io.observe(ba);
+    }
+  });
+})();
