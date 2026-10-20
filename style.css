@@ -122,7 +122,7 @@ main > * { min-width: 0; }
              Punctul ăsta ajunge fix în mijlocul cercului.
    --zoom    cât de aproape: cu cât e mai mare, cu atât fața e mai mare (ex. 2 = mai departe, 4 = mai aproape)
    --bw      alb-negru: 1 = alb-negru, 0 = color */
-.brand .avatar { --x: 46; --y: 20; --zoom: 3.2; --bw: 1;
+.brand .avatar { --x: 54; --y: 21; --zoom: 7; --bw: 1;
   position: relative; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex: none; background: #1a1a1a;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.12); }
 .brand .avatar img { position: absolute; left: 50%; top: 50%; width: calc(var(--zoom) * 100%); height: auto; max-width: none;
