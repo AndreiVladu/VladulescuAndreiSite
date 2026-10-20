@@ -116,16 +116,17 @@ main > * { min-width: 0; }
   backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 .brand { display: flex; align-items: center; gap: 0.7rem; min-width: 0; padding-right: 0.5rem; }
-/* Poza din stânga sus (în cerc). Poza e img/portrait.webp, aceeași ca în mijlocul primei pagini.
-   Ca s-o reglezi, schimbă doar cele 3 valori de mai jos:
-   --zoom   cât de aproape e: 1 = toată poza, 1.5 = mai aproape, 2 = doar fața
-   --focus  spre ce punct se face zoom: primul număr stânga-dreapta, al doilea sus-jos (0% = stânga/sus, 100% = dreapta/jos)
-   --bw     alb-negru: 1 = alb-negru, 0 = color */
-.brand .avatar { --zoom: 1; --focus: 50% 25%; --bw: 1;
-  width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex: none; background: #1a1a1a;
+/* Poza din stânga sus (în cerc). E aceeași poză ca pe pagina Despre (IMG_3767.JPG de pe poze.b-cdn.net).
+   Ca s-o reglezi, schimbă doar valorile de mai jos:
+   --x, --y  unde e fața în poză: --x stânga-dreapta, --y sus-jos (0 = stânga/sus, 100 = dreapta/jos).
+             Punctul ăsta ajunge fix în mijlocul cercului.
+   --zoom    cât de aproape: cu cât e mai mare, cu atât fața e mai mare (ex. 2 = mai departe, 4 = mai aproape)
+   --bw      alb-negru: 1 = alb-negru, 0 = color */
+.brand .avatar { --x: 46; --y: 20; --zoom: 3.2; --bw: 1;
+  position: relative; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex: none; background: #1a1a1a;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.12); }
-.brand .avatar img { width: 100%; height: 100%; object-fit: cover; display: block;
-  transform: scale(var(--zoom)); transform-origin: var(--focus); filter: grayscale(var(--bw)) contrast(1.08); }
+.brand .avatar img { position: absolute; left: 50%; top: 50%; width: calc(var(--zoom) * 100%); height: auto; max-width: none;
+  transform: translate(calc(var(--x) * -1%), calc(var(--y) * -1%)); filter: grayscale(var(--bw)) contrast(1.08); }
 .brand strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; line-height: 1.15; white-space: nowrap; }
 .brand span { display: block; font-size: 0.82rem; color: var(--muted); line-height: 1.2; white-space: nowrap; }
 .brand span b { color: var(--lime); font-weight: 500; }
