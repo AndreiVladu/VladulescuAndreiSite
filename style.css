@@ -749,3 +749,14 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 .ba-tag-l { left: clamp(0.6rem, 2vw, 1.1rem); }
 .ba-tag-r { right: clamp(0.6rem, 2vw, 1.1rem); }
 @media (max-width: 640px) { .ba { aspect-ratio: 4 / 3; border-radius: 14px; } .ba-knob { width: 40px; height: 40px; margin: -20px 0 0 -20px; } }
+
+/* Rândul „Filmez în” de sus: toate numele la fel, despărțite de un punct verde */
+.venues.is-regions { gap: 0.5rem 0; align-items: center; }
+.venues.is-regions li { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: clamp(1rem, 2vw, 1.35rem);
+  letter-spacing: 0.08em; text-transform: uppercase; color: #e4e4df; opacity: 0.85; display: flex; align-items: center; }
+.venues.is-regions li + li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--lime); margin: 0 clamp(0.9rem, 2.4vw, 1.6rem); opacity: 0.9; }
+@media (max-width: 640px) {
+  .venues.is-regions { flex-wrap: nowrap; }
+  .venues.is-regions li { font-size: clamp(0.68rem, 3.4vw, 0.95rem); letter-spacing: 0.03em; white-space: nowrap; }
+  .venues.is-regions li + li::before { width: 4px; height: 4px; margin: 0 clamp(0.45rem, 2.2vw, 0.8rem); }
+}
