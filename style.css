@@ -116,13 +116,13 @@ main > * { min-width: 0; }
   backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 .brand { display: flex; align-items: center; gap: 0.7rem; min-width: 0; padding-right: 0.5rem; }
-/* Poza din stânga sus (în cerc): IMG_8308.JPG de pe poze.b-cdn.net/Andrei/.
+/* Poza din stânga sus (în cerc): aceeași poză ca pe pagina Despre (IMG_3767.JPG de pe poze.b-cdn.net).
    Ca s-o reglezi, schimbă doar valorile de mai jos:
    --x, --y  ce parte din poză se vede: --x stânga-dreapta, --y sus-jos (0 = stânga/sus, 100 = dreapta/jos).
              Dacă fața e prea jos în cerc, scade --y; dacă e prea sus, crește-l.
    --zoom    cât de aproape: 1 = toată poza în cerc, 1.5 sau 2 = fața mai mare
    --bw      alb-negru: 1 = alb-negru, 0 = color */
-.brand .avatar { --x: 50; --y: 25; --zoom: 1; --bw: 0;
+.brand .avatar { --x: 50; --y: 25; --zoom: 1; --bw: 1;
   position: relative; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex: none; background: #1a1a1a;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.12); }
 .brand .avatar img { display: block; width: 100%; height: 100%; object-fit: cover;
@@ -714,3 +714,30 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 @media (min-width: 901px) {
   .header-bar { width: min(100%, max(70%, 820px)); margin-inline: auto; }
 }
+
+/* ===== Color grading: LOG vs final, cu bară glisantă =====
+   Partea din stânga barei = LOG (aceeași poză, „spălată” cu filtrul de mai jos).
+   Dacă vrei LOG-ul mai plat sau mai colorat, schimbă valorile din --log. */
+.grade-card { --log: contrast(0.62) saturate(0.38) brightness(1.1) sepia(0.12) hue-rotate(28deg); }
+.grade-head { display: grid; gap: 1rem; align-items: end; margin-bottom: clamp(1.25rem, 3vw, 2rem); }
+@media (min-width: 901px) { .grade-head { grid-template-columns: 1fr 1fr; gap: 2rem; } .grade-head .sub { justify-self: end; max-width: 38ch; } }
+.ba { --pos: 50%; position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #111;
+  cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; outline: none; }
+.ba:focus-visible { box-shadow: 0 0 0 2px var(--lime); }
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+.ba-log { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba-log .ba-img { filter: var(--log); }
+.ba-line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 12px rgba(0,0,0,0.35); pointer-events: none; }
+.ba-knob { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.45);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4); backdrop-filter: blur(10px) saturate(1.4); box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transition: transform .2s ease; }
+.ba-knob svg { width: 22px; height: 22px; }
+.ba.is-drag .ba-knob { transform: scale(1.12); }
+.ba-tag { position: absolute; bottom: clamp(0.6rem, 2vw, 1.1rem); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: clamp(0.72rem, 1.6vw, 0.9rem);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.38);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); pointer-events: none; transition: opacity .2s ease; }
+.ba-tag-l { left: clamp(0.6rem, 2vw, 1.1rem); }
+.ba-tag-r { right: clamp(0.6rem, 2vw, 1.1rem); }
+@media (max-width: 640px) { .ba { aspect-ratio: 4 / 3; border-radius: 14px; } .ba-knob { width: 40px; height: 40px; margin: -20px 0 0 -20px; } }
