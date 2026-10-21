@@ -171,8 +171,9 @@ if (modal) {
     if (lastFocus) lastFocus.focus();
   };
   document.querySelectorAll('.work[data-video]').forEach((card) => {
-    card.addEventListener('click', () => open(card.dataset.video));
+    card.addEventListener('click', (e) => { if (e.target.closest('a')) return; open(card.dataset.video); });
     card.addEventListener('keydown', (e) => {
+      if (e.target.closest('a')) return;
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card.dataset.video); }
     });
   });
