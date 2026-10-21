@@ -810,3 +810,12 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
   .venues.is-regions li { font-size: clamp(0.68rem, 3.4vw, 0.95rem); letter-spacing: 0.03em; white-space: nowrap; }
   .venues.is-regions li + li::before { width: 4px; height: 4px; margin: 0 clamp(0.45rem, 2.2vw, 0.8rem); }
 }
+
+/* Pagina unui film */
+.film-player { width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid var(--line-2); }
+.film-player iframe { width: 100%; height: 100%; border: 0; display: block; }
+.film-about { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
+.film-about .prose a { color: var(--lime); }
+.film-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.work-title a { color: inherit; text-decoration: none; }
+.work-title a:hover, .work-title a:focus-visible { text-decoration: underline; text-underline-offset: 0.15em; }
