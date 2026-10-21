@@ -49,6 +49,43 @@ if (menuBtn && menu) {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 }
 
+// ----- Cardul „Despre” din poza din stânga sus -----
+const profileBtn = document.getElementById('profileBtn');
+const profile = document.getElementById('profile');
+if (profileBtn && profile && headerBar) {
+  let openY = 0;
+  let hideTimer;
+  const place = () => {
+    const wrapLeft = profile.parentElement.getBoundingClientRect().left;
+    profile.style.setProperty('--pl', `${Math.round(headerBar.getBoundingClientRect().left - wrapLeft)}px`);
+  };
+  const isOpen = () => profileBtn.getAttribute('aria-expanded') === 'true';
+  const setProfile = (open, focusBack) => {
+    if (open === isOpen()) return;
+    profileBtn.setAttribute('aria-expanded', String(open));
+    clearTimeout(hideTimer);
+    if (open) {
+      place();
+      openY = window.scrollY;
+      profile.hidden = false;
+      void profile.offsetWidth; // pornește animația de la starea închisă
+      profile.classList.add('is-open');
+    } else {
+      profile.classList.remove('is-open');
+      hideTimer = setTimeout(() => { profile.hidden = true; }, 300);
+      if (focusBack) profileBtn.focus();
+    }
+  };
+  profileBtn.addEventListener('click', () => setProfile(!isOpen()));
+  document.addEventListener('click', (e) => {
+    if (isOpen() && !profile.contains(e.target) && !profileBtn.contains(e.target)) setProfile(false);
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen()) setProfile(false, true); });
+  window.addEventListener('scroll', () => { if (isOpen() && Math.abs(window.scrollY - openY) > 120) setProfile(false); }, { passive: true });
+  window.addEventListener('resize', () => { if (isOpen()) place(); });
+  if (menuBtn) menuBtn.addEventListener('click', () => setProfile(false));
+}
+
 // ----- Apariție la scroll -----
 const revealEls = document.querySelectorAll('[data-reveal]');
 if (useMotion) {

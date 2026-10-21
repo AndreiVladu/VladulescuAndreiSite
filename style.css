@@ -123,6 +123,7 @@ main > * { min-width: 0; }
    --zoom    cât de aproape: 1 = toată poza în cerc, 1.5 sau 2 = fața mai mare
    --bw      alb-negru: 1 = alb-negru, 0 = color */
 .brand .avatar { --x: 50; --y: 25; --zoom: 1; --bw: 0;
+  appearance: none; border: 0; padding: 0; cursor: pointer; transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
   position: relative; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex: none; background: #1a1a1a;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.12); }
 .brand .avatar img { display: block; width: 100%; height: 100%; object-fit: cover;
@@ -154,6 +155,55 @@ main > * { min-width: 0; }
   .mail-btn { margin-left: auto; }
 }
 @media (max-width: 380px) { .brand span { display: none; } }
+.brand-name { display: block; min-width: 0; }
+.brand .avatar:hover, .brand .avatar[aria-expanded='true'] { box-shadow: 0 0 0 2px var(--lime), 0 0 18px var(--lime-glow); }
+.brand .avatar:active { transform: scale(0.94); }
+.brand .avatar:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+
+/* ---------- Cardul „Despre” care se deschide din poza din stânga sus ---------- */
+.header .wrap { position: relative; }
+.profile {
+  position: absolute; top: calc(100% + 10px); left: var(--pl, var(--gutter)); z-index: 2;
+  width: min(380px, calc(100vw - 2 * var(--gutter))); padding: 1.15rem; border-radius: 28px;
+  pointer-events: auto; color: var(--text);
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 45%, rgba(255,255,255,0.06) 100%), rgba(16,16,16,0.72);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(26px) saturate(180%); -webkit-backdrop-filter: blur(26px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 30px 60px -20px rgba(0,0,0,0.85);
+  transform-origin: 30px -10px; opacity: 0; transform: translateY(-8px) scale(0.96);
+  transition: opacity 0.25s var(--ease), transform 0.35s var(--ease);
+}
+.profile.is-open { opacity: 1; transform: none; }
+.profile::before { content: ''; position: absolute; top: -7px; left: 24px; width: 14px; height: 14px; transform: rotate(45deg);
+  background: rgba(40,40,40,0.95); border-left: 1px solid rgba(255,255,255,0.16); border-top: 1px solid rgba(255,255,255,0.16); border-radius: 3px 0 0 0; }
+.profile-head { display: flex; align-items: center; gap: 0.9rem; }
+.profile-photo { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex: none; box-shadow: 0 0 0 2px var(--lime), 0 0 22px var(--lime-glow); }
+.profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; }
+.profile-head strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.02em; line-height: 1.15; }
+.profile-head span { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+.profile-head span b { color: var(--lime); font-weight: 500; }
+.profile-head em { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.45rem; font-style: normal; font-size: 0.75rem; color: #e6e6e2;
+  padding: 0.22rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); }
+.profile-head em i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px var(--lime); }
+.profile-text { margin: 1rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #cfcfcb; }
+.profile-social { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; }
+.profile-social a:not(:last-child) { flex-direction: column; justify-content: center; gap: 0.35rem; padding: 0.7rem 0.4rem; font-size: 0.8rem; }
+.profile-social a:last-child { grid-column: 1 / -1; justify-content: center; }
+.profile-social a, .profile-contact a {
+  display: flex; align-items: center; gap: 0.55rem; min-width: 0; padding: 0.65rem 0.75rem; border-radius: 16px;
+  font-size: 0.86rem; color: #e9e9e6; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+}
+.profile-social a span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profile-social a:hover, .profile-contact a:hover { background: rgba(255,255,255,0.11); border-color: rgba(200,245,96,0.45); transform: translateY(-1px); }
+.profile-social svg, .profile-contact svg { width: 18px; height: 18px; flex: none; color: var(--lime); }
+.profile-contact { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0.5rem; margin-top: 0.5rem; }
+.profile-contact a { justify-content: center; }
+.profile-more { display: flex; align-items: center; justify-content: center; gap: 0.45rem; margin-top: 0.75rem; padding: 0.75rem; border-radius: 999px;
+  font-weight: 600; font-size: 0.92rem; color: var(--ink); background: linear-gradient(180deg, #d8ff7f 0%, #a9dc3e 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 0 24px var(--lime-glow); }
+.profile-more svg { width: 16px; height: 16px; transition: transform 0.25s var(--ease); }
+.profile-more:hover svg { transform: translate(2px, -2px); }
+@media (prefers-reduced-motion: reduce) { .profile { transition: opacity 0.15s; transform: none; } }
 
 .menu {
   position: fixed; inset: 0; z-index: 999; background: rgba(8,8,8,0.96);

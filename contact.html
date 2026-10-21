@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261020n">
+  <link rel="stylesheet" href="style.css?v=20261021a">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
 </head>
 <body>
@@ -45,10 +45,10 @@
   <header class="header" id="nav">
     <div class="wrap">
       <div class="header-bar">
-        <a href="index.html" class="brand">
-          <div class="avatar"><img src="https://poze.b-cdn.net/Andrei/IMG_8308.JPG" alt="" decoding="async"></div>
-          <div><strong>Andrei Vlădulescu</strong><span>Videograf de <b>nuntă</b></span></div>
-        </a>
+        <div class="brand">
+          <button type="button" class="avatar" id="profileBtn" aria-label="Despre Andrei" aria-controls="profile" aria-expanded="false" aria-haspopup="dialog"><img src="https://poze.b-cdn.net/Andrei/IMG_8308.JPG" alt="" decoding="async"></button>
+          <a href="index.html" class="brand-name"><strong>Andrei Vlădulescu</strong><span>Videograf de <b>nuntă</b></span></a>
+        </div>
         <nav class="nav-links" aria-label="Principal">
           <a href="index.html" class="nav-link">Home</a>
           <a href="portofoliu.html" class="nav-link">Portofoliu</a>
@@ -60,6 +60,28 @@
         <button class="menu-btn" id="menuBtn" aria-label="Deschide meniul" aria-controls="menu" aria-expanded="false">
           <span></span><span></span>
         </button>
+      </div>
+      <div class="profile" id="profile" role="dialog" aria-label="Despre Andrei Vlădulescu" hidden>
+        <div class="profile-head">
+          <div class="profile-photo"><img src="https://poze.b-cdn.net/Andrei/IMG_8308.JPG" alt="Andrei Vlădulescu" loading="lazy" decoding="async"></div>
+          <div>
+            <strong>Andrei Vlădulescu</strong>
+            <span>Videograf de <b>nuntă</b> · Târgu-Jiu</span>
+            <em><i aria-hidden="true"></i>Filmez în toată țara</em>
+          </div>
+        </div>
+        <p class="profile-text">Abordarea mea e una discretă: prefer să fiu invizibil în ziua cea mare și să prind momentele naturale, fără să întrerup cursul firesc al evenimentului. Clipul vostru e cartea mea de vizită, așa că îmi dau interesul 110%.</p>
+        <div class="profile-social">
+          <a href="https://www.instagram.com/andrei.vladulescu/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+          <a href="https://www.facebook.com/vladulescu.andrei.52" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg><span>Facebook</span></a>
+          <a href="https://www.youtube.com/@vladulescuandrei4367" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg><span>YouTube</span></a>
+          <a href="https://www.fotografi-cameramani.ro/vladulescu-andrei-cristian_8630" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.3l1.4-2h7.6l1.4 2h2.3A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Fotografi-Cameramani</span></a>
+        </div>
+        <div class="profile-contact">
+          <a href="tel:+40762309113"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>0762 309 113</a>
+          <a href="mailto:vladulescuandrei6@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
+        </div>
+        <a href="despre.html" class="profile-more">Povestea mea <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
   </header>
@@ -144,6 +166,6 @@
   </footer>
   <script src="vendor/motion.min.js?v=20261020g"></script>
   <script src="anim.js?v=20261020p"></script>
-  <script src="site.js?v=20261020g"></script>
+  <script src="site.js?v=20261021a"></script>
 </body>
 </html>
