@@ -273,70 +273,74 @@ if (tabs.length) {
   }));
 }
 
-// ----- Formular de contact (EmailJS) -----
-// CONFIGURAȚIE - Verifică dacă ID-urile sunt cele din contul tău!
-const MAIL_CONFIG = {
-  USER_KEY: 'Jyu4Yct8HwIZwfX60',
-  MAIL_SERVICE: 'service_uoi2b9c',
-  MAIL_TEMPLATE: 'template_spi0i5u'
-};
+// ----- Formular de contact (Web3Forms) -----
+// Cheia de acces o primești pe web3forms.com (o pui aici; nu e secretă, e făcută să stea în pagină).
+// Mesajele ajung pe emailul cu care ai creat cheia.
+const WEB3FORMS_KEY = 'PUNE_CHEIA_AICI';
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  // scriptul EmailJS se încarcă cu „defer” (după site.js) și poate fi blocat de ad-blockere,
-  // așa că îl verificăm abia când se trimite formularul
-  let emailjsReady = false;
-  const emailjsLoaded = () => {
-    if (typeof emailjs === 'undefined') return false;
-    if (!emailjsReady) { emailjs.init(MAIL_CONFIG.USER_KEY); emailjsReady = true; }
-    return true;
-  };
-
   const submitBtn = document.getElementById('submitBtn');
   const btnText = submitBtn.querySelector('.btn-text');
   const formMessage = document.getElementById('formMessage');
+  const fallback = 'Scrie-mi direct la vladulescuandrei6@gmail.com sau sună la +40 762 309 113.';
   const reset = () => setTimeout(() => {
     submitBtn.disabled = false;
     submitBtn.classList.remove('is-success', 'is-error');
     btnText.textContent = 'Trimite Mesajul';
   }, 3000);
+  const fail = (why) => {
+    formMessage.textContent = `Mesajul nu a putut fi trimis${why ? ` (${why})` : ''}. ${fallback}`;
+    btnText.textContent = 'Eroare! Reîncearcă';
+    submitBtn.classList.add('is-error');
+    reset();
+  };
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!emailjsLoaded()) {
-      formMessage.textContent = 'Formularul nu poate fi trimis momentan. Scrie-mi direct la vladulescuandrei6@gmail.com sau sună la +40 762 309 113.';
-      return;
-    }
+    // capcana pentru roboți: un câmp ascuns pe care oamenii nu îl văd
+    if (contactForm.botcheck && contactForm.botcheck.checked) return;
     submitBtn.disabled = true;
     btnText.textContent = 'Se trimite...';
     formMessage.textContent = '';
 
-    // Numele câmpurilor trebuie să fie IDENTICE cu cele din șablonul EmailJS
-    const formData = {
-      nume: document.getElementById('nume').value,
-      prenume: document.getElementById('prenume').value,
-      email: document.getElementById('email').value,
-      telefon: document.getElementById('telefon').value,
-      data: document.getElementById('data').value,
-      locatie: document.getElementById('locatie').value,
-      mesaj: document.getElementById('mesaj').value,
-      title: 'Mesaj Nou Site'
+    const val = (id) => document.getElementById(id).value.trim();
+    const nume = `${val('prenume')} ${val('nume')}`.trim();
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: `Mesaj nou de pe site de la ${nume}`,
+      from_name: 'andreivladulescu.ro',
+      replyto: val('email'),
+      Nume: nume,
+      Email: val('email'),
+      Telefon: val('telefon') || '-',
+      'Data evenimentului': val('data') || '-',
+      'Locație': val('locatie') || '-',
+      Mesaj: val('mesaj'),
+      botcheck: false
     };
 
-    emailjs.send(MAIL_CONFIG.MAIL_SERVICE, MAIL_CONFIG.MAIL_TEMPLATE, formData).then(() => {
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) {
+        console.error('Web3Forms Error:', res.status, data);
+        fail(`${res.status} ${data.message || ''}`.trim());
+        return;
+      }
       btnText.textContent = 'Mesaj Trimis!';
       submitBtn.classList.add('is-success');
+      formMessage.textContent = 'Mulțumesc! Îți răspund cât de repede pot.';
       contactForm.reset();
       reset();
-    }, (error) => {
-      console.error('EmailJS Error:', error);
-      // arătăm și răspunsul EmailJS, ca să se vadă ce trebuie reparat în cont
-      const why = error && (error.text || error.message) ? ` (${error.status || ''} ${error.text || error.message})` : '';
-      formMessage.textContent = `Mesajul nu a putut fi trimis${why}. Scrie-mi direct la vladulescuandrei6@gmail.com sau sună la +40 762 309 113.`;
-      btnText.textContent = 'Eroare! Reîncearcă';
-      submitBtn.classList.add('is-error');
-      reset();
-    });
+    } catch (err) {
+      console.error('Web3Forms Error:', err);
+      fail('fără conexiune');
+    }
   });
 }
 

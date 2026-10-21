@@ -810,3 +810,4 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
   .venues.is-regions li { font-size: clamp(0.68rem, 3.4vw, 0.95rem); letter-spacing: 0.03em; white-space: nowrap; }
   .venues.is-regions li + li::before { width: 4px; height: 4px; margin: 0 clamp(0.45rem, 2.2vw, 0.8rem); }
 }
+.hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
