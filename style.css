@@ -830,11 +830,4 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 @media (max-width: 760px) { .review-steps { grid-template-columns: 1fr; } }
 .review-note { margin-top: 1.25rem; color: var(--muted); font-size: 0.95rem; }
 .review-note a { color: var(--lime); }
-.reviews-wrap { margin-top: clamp(2.5rem, 6vw, 4rem); }
-.reviews-wrap:not(:has(.review)) { display: none; }
-.reviews { margin-top: 1.25rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
-.review { margin: 0; display: flex; flex-direction: column; gap: 1rem; }
-.review-stars { color: var(--lime); letter-spacing: 0.15em; }
-.review blockquote { margin: 0; color: #d9d9d5; }
-.review figcaption { margin-top: auto; display: grid; gap: 0.15rem; }
-.review figcaption span { color: var(--muted); font-size: 0.9rem; }
+.review-ask-wrap { margin-top: clamp(2.5rem, 6vw, 4rem); }

@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261022r">
+  <link rel="stylesheet" href="style.css?v=20261022t">
 </head>
 <body>
   <a class="skip-link" href="#main">Sari la conținut</a>
@@ -52,6 +52,7 @@
           <a href="/" class="nav-link">Home</a>
           <a href="/portofoliu" class="nav-link">Portofoliu</a>
           <a href="/despre" class="nav-link">Despre</a>
+          <a href="/recenzii" class="nav-link" aria-current="page">Recenzii</a>
           <a href="/contact" class="nav-link">Contact</a>
           <a href="/fq" class="nav-link">F&amp;Q</a>
         </nav>
@@ -90,8 +91,9 @@
     <a href="/" class="menu-link"><small>01</small>Home</a>
     <a href="/portofoliu" class="menu-link"><small>02</small>Portofoliu</a>
     <a href="/despre" class="menu-link"><small>03</small>Despre</a>
-    <a href="/contact" class="menu-link"><small>04</small>Contact</a>
-    <a href="/fq" class="menu-link"><small>05</small>F&amp;Q</a>
+    <a href="/recenzii" class="menu-link" aria-current="page"><small>04</small>Recenzii</a>
+    <a href="/contact" class="menu-link"><small>05</small>Contact</a>
+    <a href="/fq" class="menu-link"><small>06</small>F&amp;Q</a>
     <p class="menu-foot">+40 762 309 113<br>vladulescuandrei6@gmail.com</p>
   </nav>
 
@@ -107,7 +109,35 @@
       </div>
     </section>
 
+    <!-- Scor + mesajele de la miri (pentru un mesaj nou, copiază un <article class="tcard">) -->
     <section class="wrap">
+      <div class="card score" data-reveal>
+        <div>
+          <div class="score-num" data-count="100" data-suffix="%">100%</div>
+          <div class="stars" aria-label="5 stele"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <p>Mirii mulțumiți, după <span class="lime">150+</span> evenimente filmate</p>
+      </div>
+      <div class="tslider" data-reveal>
+        <div class="ttrack" id="ttrack" tabindex="0" aria-label="Ce mi-au scris mirii">
+          <article class="tcard">
+            <div class="tperson"><span class="tavatar" aria-hidden="true">AA</span><div><strong>Alexandra &amp; Adi</strong><span>Riviera, Târgu-Jiu</span></div></div>
+            <p class="tquote">„Top Top, chiar nota 100, suntem cu nasii si l-am vazut si ei.” <span class="dimmed">Genial, bravo tie, ai evoluat super!</span></p>
+          </article>
+          <article class="tcard">
+            <div class="tperson"><span class="tavatar" aria-hidden="true">D</span><div><strong>Daria</strong><span>Anna Events, Târgu-Jiu</span></div></div>
+            <p class="tquote">„DOAMNE E GENIAL” <span class="dimmed">E foarte frumos , multumesc din suflet!!!</span></p>
+          </article>
+          <article class="tcard">
+            <div class="tperson"><span class="tavatar" aria-hidden="true">FR</span><div><strong>Flavia și Robert</strong><span>Eden by Werk, Hunedoara</span></div></div>
+            <p class="tquote">„Uau! Andrei, deci sunt minunate 🤩🤩🤩🤩” <span class="dimmed">Bomba!</span></p>
+          </article>
+        </div>
+        <button class="tnav" id="tnext" type="button" aria-label="Următorul mesaj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </section>
+
+    <section class="wrap review-ask-wrap">
       <div class="card review-ask" data-reveal>
         <span class="kicker">Lasă o recenzie</span>
         <h2 class="h-mid">Durează mai puțin de un minut</h2>
@@ -121,22 +151,6 @@
           <a href="/contact" class="btn btn-dark">Scrie-mi direct</a>
         </div>
         <p class="review-note">Nu ai cont Google? Scrie-mi pe <a href="/contact">pagina de contact</a> și pun eu părerea ta aici, cu acordul tău.</p>
-      </div>
-    </section>
-
-    <section class="wrap reviews-wrap">
-      <div class="faq-cat-head"><span>★</span><h2>Ce spun clienții</h2></div>
-      <div class="reviews">
-        <!--
-          Pentru o recenzie nouă copiază blocul de mai jos, scoate-l din comentariu și completează-l.
-          Secțiunea „Ce spun clienții” apare singură pe site când există cel puțin o recenzie.
-
-        <figure class="review card card-tight" data-reveal>
-          <div class="review-stars" aria-label="5 din 5 stele">★★★★★</div>
-          <blockquote><p>Textul recenziei, exact cum l-a scris clientul.</p></blockquote>
-          <figcaption><strong>Prenume și inițiala numelui</strong><span>Nuntă · Târgu-Jiu · 2026</span></figcaption>
-        </figure>
-        -->
       </div>
     </section>
 
