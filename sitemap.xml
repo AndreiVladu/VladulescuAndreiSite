@@ -1,23 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url><loc>https://andreivladulescu.ro/</loc></url>
   <url><loc>https://andreivladulescu.ro/portofoliu</loc></url>
   <url><loc>https://andreivladulescu.ro/despre</loc></url>
   <url><loc>https://andreivladulescu.ro/contact</loc></url>
   <url><loc>https://andreivladulescu.ro/fq</loc></url>
   <url><loc>https://andreivladulescu.ro/recenzii</loc></url>
-  <url><loc>https://andreivladulescu.ro/nunta-flavia-robert-hunedoara</loc></url>
-  <url><loc>https://andreivladulescu.ro/nunta-alexandra-adi-targu-jiu</loc></url>
-  <url><loc>https://andreivladulescu.ro/nunta-andrada-vio-jupanesti-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/cununie-georgiana-ionut-negomir-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/workshop-visionary-craiova</loc></url>
-  <url><loc>https://andreivladulescu.ro/botez-natalia-maria-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/botez-natalia-maria-gorj-2</loc></url>
-  <url><loc>https://andreivladulescu.ro/majorat-daria-targu-jiu</loc></url>
-  <url><loc>https://andreivladulescu.ro/promo-mihai-piscuri-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/majorat-lorena-matasari-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/majorat-cristi-targu-jiu</loc></url>
-  <url><loc>https://andreivladulescu.ro/majorat-claudia-balesti-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/majorat-necta-jupanesti-gorj</loc></url>
-  <url><loc>https://andreivladulescu.ro/promo-edi-runcu-gorj</loc></url>
+  <url><loc>https://andreivladulescu.ro/nunta-flavia-robert-hunedoara</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/IMG_9329.png</video:thumbnail_loc>
+      <video:title>Nuntă Flavia &amp; Robert, Eden by Werk, Hunedoara | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de nuntă pentru Flavia și Robert, filmat la Eden by Werk, Hunedoara. Am fost acolo discret, fără să întrerup firul zilei, ca emoțiile și momentele</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/b039636b-7abe-4d1f-85ef-eb58d41993f2</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/nunta-alexandra-adi-targu-jiu</loc>
+    <video:video>
+      <video:thumbnail_loc>https://andreivladulescu.ro/img/alexandra-adi-1280.webp</video:thumbnail_loc>
+      <video:title>Nuntă Alexandra &amp; Adi, Riviera, Târgu-Jiu | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de nuntă pentru Alexandra și Adi, filmat la Riviera, Târgu-Jiu. Am fost acolo discret, fără să întrerup firul zilei, ca emoțiile și momentele să</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/586124ef-df69-41bc-8689-1fb04b434149</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/nunta-andrada-vio-jupanesti-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/DSC00413.jpg</video:thumbnail_loc>
+      <video:title>Nuntă Andrada &amp; Vio, Jupânești, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de nuntă pentru Andrada și Vio, filmat la Jupânești, Gorj. Am fost acolo discret, fără să întrerup firul zilei, ca emoțiile și momentele să rămână</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/61a689ef-a38a-4bb7-a291-4a253addb3d1</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/cununie-georgiana-ionut-negomir-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/ionut.png</video:thumbnail_loc>
+      <video:title>Cununie Georgiana &amp; Ionut, Negomir, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de cununie pentru Georgiana și Ionut, filmat la Negomir, Gorj. Un eveniment mai restrâns, dar cu aceeași atenție la detalii și la emoțiile</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/b109d5e0-6f24-44aa-8c9f-91df57d07e84</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/workshop-visionary-craiova</loc>
+    <video:video>
+      <video:thumbnail_loc>https://andreivladulescu.ro/img/workshop-1280.webp</video:thumbnail_loc>
+      <video:title>Workshop VisionARy 5.0, Craiova | Andrei Vladulescu</video:title>
+      <video:description>Film de la workshopul VisionARy 5.0, Craiova. Pe lângă evenimente private, filmez și conferințe, workshopuri și evenimente de firmă.</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/1667f56e-c82f-4b13-a9bd-ab68572c73a7</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/botez-natalia-maria-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/vlcsnap-2026-05-05-15h20m44s368.png</video:thumbnail_loc>
+      <video:title>Botez Natalia Maria, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de botez al Nataliei Maria, filmat în Gorj. La un botez, cele mai frumoase momente sunt cele mici: privirile părinților, reacțiile celui mic,</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/e7bb372b-7ef9-42e3-bd69-974d363dc161</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/botez-natalia-maria-gorj-2</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/vlcsnap-2026-02-16-18h54m07s594.png</video:thumbnail_loc>
+      <video:title>Botez Natalia Maria, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de botez al Nataliei Maria, filmat în Gorj. La un botez, cele mai frumoase momente sunt cele mici: privirile părinților, reacțiile celui mic,</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/8e5a1cbf-5c67-45c3-8f9a-29da094461b9</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/majorat-daria-targu-jiu</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/vlcsnap-2026-07-26-22h24m54s419.png</video:thumbnail_loc>
+      <video:title>Majorat Daria, Târgu-Jiu, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de majorat al Dariei, filmat în Târgu-Jiu, Gorj. Optsprezece ani se fac o singură dată, așa că am urmărit atât petrecerea, cât și momentele cu</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/ac27939c-89fb-4fa5-ba59-d1e46f921491</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/promo-mihai-piscuri-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/IMG_8024.png</video:thumbnail_loc>
+      <video:title>Clip promovare Mihai, Piscuri, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Clip de promovare pentru Mihai, filmat în Piscuri, Gorj.</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/61f94c81-6e53-4058-9e75-ce4fabf3aa2a</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/majorat-lorena-matasari-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/vlcsnap-2026-03-30-14h31m33s613.png</video:thumbnail_loc>
+      <video:title>Majorat Lorena, Mătăsari, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de majorat al Lorenei, filmat în Mătăsari, Gorj. Optsprezece ani se fac o singură dată, așa că am urmărit atât petrecerea, cât și momentele cu</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/cfeb331c-112f-4bdc-a620-fda6c18c3388</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/majorat-cristi-targu-jiu</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/IMG_8037.png</video:thumbnail_loc>
+      <video:title>Majorat Cristi, Târgu-Jiu, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de majorat al lui Cristi, filmat în Târgu-Jiu, Gorj. Optsprezece ani se fac o singură dată, așa că am urmărit atât petrecerea, cât și momentele cu</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/b493fc22-4cd8-4ccd-974e-1b015bdc241b</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/majorat-claudia-balesti-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/IMG_8026.png</video:thumbnail_loc>
+      <video:title>Majorat Claudia, Bălești, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de majorat al Claudiei, filmat în Bălești, Gorj. Optsprezece ani se fac o singură dată, așa că am urmărit atât petrecerea, cât și momentele cu</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/ccb9b0dd-d9e8-46d8-b40a-c68861d0b5f7</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/majorat-necta-jupanesti-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://andreivladulescu.ro/img/necta-1920.webp</video:thumbnail_loc>
+      <video:title>Majorat Necta, Jupânești, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Filmul de majorat al Nectei, filmat în Jupânești, Gorj. Optsprezece ani se fac o singură dată, așa că am urmărit atât petrecerea, cât și momentele cu</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/497d8d4b-3871-4155-812e-7901f4df7198</video:player_loc>
+    </video:video></url>
+  <url><loc>https://andreivladulescu.ro/promo-edi-runcu-gorj</loc>
+    <video:video>
+      <video:thumbnail_loc>https://poze.b-cdn.net/vlcsnap-2026-06-05-17h03m17s696.png</video:thumbnail_loc>
+      <video:title>Clip promovare Edi, Runcu, Gorj | Videograf Andrei Vladulescu</video:title>
+      <video:description>Clip de promovare pentru Edi, filmat în Runcu, Gorj.</video:description>
+      <video:player_loc>https://player.mediadelivery.net/embed/595311/df571041-fa7d-4123-9ac9-88890b820f92</video:player_loc>
+    </video:video></url>
 </urlset>
