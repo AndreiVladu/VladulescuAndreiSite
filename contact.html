@@ -2,6 +2,7 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://poze.b-cdn.net; media-src 'self' https://poze.b-cdn.net; frame-src https://player.mediadelivery.net; connect-src 'self' https://api.emailjs.com; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Andrei Vladulescu</title>
   <meta name="description" content="Scrie-mi despre evenimentul tău: nuntă, botez sau majorat. Îți răspund rapid pe email, la telefon +40 762 309 113 sau prin formularul de pe site.">
@@ -36,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261022u">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script src="vendor/emailjs.min.js?v=4.4.1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Sari la conținut</a>
