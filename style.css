@@ -816,6 +816,12 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 .film-player iframe { width: 100%; height: 100%; border: 0; display: block; }
 .film-about { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
 .film-about .prose a { color: var(--lime); }
+.film-still { margin: 0 0 1.5rem; }
+.film-still img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; border: 1px solid var(--line-2); }
+@media (min-width: 761px) {
+  .film-about:has(.film-still) { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: clamp(1.5rem, 3vw, 2.5rem); align-items: start; }
+  .film-about .film-still { grid-row: span 2; margin: 0; }
+}
 .film-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
 .work-title a { color: inherit; text-decoration: none; }
 .work-title a:hover, .work-title a:focus-visible { text-decoration: underline; text-underline-offset: 0.15em; }
