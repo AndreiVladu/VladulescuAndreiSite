@@ -692,7 +692,7 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 /* ---------- Mesajele de la miri: carusel 3D din sticlă lichidă (anim.js adaugă .is-3d) ---------- */
 .tslider.is-3d {
   --w: min(calc(100vw - 5.5rem), 540px);
-  --R: calc(var(--w) * 0.98);
+  --R: calc(var(--w) * var(--rk, 0.98));
   margin-top: 14px; padding-block: 1.25rem 3.25rem; overflow-x: clip;
   perspective: 1500px; perspective-origin: 50% 40%;
   touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none;
@@ -711,7 +711,7 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 }
 .is-3d .tcard {
   grid-area: 1 / 1; position: relative; isolation: isolate;
-  transform: rotateY(calc(var(--i) * 60deg)) translateZ(var(--R));
+  transform: rotateY(calc(var(--i) * var(--step, 60) * 1deg)) translateZ(var(--R));
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
   opacity: var(--o, 1);
   border: 1px solid rgba(255,255,255,0.2);

@@ -156,8 +156,11 @@
   if (ttrack) {
     const originals = [...ttrack.querySelectorAll('.tcard')];
     const count = originals.length;
-    const STEP = 60; // 6 fețe pe inel: mesajele se repetă ca inelul să fie plin
-    const N = 360 / STEP;
+    // inelul are cel puțin 5 fețe; mesajele se repetă întregi, ca ordinea să rămână aceeași la fiecare tură
+    const N = count >= 5 ? count : count * Math.ceil(5 / count);
+    const STEP = 360 / N;
+    ttrack.style.setProperty('--step', STEP);
+    ttrack.style.setProperty('--rk', Math.max(0.98, 1.13 / (2 * Math.tan(Math.PI / N))).toFixed(3)); // raza crește cu numărul de fețe
     for (let k = count; k < N; k++) {
       const c = originals[k % count].cloneNode(true);
       c.setAttribute('aria-hidden', 'true');
