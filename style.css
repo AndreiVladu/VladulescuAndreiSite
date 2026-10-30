@@ -314,6 +314,7 @@ html:not(.motion) .reel-hint { display: none; }
 .tperson span { color: var(--lime); font-style: italic; }
 .tquote { font-size: clamp(1.3rem, 2.8vw, 1.7rem); line-height: 1.3; letter-spacing: -0.02em; }
 .tquote .dimmed { color: var(--muted); }
+.tquote .dimmed.is-long { font-size: 0.72em; line-height: 1.4; letter-spacing: -0.01em; } /* recenzie lungă: textul complet, fără să lungească toate cardurile */
 .tnav { position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: rgba(14,14,14,0.85); border: 1px solid var(--line-2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background 0.2s; }
 .tnav:hover { background: #222; }
 .tnav svg { width: 22px; height: 22px; }
@@ -710,6 +711,7 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
   will-change: transform;
 }
 .is-3d .tcard {
+  justify-content: center; /* cardurile au toate înălțimea celui mai lung mesaj; textul scurt stă la mijloc */
   grid-area: 1 / 1; position: relative; isolation: isolate;
   transform: rotateY(calc(var(--i) * var(--step, 60) * 1deg)) translateZ(var(--R));
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
