@@ -516,8 +516,10 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 .tab[aria-selected='true'] { color: var(--ink); }
 .tabs-pill { position: absolute; top: 5px; bottom: 5px; left: 0; border-radius: 999px; background: var(--lime); transition: transform 0.45s var(--ease), width 0.45s var(--ease); }
 .tab-panel[hidden] { display: none; }
+@media (max-width: 380px) { .tab { padding: 0.65rem 1.1rem; } }
 .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media (max-width: 760px) { .price-grid { grid-template-columns: 1fr; } }
+.price-grid-single { grid-template-columns: minmax(0, 520px); justify-content: center; }
 .price-card { display: flex; flex-direction: column; }
 .price-card.featured { border-color: rgba(200,245,96,0.5); box-shadow: 0 0 50px -20px var(--lime-glow); }
 .badge { align-self: flex-start; padding: 0.35rem 0.85rem; border-radius: 999px; background: #1d1d1d; border: 1px solid var(--line-2); font-size: 0.85rem; color: #cfcfcb; }
