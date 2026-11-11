@@ -190,6 +190,7 @@ if (filters.length) {
   filters.forEach((btn) => {
     const f = btn.dataset.filter;
     const count = f === 'all' ? cards.length : [...cards].filter((c) => c.dataset.category === f).length;
+    if (!count) { btn.hidden = true; return; }
     btn.insertAdjacentHTML('beforeend', `<sup>${count}</sup>`);
     btn.addEventListener('click', () => {
       const apply = () => {
