@@ -322,7 +322,9 @@ if (contactForm) {
       data: document.getElementById('data').value,
       locatie: document.getElementById('locatie').value,
       mesaj: document.getElementById('mesaj').value,
-      title: 'Mesaj Nou Site'
+      title: 'Mesaj nou de pe andreivladulescu.ro',
+      site: 'Andrei Vlădulescu (andreivladulescu.ro)',
+      pagina: window.location.href
     };
 
     emailjs.send(MAIL_CONFIG.MAIL_SERVICE, MAIL_CONFIG.MAIL_TEMPLATE, formData).then(() => {
