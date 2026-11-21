@@ -621,8 +621,8 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
    Lumina stă pe margini (ca la o lentilă), iar pagina activă e o pastilă mai deschisă în interior.
    Ca s-o reglezi: --glass-blur (cât de încețoșat e fundalul) și --glass-tint (cât de închisă e). */
 .header-bar, .dock {
-  --glass-blur: 20px;
-  --glass-tint: rgba(28,28,28,0.6);
+  --glass-blur: 14px;
+  --glass-tint: rgba(28,28,28,0.38);
 }
 .header-bar {
   position: relative; isolation: isolate;
