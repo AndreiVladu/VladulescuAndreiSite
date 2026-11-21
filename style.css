@@ -616,13 +616,13 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
   mask-image: radial-gradient(70% 80% at 50% 40%, #000, transparent); -webkit-mask-image: radial-gradient(70% 80% at 50% 40%, #000, transparent);
 }
 
-/* ---------- Bara de sus: sticlă lichidă (ca bara de jos din Instagram / iOS 26) ----------
-   Sticlă clară, nu lăptoasă: blur mic, aproape fără tentă, conținutul se vede prin ea.
+/* ---------- Bara de sus: sticlă lichidă, varianta „Nuanțat” din iOS 26 ----------
+   Sticlă închisă, mai opacă: fundalul se vede încețoșat, iar textul iese clar în față.
    Lumina stă pe margini (ca la o lentilă), iar pagina activă e o pastilă mai deschisă în interior.
    Ca s-o reglezi: --glass-blur (cât de încețoșat e fundalul) și --glass-tint (cât de închisă e). */
 .header-bar, .dock {
-  --glass-blur: 7px;
-  --glass-tint: rgba(20,20,20,0.24);
+  --glass-blur: 20px;
+  --glass-tint: rgba(28,28,28,0.6);
 }
 .header-bar {
   position: relative; isolation: isolate;
@@ -690,7 +690,8 @@ body.menu-open .dock, body.modal-open .dock { visibility: hidden; }
 }
 .header-bar .brand, .header-bar .nav-link, .dock p { text-shadow: 0 1px 8px rgba(0,0,0,0.55); }
 /* subtitlul din bară rămâne lizibil și peste poze deschise la culoare */
-.header-bar .brand span { color: rgba(255,255,255,0.72); }
+.header-bar .brand span { color: rgba(255,255,255,0.82); }
+.header-bar .nav-link { color: #ececea; }
 
 /* ---------- Bobina: cadre în ramă de sticlă lichidă ---------- */
 .reel { perspective: 1500px; }
