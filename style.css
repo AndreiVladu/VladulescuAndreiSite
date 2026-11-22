@@ -944,3 +944,15 @@ h1, h2, h3, h4, .quote { font-variant-numeric: lining-nums; }
 @media (max-width: 860px) { .about-cols { grid-template-columns: minmax(0, 1fr); } }
 .stat h3 { font-variant-numeric: lining-nums; }
 .price-amount { font-weight: 500; letter-spacing: 0; font-variant-numeric: lining-nums tabular-nums; }
+
+/* Secțiuni fără chenar („Despre mine” și „Cum lucrez” de pe homepage): text direct pe fundal,
+   despărțit doar de o linie fină. Clasa .card rămâne, .is-plain îi scoate cutia. */
+.card.is-plain { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; overflow: visible;
+  padding: clamp(3rem, 8vw, 5.5rem) clamp(0.25rem, 3vw, 3.25rem); }
+.is-plain .mini-stats div, .is-plain .info-pair div, .is-plain .step {
+  background: none; border: 0; border-top: 1px solid var(--line-2); border-radius: 0; padding: 1rem 0 0; }
+.is-plain .mini-stats, .is-plain .info-pair { gap: 1.25rem; }
+.is-plain .info-pair { margin-top: 1.75rem; }
+.is-plain .steps { gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2rem, 5vw, 3rem); }
+.is-plain .step b { display: block; width: auto; height: auto; background: none; border-radius: 0; color: var(--lime);
+  font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 1.6rem; line-height: 1; }
