@@ -956,3 +956,9 @@ h1, h2, h3, h4, .quote { font-variant-numeric: lining-nums; }
 .is-plain .steps { gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2rem, 5vw, 3rem); }
 .is-plain .step b { display: block; width: auto; height: auto; background: none; border-radius: 0; color: var(--lime);
   font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 1.6rem; line-height: 1; }
+
+/* Când în .info-pair rămâne un singur element, ocupă tot rândul */
+.info-pair > div:only-child { grid-column: 1 / -1; }
+/* Homepage: când sunt doar 2 filme, ocupă toată lățimea, fără coloană goală pe ecrane mari */
+.works:has(> .work:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 640px) { .works:has(> .work:nth-child(2):last-child) { grid-template-columns: 1fr; } }
