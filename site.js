@@ -3,6 +3,15 @@
 // Fiecare bloc pornește doar dacă elementele lui există pe pagină.
 // ========================================
 
+// ----- Adresă curată: dacă cineva intră pe /pagina.html (ex. din Google), bara arată /pagina -----
+(function () {
+  var p = location.pathname;
+  if (/\.html$/.test(p)) {
+    var clean = p.replace(/(index)?\.html$/, "");
+    history.replaceState(null, "", (clean || "/") + location.search + location.hash);
+  }
+})();
+
 document.documentElement.classList.add('js');
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
